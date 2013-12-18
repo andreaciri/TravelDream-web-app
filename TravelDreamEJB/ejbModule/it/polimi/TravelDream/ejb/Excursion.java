@@ -18,7 +18,8 @@ public class Excursion implements Serializable {
 
 	public Excursion() {
 		super();
-	}   
+	}
+	
 	public int getIdComponent() {
 		return this.idComponent;
 	}
