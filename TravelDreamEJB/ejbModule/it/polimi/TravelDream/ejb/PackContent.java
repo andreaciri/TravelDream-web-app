@@ -1,9 +1,6 @@
 package it.polimi.TravelDream.ejb;
 
-import it.polimi.TravelDream.ejb.SavedPack.SavedPackPK;
-
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 
@@ -17,42 +14,18 @@ import javax.persistence.*;
 public class PackContent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@EmbeddedId
+	private PackContentPK id;
+
 	public PackContent() {
 	}
-	
-	@EmbeddedId PackContentPK primaryKey;
-	
-	@Embeddable public static class PackContentPK implements Serializable{
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		private int idComponent;
-		private int idPackage;
-		public int hashCode() {
-	        return (int) hashCode() + idPackage;
-	    }
 
-		public int getIdPackage() {
-			return this.idPackage;
-		}
+	public PackContentPK getId() {
+		return this.id;
+	}
 
-		public void setIdPackage(int idPackage) {
-			this.idPackage = idPackage;
-		}
-
-		public int getIdComponent() {
-			return this.idComponent;
-		}
-
-
-		
-	    public boolean equals(Object obj) {
-	        if (obj == this) return true;
-	        if (!(obj instanceof SavedPackPK)) return false;
-	        PackContentPK pk = (PackContentPK) obj;
-	        return pk.idPackage == idPackage && pk.idComponent == idComponent;
-	    }
+	public void setId(PackContentPK id) {
+		this.id = id;
 	}
 
 }

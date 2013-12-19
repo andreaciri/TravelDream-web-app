@@ -4,16 +4,17 @@
 		<jta-data-source>TravelDreamDataSource</jta-data-source>
 		<class>it.polimi.TravelDream.ejb.Component</class>
 		<class>it.polimi.TravelDream.ejb.ComponentType</class>
-		<class>it.polimi.TravelDream.ejb.Package</class>
-		<class>it.polimi.TravelDream.ejb.User</class>
-		<class>it.polimi.TravelDream.ejb.PurchasedPack</class>
-		<class>it.polimi.TravelDream.ejb.Hotel</class>
 		<class>it.polimi.TravelDream.ejb.Excursion</class>
 		<class>it.polimi.TravelDream.ejb.Flight</class>
-		<class>it.polimi.TravelDream.ejb.SavedPack</class>
-		<class>it.polimi.TravelDream.ejb.SavedPack.SavedPackPK</class>
-		<class>it.polimi.TravelDream.ejb.PackContent.PackContentPK</class>
+		<class>it.polimi.TravelDream.ejb.Hotel</class>
+		<class>it.polimi.TravelDream.ejb.Package</class>
 		<class>it.polimi.TravelDream.ejb.PackContent</class>
+		<class>it.polimi.TravelDream.ejb.PackContentPK</class>
+		<class>it.polimi.TravelDream.ejb.PurchasedPack</class>
+		<class>it.polimi.TravelDream.ejb.SavedPack</class>
+		<class>it.polimi.TravelDream.ejb.SavedPackPK</class>
+		<class>it.polimi.TravelDream.ejb.User</class>
+		<class>it.polimi.TravelDream.ejb.UserGroup</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>
