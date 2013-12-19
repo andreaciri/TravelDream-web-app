@@ -14,44 +14,18 @@ import javax.persistence.*;
 public class SavedPack implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@EmbeddedId
+	private SavedPackPK id;
+
 	public SavedPack() {
 	}
-	
-	@EmbeddedId SavedPackPK primaryKey;
-	
-	@Embeddable public static class SavedPackPK implements Serializable{
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		private int idPackage;
-		private String username;
-		public int hashCode() {
-	        return (int) username.hashCode() + idPackage;
-	    }
 
-		public int getIdPackage() {
-			return this.idPackage;
-		}
+	public SavedPackPK getId() {
+		return this.id;
+	}
 
-		public void setIdPackage(int idPackage) {
-			this.idPackage = idPackage;
-		}
-
-		public String getUsername() {
-			return this.username;
-		}
-
-		public void setUsername(String username) {
-			this.username = username;
-		}
-		
-	    public boolean equals(Object obj) {
-	        if (obj == this) return true;
-	        if (!(obj instanceof SavedPackPK)) return false;
-	        SavedPackPK pk = (SavedPackPK) obj;
-	        return pk.idPackage == idPackage && pk.username.equals(username);
-	    }
+	public void setId(SavedPackPK id) {
+		this.id = id;
 	}
 
 }

@@ -20,7 +20,9 @@ public class User implements Serializable {
 
 	private String password;
 
-	private String userType;
+	//bi-directional one-to-one association to UserGroup
+	@OneToOne(mappedBy="user")
+	private UserGroup userGroup;
 
 	public User() {
 	}
@@ -49,12 +51,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getUserType() {
-		return this.userType;
+	public UserGroup getUserGroup() {
+		return this.userGroup;
 	}
 
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setUserGroup(UserGroup userGroup) {
+		this.userGroup = userGroup;
 	}
 
 }
