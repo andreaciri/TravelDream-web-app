@@ -1,6 +1,6 @@
-package it.polimi.TravelDream.ejb;
+package it.polimi.TravelDream.ejb.entities;
 
-import it.polimi.TravelDream.ejb.Component;
+import it.polimi.TravelDream.ejb.entities.Component;
 
 import java.io.Serializable;
 

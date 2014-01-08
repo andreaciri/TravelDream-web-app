@@ -1,4 +1,4 @@
-package it.polimi.TravelDream.ejb;
+package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -23,7 +23,10 @@ public class PurchasedPack implements Serializable {
 
 	private int totalPrice;
 
-	private String username;
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User user;
 
 	public PurchasedPack() {
 	}
@@ -60,12 +63,12 @@ public class PurchasedPack implements Serializable {
 		this.totalPrice = totalPrice;
 	}
 
-	public String getUsername() {
-		return this.username;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

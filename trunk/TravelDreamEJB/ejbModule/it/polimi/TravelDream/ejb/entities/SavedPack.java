@@ -1,4 +1,4 @@
-package it.polimi.TravelDream.ejb;
+package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -17,6 +17,11 @@ public class SavedPack implements Serializable {
 	@EmbeddedId
 	private SavedPackPK id;
 
+	//bi-directional many-to-one association to User
+	@ManyToOne
+	@JoinColumn(name="username")
+	private User user;
+
 	public SavedPack() {
 	}
 
@@ -26,6 +31,14 @@ public class SavedPack implements Serializable {
 
 	public void setId(SavedPackPK id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
