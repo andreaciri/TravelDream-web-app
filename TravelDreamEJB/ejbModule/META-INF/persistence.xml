@@ -2,19 +2,19 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="TravelDreamEJB" transaction-type="JTA">
 		<jta-data-source>TravelDreamDataSource</jta-data-source>
-		<class>it.polimi.TravelDream.ejb.Component</class>
-		<class>it.polimi.TravelDream.ejb.ComponentType</class>
-		<class>it.polimi.TravelDream.ejb.Excursion</class>
-		<class>it.polimi.TravelDream.ejb.Flight</class>
-		<class>it.polimi.TravelDream.ejb.Hotel</class>
-		<class>it.polimi.TravelDream.ejb.Package</class>
-		<class>it.polimi.TravelDream.ejb.PackContent</class>
-		<class>it.polimi.TravelDream.ejb.PackContentPK</class>
-		<class>it.polimi.TravelDream.ejb.PurchasedPack</class>
-		<class>it.polimi.TravelDream.ejb.SavedPack</class>
-		<class>it.polimi.TravelDream.ejb.SavedPackPK</class>
-		<class>it.polimi.TravelDream.ejb.User</class>
-		<class>it.polimi.TravelDream.ejb.UserGroup</class>
+		<class>it.polimi.TravelDream.ejb.entities.Component</class>
+		<class>it.polimi.TravelDream.ejb.entities.ComponentType</class>
+		<class>it.polimi.TravelDream.ejb.entities.Excursion</class>
+		<class>it.polimi.TravelDream.ejb.entities.Flight</class>
+		<class>it.polimi.TravelDream.ejb.entities.Hotel</class>
+		<class>it.polimi.TravelDream.ejb.entities.Package</class>
+		<class>it.polimi.TravelDream.ejb.entities.PackContent</class>
+		<class>it.polimi.TravelDream.ejb.entities.PackContentPK</class>
+		<class>it.polimi.TravelDream.ejb.entities.PurchasedPack</class>
+		<class>it.polimi.TravelDream.ejb.entities.SavedPack</class>
+		<class>it.polimi.TravelDream.ejb.entities.SavedPackPK</class>
+		<class>it.polimi.TravelDream.ejb.entities.User</class>
+		<class>it.polimi.TravelDream.ejb.entities.UserGroup</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>

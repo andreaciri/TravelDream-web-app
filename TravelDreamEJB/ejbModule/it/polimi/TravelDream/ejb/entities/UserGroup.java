@@ -1,4 +1,4 @@
-package it.polimi.TravelDream.ejb;
+package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -17,7 +17,8 @@ public class UserGroup implements Serializable {
 	@Id
 	private String username;
 
-	private String group;
+	@Column(name="user_group")
+	private String userGroup;
 
 	//bi-directional one-to-one association to User
 	@OneToOne
@@ -35,12 +36,12 @@ public class UserGroup implements Serializable {
 		this.username = username;
 	}
 
-	public String getGroup() {
-		return this.group;
+	public String getUserGroup() {
+		return this.userGroup;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setUserGroup(String userGroup) {
+		this.userGroup = userGroup;
 	}
 
 	public User getUser() {

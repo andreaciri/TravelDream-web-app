@@ -1,4 +1,4 @@
-package it.polimi.TravelDream.ejb;
+package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
