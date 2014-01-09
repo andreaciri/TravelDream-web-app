@@ -4,7 +4,7 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.bean.RequestScoped;
 
-import it.polimi.TDautentication.ejb.eaos.HomeContent;
+import it.polimi.TravelDream.ejb.eaos.HomeContent;
 
 @ManagedBean
 @RequestScoped
