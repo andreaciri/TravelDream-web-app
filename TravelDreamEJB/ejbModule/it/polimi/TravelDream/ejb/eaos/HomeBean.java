@@ -3,9 +3,6 @@ package it.polimi.TravelDream.ejb.eaos;
 
 
 
-
-import it.polimi.TDautentication.ejb.eaos.HomeContent;
-
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 
@@ -13,12 +10,12 @@ import javax.ejb.Stateless;
  * Session Bean implementation class HomePage
  */
 @Stateless
-public class HomePage implements HomeContent {
+public class HomeBean implements HomeContent {
 
     /**
      * Default constructor. 
      */
-    public HomePage() {
+    public HomeBean() {
         // TODO Auto-generated constructor stub
     }
 
