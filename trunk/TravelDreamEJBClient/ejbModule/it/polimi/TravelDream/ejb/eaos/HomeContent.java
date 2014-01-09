@@ -1,4 +1,4 @@
-package it.polimi.TDautentication.ejb.eaos;
+package it.polimi.TravelDream.ejb.eaos;
 
 import javax.ejb.Local;
 
