@@ -13,8 +13,6 @@
 		<class>it.polimi.TravelDream.ejb.entities.PurchasedPack</class>
 		<class>it.polimi.TravelDream.ejb.entities.SavedPack</class>
 		<class>it.polimi.TravelDream.ejb.entities.SavedPackPK</class>
-		<class>it.polimi.TravelDream.ejb.entities.User</class>
-		<class>it.polimi.TravelDream.ejb.entities.UserGroup</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>
