@@ -5,6 +5,8 @@ insert into USERS (username,email,password) values ('serena','sere.disabatino@gm
 insert into USERS (username,email,password) values ('ciro','andrea.cirigiano@gmail.com','bb3625483bd43ccdfa894eb7a88187d3ee261d4fdd2b001a7320f4a4f396bc5c');
 insert into USERS (username,email,password) values ('billi','stefano.bielli@gmail.com','ddae89d7ff30f88b1abefb0b6ae2aabd63b10b972134fbfff52097acbd57cf10');
 
+insert into GROUPS (idGroup) values (ADMIN)
+
 insert into USER_GROUP (username,user_group) values ('admin','ADMIN');
 insert into USER_GROUP (username,user_group) values ('user','USER');
 insert into USER_GROUP (username,user_group) values ('serena','ADMIN');
