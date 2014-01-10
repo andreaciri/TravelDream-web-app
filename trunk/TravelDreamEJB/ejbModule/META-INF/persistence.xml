@@ -8,11 +8,7 @@
 		<class>it.polimi.TravelDream.ejb.entities.Flight</class>
 		<class>it.polimi.TravelDream.ejb.entities.Hotel</class>
 		<class>it.polimi.TravelDream.ejb.entities.Package</class>
-		<class>it.polimi.TravelDream.ejb.entities.PackContent</class>
-		<class>it.polimi.TravelDream.ejb.entities.PackContentPK</class>
-		<class>it.polimi.TravelDream.ejb.entities.PurchasedPack</class>
-		<class>it.polimi.TravelDream.ejb.entities.SavedPack</class>
-		<class>it.polimi.TravelDream.ejb.entities.SavedPackPK</class>
+		<class>it.polimi.TravelDream.ejb.entities.User</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
 		</properties>
