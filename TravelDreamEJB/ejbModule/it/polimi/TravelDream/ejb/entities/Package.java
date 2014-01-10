@@ -2,6 +2,7 @@ package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -21,6 +22,10 @@ public class Package implements Serializable {
 	private String title;
 
 	private String type;
+
+	//bi-directional many-to-many association to User
+	@ManyToMany(mappedBy="packages")
+	private List<User> users;
 
 	public Package() {
 	}
@@ -55,6 +60,14 @@ public class Package implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<User> getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 }
