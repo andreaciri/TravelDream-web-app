@@ -1,7 +1,8 @@
 package it.polimi.TravelDream.ejb.entities;
 
-import it.polimi.TravelDream.ejb.userManagement.UserDTO;
 
+
+import it.polimi.TravelDream.ejb.userManagement.dto.UserDTO;
 
 import java.io.Serializable;
 
