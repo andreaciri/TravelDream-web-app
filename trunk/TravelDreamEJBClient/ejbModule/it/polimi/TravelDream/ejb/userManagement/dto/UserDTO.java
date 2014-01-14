@@ -1,4 +1,4 @@
-package it.polimi.TravelDream.ejb.userManagement;
+package it.polimi.TravelDream.ejb.userManagement.dto;
 
 import javax.validation.constraints.Pattern;
 
@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class UserDTO {
 	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
             message="invalid email")
+	
 	private String email;
 	
 	@NotEmpty
@@ -18,7 +19,7 @@ public class UserDTO {
     public String getUsername() {
 		return username;
 	}
-    public void setUsername() {
+    public void setUsername(String username) {
     	this.username = username;
     }
 
