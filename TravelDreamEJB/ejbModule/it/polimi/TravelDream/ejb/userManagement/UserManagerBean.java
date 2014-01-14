@@ -34,7 +34,7 @@ public class UserManagerBean implements UsrMgr{
 	public void save(UserDTO user) {
 		User newUser = new User(user);
 		List<Group> group = new ArrayList<Group>();
-		group.add(Group.USER);
+		group.add(Group.USER); //solo i clienti si registrano
 		newUser.setGroup(group);
 		em.persist(newUser);
 	}

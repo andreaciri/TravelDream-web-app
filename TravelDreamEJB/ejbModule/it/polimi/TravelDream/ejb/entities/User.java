@@ -60,8 +60,9 @@ public static final String FIND_ALL = "User.findAll";
 	}
 	
 	public User(UserDTO user){
-        this.email        = user.getEmail();       
-        this.password     = DigestUtils.sha256Hex(user.getPassword());
+		this.username = user.getUsername();
+        this.email = user.getEmail();       
+        this.password = DigestUtils.sha256Hex(user.getPassword());
     }
 
 	public String getUsername() {
