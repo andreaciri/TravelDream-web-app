@@ -82,17 +82,20 @@ public class UserManagerBean implements UsrMgr{
     
     
     public User getPrincipalUser() {
-    	return find(getPrincipalEmail());
+    	return find(getPrincipalUsername());
     }
 	
     
-    public String getPrincipalEmail() {
+    //RECUPERA L'UTENTE LOGGATO NEL CONTESTO CORRENTE E RECUPERA INFO
+    public String getPrincipalUsername() {
     	return context.getCallerPrincipal().getName();
     }
 
     private UserDTO convertToDTO(User user) {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEmail(user.getEmail());
+		userDTO.setUsername(user.getUsername());
+		userDTO.setPassword(user.getPassword());
 		return userDTO;
 	}
 
