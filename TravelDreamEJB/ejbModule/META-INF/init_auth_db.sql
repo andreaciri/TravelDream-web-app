@@ -8,8 +8,8 @@ insert into USERS (username,email,password) values ('billi','stefano.bielli@gmai
 insert into GROUPS (idGroup) values ('ADMIN');
 insert into GROUPS (idGroup) values ('USER');
 
-insert into USER_GROUP (username,user_group) values ('admin','ADMIN');
-insert into USER_GROUP (username,user_group) values ('user','USER');
-insert into USER_GROUP (username,user_group) values ('serena','ADMIN');
-insert into USER_GROUP (username,user_group) values ('ciro','ADMIN');
-insert into USER_GROUP (username,user_group) values ('billi','USER');
+insert into USER_GROUP (username,idGroup) values ('admin','ADMIN');
+insert into USER_GROUP (username,idGroup) values ('user','USER');
+insert into USER_GROUP (username,idGroup) values ('serena','ADMIN');
+insert into USER_GROUP (username,idGroup) values ('ciro','ADMIN');
+insert into USER_GROUP (username,idGroup) values ('billi','USER');

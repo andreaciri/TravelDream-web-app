@@ -9,8 +9,5 @@
 		<class>it.polimi.TravelDream.ejb.entities.Hotel</class>
 		<class>it.polimi.TravelDream.ejb.entities.Package</class>
 		<class>it.polimi.TravelDream.ejb.entities.User</class>
-		<properties>
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-		</properties>
 	</persistence-unit>
 </persistence>

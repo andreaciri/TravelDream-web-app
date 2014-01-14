@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.TravelDream.ejb.entities.*;
+import it.polimi.TravelDream.ejb.userManagement.dto.UserDTO;
+
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
