@@ -5,8 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
-	<h1>Hello Admin</h1>
-	<h:outputText value="Admin content: #{HomeContentBean.adminContent}" />
+	<h1>Hello #{userBean.username}</h1>
+	<h:outputText value="Admin content: #{homeContentBean.adminHome}" />
 	<h:form>
 		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
 	</h:form>
