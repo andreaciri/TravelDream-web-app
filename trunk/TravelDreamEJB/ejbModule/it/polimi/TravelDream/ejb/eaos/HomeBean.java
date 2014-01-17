@@ -28,7 +28,7 @@ public class HomeBean implements HomeContent {
 	@Override
 	@RolesAllowed({"USER"})
 	public String getUserHome() {
-		return "User homepage: oktoberfest, maldive...";
+		return "Questi sono i pacchetti viaggio disponibili:";
 	}
 
 }
