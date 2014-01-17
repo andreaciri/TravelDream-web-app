@@ -9,6 +9,8 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class LogoutBean {
 	
+//redirect alla home con refresh
+	
 	public String logout() {
 	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	    return "/home?faces-redirect=true";
