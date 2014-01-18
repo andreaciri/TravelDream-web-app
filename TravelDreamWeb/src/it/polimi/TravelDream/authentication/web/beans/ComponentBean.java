@@ -2,6 +2,7 @@ package it.polimi.TravelDream.authentication.web.beans;
 
 import it.polimi.TravelDream.ejb.compManagement.CompMgrInterface;
 import it.polimi.TravelDream.ejb.compManagement.dto.*;
+import it.polimi.TravelDream.enumeration.City;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class ComponentBean implements Serializable{
 	public List<String> types = new ArrayList<String>();
 	public String type;
 	
-//	component the will be created
+//	component that will be created
 	public ComponentDTO newComponent;
 	
 //	temp variables that keep basic info
@@ -45,7 +46,7 @@ public class ComponentBean implements Serializable{
 		excursionRend=false;
 		
 		type = "null";
-		title = "";
+		title = "component title";
 		description = "";
 		price = 40;
 		
@@ -66,6 +67,9 @@ public class ComponentBean implements Serializable{
 		context.execute("createDialog.show();");
 	}
 	
+	
+	
+	//the selected type of component has changed (dropdown menu)
 	public void handleTypeChange() {
 		System.out.println("variabile type:"+type);
 		switch (type) {
@@ -84,6 +88,8 @@ public class ComponentBean implements Serializable{
 			excursionRend=false;
 			
 			newComponent = new FlightDTO(title, description, price);
+			((FlightDTO) newComponent).setDeparturePlace(City.randomCity().toString());
+			((FlightDTO) newComponent).setArrivalPlace(City.randomCity().toString());
 			
 			break;
 			
@@ -92,6 +98,10 @@ public class ComponentBean implements Serializable{
 			flightRend=false;
 			hotelRend=true;
 			excursionRend=false;
+			
+			newComponent = new HotelDTO(title, description, price);
+			((HotelDTO) newComponent).setPlace(City.randomCity().toString());
+			
 			break;
 			
 		case "Excursion":
@@ -99,12 +109,22 @@ public class ComponentBean implements Serializable{
 			flightRend=false;
 			hotelRend=false;
 			excursionRend=true;
+			
+			newComponent = new ExcursionDTO(title, description, price);
+			((ExcursionDTO) newComponent).setPlace(City.randomCity().toString());
+			
 			break;
 		
 		}
 		
 	}
 
+//	private Date addDays(Date date){
+//		re
+//	}
+	
+	/* --- GETTER AND SETTER METHODS --- */
+	
 	public String getType() {
 		return type;
 	}

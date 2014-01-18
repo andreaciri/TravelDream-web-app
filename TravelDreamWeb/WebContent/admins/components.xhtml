@@ -34,7 +34,7 @@
 			        <h:outputText value="Price:" />
 			        <h:panelGrid columns="3">
 			        	<h:outputText value="€" />
-				        <p:inputText id="price" value="#{componentBean.price}" style="width:150px">  
+				        <p:inputText id="price" required="true" value="#{componentBean.price}" style="width:150px">  
 	                		<p:clientValidator event="keyup"/>  
 	            		</p:inputText>  
 	          			<p:message for="price" display="icon" />
@@ -43,29 +43,29 @@
 		        <p:outputPanel id="OPTIONAL">
 			        <h:panelGrid id="FLG" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.flightRend}">
 			        	<h:outputText value="Departure date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.departureDate}"/>
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.departureDate}" required="true" />
 	   					<h:outputText value="Return date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.returnDate}"/>
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.returnDate}" required="true" />
 	   					<h:outputText value="Departure place:" />
-	   					<p:inputText value="#{componentBean.newComponent.departurePlace}"/>
+	   					<p:inputText value="#{componentBean.newComponent.departurePlace}" required="true" />
 	   					<h:outputText value="Arrival place:" />
-	   					<p:inputText value="#{componentBean.newComponent.arrivalPlace}"/>
+	   					<p:inputText value="#{componentBean.newComponent.arrivalPlace}" required="true" />
 	   				 </h:panelGrid>
 		       		<h:panelGrid id="HTL" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.hotelRend}">
 	   					<h:outputText value="Place:" />
-	   					<p:inputText />
+	   					<p:inputText value="#{componentBean.newComponent.place}" required="true" />
 			        	<h:outputText value="Check-in date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.checkin}" required="true" />
 	   					<h:outputText value="Check-out date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.checkout}" required="true" />
 	   				 </h:panelGrid>
 	   				 <h:panelGrid id="XCR" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.excursionRend}">
 	   					<h:outputText value="Place:" />
-	   					<p:inputText />
+	   					<p:inputText value="#{componentBean.newComponent.place}" required="true" />
 			        	<h:outputText value="Start date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.start}" required="true" />
 	   					<h:outputText value="Finish date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.finish}" required="true" />
 	   				 </h:panelGrid>
    				</p:outputPanel>
  				<p:commandButton value="Create" id="CREATE" 
