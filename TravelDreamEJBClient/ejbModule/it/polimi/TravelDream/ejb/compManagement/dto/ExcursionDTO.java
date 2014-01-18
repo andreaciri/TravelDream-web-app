@@ -12,8 +12,6 @@ public class ExcursionDTO extends ComponentDTO {
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		start = new Date();
-		finish = new Date();
 		
 	}
 	

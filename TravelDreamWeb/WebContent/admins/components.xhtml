@@ -10,10 +10,12 @@
     </h:head>
 	
 	<h:body>
-	<h1>Components manager</h1> 
-		<h3>Create new component</h3>
+	<h1>Components manager</h1>
 		<h:form id="form">
-			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" border-width="3" frame="border">
+				<f:facet name="header">  
+       			 Create new component 
+    			</f:facet> 
 				<h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5"  id="BASIC"> 
 			        <h:outputText value="Type of the Component:" />  
 			        <p:selectOneMenu id="CompType" value="#{componentBean.type}" style="width:150px"> 

@@ -13,8 +13,6 @@ public class FlightDTO extends ComponentDTO {
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		departureDate = new Date();
-		returnDate = new Date();
 		
 	}
 	

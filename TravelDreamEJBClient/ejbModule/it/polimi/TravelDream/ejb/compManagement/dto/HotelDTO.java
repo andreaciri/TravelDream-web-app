@@ -12,8 +12,6 @@ public class HotelDTO extends ComponentDTO {
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		checkin = new Date();
-		checkout = new Date();
 		
 	}
 	
