@@ -6,6 +6,8 @@ import it.polimi.TravelDream.enumeration.City;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -23,6 +25,7 @@ public class ComponentBean implements Serializable{
 	
 	public List<String> types = new ArrayList<String>();
 	public String type;
+	private String holidayPlace;
 	
 //	component that will be created
 	public ComponentDTO newComponent;
@@ -49,6 +52,7 @@ public class ComponentBean implements Serializable{
 		title = "component title";
 		description = "";
 		price = 40;
+		holidayPlace = City.randomCity().toString();
 		
 		types.add("Flight");
 		types.add("Hotel");
@@ -69,9 +73,11 @@ public class ComponentBean implements Serializable{
 	
 	
 	
-	//the selected type of component has changed (dropdown menu)
+	//called when the selected type of component change (dropdown menu)
 	public void handleTypeChange() {
 		System.out.println("variabile type:"+type);
+		Date now = new Date();
+
 		switch (type) {
 		
 		case "null":
@@ -88,8 +94,11 @@ public class ComponentBean implements Serializable{
 			excursionRend=false;
 			
 			newComponent = new FlightDTO(title, description, price);
-			((FlightDTO) newComponent).setDeparturePlace(City.randomCity().toString());
-			((FlightDTO) newComponent).setArrivalPlace(City.randomCity().toString());
+			((FlightDTO) newComponent).setDeparturePlace("Milan");
+			((FlightDTO) newComponent).setArrivalPlace(holidayPlace);
+			((FlightDTO) newComponent).setDepartureDate(addDays(now, 7));
+			((FlightDTO) newComponent).setReturnDate(addDays(now, 14));
+			
 			
 			break;
 			
@@ -100,7 +109,9 @@ public class ComponentBean implements Serializable{
 			excursionRend=false;
 			
 			newComponent = new HotelDTO(title, description, price);
-			((HotelDTO) newComponent).setPlace(City.randomCity().toString());
+			((HotelDTO) newComponent).setPlace(holidayPlace);
+			((HotelDTO) newComponent).setCheckin(addDays(now, 7));
+			((HotelDTO) newComponent).setCheckout(addDays(now, 14));
 			
 			break;
 			
@@ -111,7 +122,9 @@ public class ComponentBean implements Serializable{
 			excursionRend=true;
 			
 			newComponent = new ExcursionDTO(title, description, price);
-			((ExcursionDTO) newComponent).setPlace(City.randomCity().toString());
+			((ExcursionDTO) newComponent).setPlace(holidayPlace);
+			((ExcursionDTO) newComponent).setStart(addDays(now, 8));
+			((ExcursionDTO) newComponent).setFinish(addDays(now, 11));
 			
 			break;
 		
@@ -119,9 +132,15 @@ public class ComponentBean implements Serializable{
 		
 	}
 
-//	private Date addDays(Date date){
-//		re
-//	}
+	//add days to the variable date
+	private Date addDays(Date date, int days){
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(date);  
+		cal.add(Calendar.DATE, days); //add days
+		  
+		date = cal.getTime();
+		return date;
+	}
 	
 	/* --- GETTER AND SETTER METHODS --- */
 	
