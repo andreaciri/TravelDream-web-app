@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:head>  
+  		<title>Components manager</title>
+    </h:head>
+	
+	<h:body>
+	<h1>Components manager</h1> 
+		<h3>Create new component</h3>
+		<h:form id="form">
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				<h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5"  id="BASIC"> 
+			        <h:outputText value="Type of the Component:" />  
+			        <p:selectOneMenu id="CompType" value="#{componentBean.type}" style="width:150px"> 
+			        	<f:selectItem itemLabel="Select One" itemValue="null" /> 
+			            <f:selectItems value="#{componentBean.types}" />
+			            <p:ajax update="OPTIONAL" listener="#{componentBean.handleTypeChange}" /> 
+			        </p:selectOneMenu>
+			        <h:outputText value="Title:"/>
+			        <h:panelGrid columns="2">
+				        <p:inputText id="title" required="true" value="#{componentBean.title}">
+				        	<f:validateLength minimum="1" maximum="45" />  
+	                		<p:clientValidator />
+				        </p:inputText>
+				        <p:message for="title" display="icon" />
+			        </h:panelGrid>
+			        <h:outputText value="Description:" />
+			        <p:inputTextarea rows="6" cols="33" />
+			        <h:outputText value="Price:" />
+			        <h:panelGrid columns="3">
+			        	<h:outputText value="€" />
+				        <p:inputText id="price" value="#{componentBean.price}" style="width:150px">  
+	                		<p:clientValidator event="keyup"/>  
+	            		</p:inputText>  
+	          			<p:message for="price" display="icon" />
+          			</h:panelGrid>
+		        </h:panelGrid>
+		        <p:outputPanel id="OPTIONAL">
+			        <h:panelGrid id="FLG" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.flightRend}">
+			        	<h:outputText value="Departure date:" />  
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.departureDate}"/>
+	   					<h:outputText value="Return date:" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.returnDate}"/>
+	   					<h:outputText value="Departure place:" />
+	   					<p:inputText value="#{componentBean.newComponent.departurePlace}"/>
+	   					<h:outputText value="Arrival place:" />
+	   					<p:inputText value="#{componentBean.newComponent.arrivalPlace}"/>
+	   				 </h:panelGrid>
+		       		<h:panelGrid id="HTL" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.hotelRend}">
+	   					<h:outputText value="Place:" />
+	   					<p:inputText />
+			        	<h:outputText value="Check-in date:" />  
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<h:outputText value="Check-out date:" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   				 </h:panelGrid>
+	   				 <h:panelGrid id="XCR" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.excursionRend}">
+	   					<h:outputText value="Place:" />
+	   					<p:inputText />
+			        	<h:outputText value="Start date:" />  
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   					<h:outputText value="Finish date:" />
+	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" />
+	   				 </h:panelGrid>
+   				</p:outputPanel>
+ 				<p:commandButton value="Create" id="CREATE" 
+             actionListener="#{componentBean.createComp()}" styleClass="ui-priority-primary"/>
+ 				<p:dialog id="createDialog" header="Component created" widgetVar="createDialog">  
+    				<h:outputText value="The component has been successfully created" />  
+				</p:dialog>
+
+	        </h:panelGrid>
+	        <span>lista componenti preesistenti per visione rimozione</span>
+        </h:form> 
+	</h:body>
+
+
+
+
+</html>

@@ -7,6 +7,8 @@
 <h:body>
 	<h1>Hello #{userBean.username}</h1>
 	<h:outputText value="Admin content: #{homeContentBean.adminHome}" />
+	<br />
+        <h:link outcome="components" value="Manage Components" /> <br />
 	<h:form>
 		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
 	</h:form>

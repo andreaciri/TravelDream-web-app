@@ -9,16 +9,20 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="COMPONENT")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="idType", discriminatorType=DiscriminatorType.STRING)
 @NamedQuery(name="Component.findAll", query="SELECT c FROM Component c")
 public class Component implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idComponent;
 
 	private String description;
 
-	private int idType;
+	private String idType;
 
 	private String name;
 
@@ -43,11 +47,11 @@ public class Component implements Serializable {
 		this.description = description;
 	}
 
-	public int getIdType() {
+	public String getIdType() {
 		return this.idType;
 	}
 
-	public void setIdType(int idType) {
+	public void setIdType(String idType) {
 		this.idType = idType;
 	}
 
