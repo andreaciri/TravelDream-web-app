@@ -1,7 +1,7 @@
 package it.polimi.TravelDream.ejb.entities;
 
+import it.polimi.TravelDream.ejb.entities.Component;
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 /**
@@ -9,15 +9,14 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="FLIGHT")
-public class Hotel implements Serializable {
+@Table(name="HOTEL")
+@DiscriminatorValue("HTL")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Hotel extends Component implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int idComponent;
-	
 	public Hotel() {
 		super();
 	}
