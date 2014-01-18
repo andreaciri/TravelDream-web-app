@@ -11,6 +11,7 @@ public class ComponentDTO {
 	protected Integer price;
 	
 	public ComponentDTO(){
+		
 	}
 	
 	public String getTitle() {
