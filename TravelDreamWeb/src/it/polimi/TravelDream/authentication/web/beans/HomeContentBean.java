@@ -13,6 +13,11 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 public class HomeContentBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public HomeContentBean () {
 	}
 	
