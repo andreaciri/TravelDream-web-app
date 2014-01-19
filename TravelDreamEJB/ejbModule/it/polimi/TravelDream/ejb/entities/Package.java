@@ -1,7 +1,11 @@
 package it.polimi.TravelDream.ejb.entities;
 
+import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
+
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,26 +14,37 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="PACKAGE")
 @NamedQuery(name="Package.findAll", query="SELECT p FROM Package p")
+
 public class Package implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "idPackage")
 	private int idPackage;
-
+	@Column(name = "description")
 	private String description;
-
+	@Column(name = "title")
 	private String title;
-
+	@Column(name = "type")
 	private String type;
 
+	public static final String FIND_ALL_P = "Package.findAll";
+	
 	//bi-directional many-to-many association to User
 	@ManyToMany(mappedBy="packages")
 	private List<User> users;
 
-	public Package() {
+	public Package(){
 	}
-
+	
+	public Package(PackageDTO p){
+        this.description = p.getDescription();       
+        this.title = p.getTitle();
+        this.idPackage = p.getIdPackage();
+    }
+	
 	public int getIdPackage() {
 		return this.idPackage;
 	}
@@ -61,7 +76,7 @@ public class Package implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
 	public List<User> getUsers() {
 		return this.users;
 	}
@@ -69,5 +84,6 @@ public class Package implements Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	
 
 }

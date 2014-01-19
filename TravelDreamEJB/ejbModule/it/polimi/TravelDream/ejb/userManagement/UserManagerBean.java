@@ -99,4 +99,5 @@ public class UserManagerBean implements UsrMgr{
 		return userDTO;
 	}
 
+
 }
