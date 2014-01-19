@@ -15,6 +15,11 @@ public class ExcursionDTO extends ComponentDTO {
 		
 	}
 	
+	@Override
+	public String infoToString () {
+		return place+" - from "+start.toString()+" to "+finish.toString();
+	}
+	
 	public String getPlace() {
 		return place;
 	}

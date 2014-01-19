@@ -18,7 +18,6 @@ public class Excursion extends Component implements Serializable {
 
 	   
 	private int idComponent;
-	private String idType;
 	private String place;
 	private Date start;
 	private Date finish;
@@ -34,13 +33,7 @@ public class Excursion extends Component implements Serializable {
 	public void setIdComponent(int idComponent) {
 		this.idComponent = idComponent;
 	}   
-	public String getIdType() {
-		return this.idType;
-	}
-
-	public void setIdType(String idType) {
-		this.idType = idType;
-	}   
+ 
 	public String getPlace() {
 		return this.place;
 	}

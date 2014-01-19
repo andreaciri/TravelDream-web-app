@@ -53,11 +53,11 @@ public class Flight extends Component implements Serializable {
 		this.departureDate = departureDate;
 	}
 
-	public Date getArrivalDate() {
+	public Date getReturnDate() {
 		return returnDate;
 	}
 
-	public void setArrivalDate(Date arrivalDate) {
+	public void setReturnDate(Date arrivalDate) {
 		this.returnDate = arrivalDate;
 	}
    

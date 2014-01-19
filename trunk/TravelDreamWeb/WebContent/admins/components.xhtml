@@ -25,18 +25,18 @@
 			        </p:selectOneMenu>
 			        <h:outputText value="Title:"/>
 			        <h:panelGrid columns="2">
-				        <p:inputText id="title" required="true" value="#{componentBean.title}">
+				        <p:inputText id="title" required="true" value="#{componentBean.newComponent.title}">
 				        	<f:validateLength minimum="1" maximum="45" />  
 	                		<p:clientValidator />
 				        </p:inputText>
 				        <p:message for="title" display="icon" />
 			        </h:panelGrid>
 			        <h:outputText value="Description:" />
-			        <p:inputTextarea rows="6" cols="33" />
+			        <p:inputTextarea rows="6" cols="33" value="#{componentBean.newComponent.description}"/>
 			        <h:outputText value="Price:" />
 			        <h:panelGrid columns="3">
 			        	<h:outputText value="€" />
-				        <p:inputText id="price" required="true" value="#{componentBean.price}" style="width:150px">  
+				        <p:inputText id="price" required="true" value="#{componentBean.newComponent.price}" style="width:150px">  
 	                		<p:clientValidator event="keyup"/>  
 	            		</p:inputText>  
 	          			<p:message for="price" display="icon" />
@@ -70,14 +70,37 @@
 	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.finish}" required="true" />
 	   				 </h:panelGrid>
    				</p:outputPanel>
- 				<p:commandButton value="Create" id="CREATE" 
+ 				<p:commandButton value="Create" id="CREATE" update="form"
              actionListener="#{componentBean.createComp()}" styleClass="ui-priority-primary"/>
  				<p:dialog id="createDialog" header="Component created" widgetVar="createDialog">  
     				<h:outputText value="The component has been successfully created" />  
 				</p:dialog>
 
 	        </h:panelGrid>
-	        <span>lista componenti preesistenti per visione rimozione</span>
+	        <p:dataTable id="allCompTable" var="comp" value="#{componentBean.allComponents}">
+	        	<f:facet name="header">  
+       			 Created components 
+    			</f:facet> 
+		        <p:column headerText="Type" style="width:10%">
+		        	<h:outputText value="#{comp.typeToString()}" />
+		        </p:column>
+		        <p:column headerText="Name" style="width:24%">
+		        	<h:outputText value="#{comp.title}" />
+		        </p:column>
+		        <p:column headerText="Description" style="width:30%">
+		        	<h:outputText value="#{comp.description}" />
+		        </p:column>
+		        <p:column headerText="Price" style="width:6%">
+		        	<h:outputText value="#{comp.price}" />
+		        </p:column>
+		        <p:column headerText="Other info" style="width:35%">
+		        	<h:outputText value="#{comp.infoToString()}" />
+		        </p:column>
+		        <p:column headerText="Delete" style="width:4%">  
+                <p:commandButton id="deleteButton" update="" oncomplete="" icon="ui-icon-circle-close" title="Delete">  
+            </p:commandButton>  
+        </p:column> 
+	        </p:dataTable>
         </h:form> 
 	</h:body>
 
