@@ -14,4 +14,5 @@ public interface UsrMgr {
 	public void unregister();
 	
 	public UserDTO getUserDTO();
+	
 }

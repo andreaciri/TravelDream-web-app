@@ -23,7 +23,6 @@ public class UserDTO {
     	this.username = username;
     }
 
-
 	public String getEmail() {
         return email;
     } 
