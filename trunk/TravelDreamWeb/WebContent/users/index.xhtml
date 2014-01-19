@@ -3,26 +3,32 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
 
 <h:body>
 	<h1>Hello #{userBean.username}</h1>
 	<h:outputText value="#{homeContentBean.userHome}" />
-	<h:form>  
+
+	<p:accordionPanel value="#{packageBean.allPackages}" var="package">  
+    <p:tab title="#{package.title}">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            <p:graphicImage value="/images/barca/#{player.photo}" />  
   
-    <p:growl id="growl" showDetail="true" />  
+            <h:panelGrid columns="2" cellpadding="10">  
+                <h:outputText value="In this package: " />  
+                <h:outputText value="#{package.description}" style="font-weight: bold"/>  
   
-    <p:fieldset legend="PACKAGE" toggleable="true" toggleSpeed="500">  
-        <p:ajax event="toggle" listener="#{fieldsetBean.handleToggle}" update="growl" />  
-        <h:panelGrid columns="2" cellpadding="20">  
-            <p:graphicImage value="\TravelDreamWeb\WebContent\WEB-INF\pics\okt.png" />  
-            <h:outputText value="description"/>  
+            </h:panelGrid>  
+  
         </h:panelGrid>  
-    </p:fieldset>  
   
-</h:form>
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
+    </p:tab>  
+</p:accordionPanel>  
+		
+		<br />
+		<h:form>
+			<h:commandButton action="#{logoutBean.logout}" value="Logout" />
+		</h:form>
+
 </h:body>
 </html>
