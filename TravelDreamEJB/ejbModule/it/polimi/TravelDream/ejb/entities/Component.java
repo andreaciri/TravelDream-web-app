@@ -1,6 +1,7 @@
 package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -12,12 +13,12 @@ import javax.persistence.*;
 @Table(name="COMPONENT")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="idType", discriminatorType=DiscriminatorType.STRING)
-@NamedQuery(name="Component.findAll", query="SELECT c FROM Component c")
+@NamedQuery(name=Component.FIND_ALL, query="SELECT c FROM Component c")
 public class Component implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idComponent;
 
 	private String description;
@@ -27,6 +28,8 @@ public class Component implements Serializable {
 	private String name;
 
 	private int price;
+	
+	public static final String FIND_ALL = "Component.findAll";
 
 	public Component() {
 	}

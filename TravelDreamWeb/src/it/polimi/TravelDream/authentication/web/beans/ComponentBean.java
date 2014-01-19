@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -41,6 +42,9 @@ public class ComponentBean implements Serializable{
 	private Boolean hotelRend;
 	private Boolean excursionRend; 
 	
+	//lista di tutti i componenti nel db
+	private List<ComponentDTO> allComponents;
+	
 	public ComponentBean(){
 		
 		basicRend=false;
@@ -49,9 +53,10 @@ public class ComponentBean implements Serializable{
 		excursionRend=false;
 		
 		type = "null";
-		title = "component title";
-		description = "";
-		price = 40;
+		newComponent = new ComponentDTO();
+		newComponent.setTitle("Component name");
+		newComponent.setDescription("");
+		newComponent.setPrice(50);
 		holidayPlace = City.randomCity().toString();
 		
 		types.add("Flight");
@@ -59,6 +64,13 @@ public class ComponentBean implements Serializable{
 		types.add("Excursion");
 			
 		}
+	
+	//eseguito subito dopo che il managedBean e' stato creato
+	@PostConstruct
+	private void afterConstruct() {
+		//recupera tutti i componenti dal db
+		allComponents = compMgr.getAllComponentDTO();
+	}
 	
 	public void createComp() {
 		if(type.equals("null")){
@@ -142,6 +154,8 @@ public class ComponentBean implements Serializable{
 		return date;
 	}
 	
+	
+	
 	/* --- GETTER AND SETTER METHODS --- */
 	
 	public String getType() {
@@ -222,5 +236,13 @@ public class ComponentBean implements Serializable{
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public List<ComponentDTO> getAllComponents() {
+		return allComponents;
+	}
+
+	public void setAllComponents(List<ComponentDTO> allComponents) {
+		this.allComponents = allComponents;
 	}
 }

@@ -14,6 +14,15 @@ public class ComponentDTO {
 		
 	}
 	
+	public String infoToString () {
+		return "generic Component";
+	}
+	
+	public String typeToString() {
+		String type = this.getClass().getSimpleName();
+		return type.substring(0, (type.length()-3));
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -26,10 +35,10 @@ public class ComponentDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 }

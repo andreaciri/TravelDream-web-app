@@ -16,6 +16,10 @@ public class FlightDTO extends ComponentDTO {
 		
 	}
 	
+	@Override
+	public String infoToString () {
+		return departurePlace+", "+departureDate.toString()+" - "+arrivalPlace+", "+returnDate.toString();
+	}
 	
 	public String getDeparturePlace() {
 		return departurePlace;

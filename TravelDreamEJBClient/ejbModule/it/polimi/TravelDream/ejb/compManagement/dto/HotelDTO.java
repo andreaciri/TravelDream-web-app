@@ -15,6 +15,11 @@ public class HotelDTO extends ComponentDTO {
 		
 	}
 	
+	@Override
+	public String infoToString () {
+		return place+" - from "+checkin.toString()+" to "+checkout.toString();
+	}
+	
 	public String getPlace() {
 		return place;
 	}
