@@ -22,13 +22,13 @@ public class HomeBean implements HomeContent {
 	@Override
 	@RolesAllowed({"ADMIN"})
 	public String getAdminHome() {
-		return "Admin homepage: create package, create component...";
+		return "Admin homepage: create package, create component...\n";
 	}
 
 	@Override
 	@RolesAllowed({"USER"})
 	public String getUserHome() {
-		return "Questi sono i pacchetti viaggio disponibili:";
+		return "Questi sono i pacchetti viaggio disponibili:\n";
 	}
 
 }
