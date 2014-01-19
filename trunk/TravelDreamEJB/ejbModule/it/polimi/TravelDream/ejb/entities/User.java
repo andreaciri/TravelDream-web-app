@@ -40,8 +40,6 @@ public static final String FIND_ALL = "User.findAll";
     private List<Group> group;
 
 
-
-
 	//bi-directional many-to-many association to Package
 	@ManyToMany
 	@JoinTable(
@@ -88,8 +86,6 @@ public static final String FIND_ALL = "User.findAll";
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 
 	public List<Package> getPackages() {
