@@ -4,8 +4,10 @@ import it.polimi.TravelDream.ejb.compManagement.CompMgrInterface;
 import it.polimi.TravelDream.ejb.compManagement.dto.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -20,16 +22,22 @@ public class NewPackageBean implements Serializable{
 	private List<FlightDTO> flights;
 	private List<HotelDTO> hotels;
 	private List<ExcursionDTO> excursions;
-	
+	//selected non puo' essere una lista per dataTable con selezione singola
+	private FlightDTO selected;			
 	
 	public NewPackageBean(){
 	}
 	
-	public void newPackPreRender(){
-		//ATTENZIONE PUO PARTIRE AD OGNI UPDATE AJAX - RISOLVERE
+	@PostConstruct
+	public void afterConstruct() {
 		flights = compMgr.getAllFlightsDTO();
 		hotels = compMgr.getAllHotelsDTO();
 		excursions = compMgr.getAllExcsDTO();
+		
+	}
+	
+	public void newPackPreRender(){
+		//ATTENZIONE PUO PARTIRE AD OGNI UPDATE AJAX - RISOLVERE
 	}
 	
 	public List<FlightDTO> getFlights() {
@@ -49,6 +57,14 @@ public class NewPackageBean implements Serializable{
 	}
 	public void setExcursions(List<ExcursionDTO> excursions) {
 		this.excursions = excursions;
+	}
+
+	public FlightDTO getSelected() {
+		return selected;
+	}
+
+	public void setSelected(FlightDTO selected) {
+		this.selected = selected;
 	}
 	
 }
