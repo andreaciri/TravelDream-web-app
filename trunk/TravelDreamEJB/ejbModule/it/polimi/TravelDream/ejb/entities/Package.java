@@ -15,7 +15,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="PACKAGE")
-@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p where p.type='standard'")
+@NamedQueries({
+	@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p where p.type='standard'"),
+	@NamedQuery(name="Package.getPackageById", query="SELECT p FROM Package p WHERE p.idPackage = :idPackage")
+})
 
 public class Package implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +34,7 @@ public class Package implements Serializable {
 	private String type;
 
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
+	public static final String FIND_PACKAGE_BY_ID = "Package.getPackageById";
 	
 	//bi-directional many-to-many association to User
 	@ManyToMany(mappedBy="packages")
