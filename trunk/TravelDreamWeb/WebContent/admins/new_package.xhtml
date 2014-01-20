@@ -17,7 +17,8 @@
 	
 	<form id="createPackage">
 	
-	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" rowKey="#{flight.idComponent}" selectionMode="single">
+	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" style="width:75%"
+			rowKey="#{flight.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
             Avaible Flights  
         </f:facet>  
@@ -42,6 +43,59 @@
         </p:column>
         
 	</p:dataTable>
+	<br />
+	<p:dataTable id="hotels" var="hotel" value="#{newPackage.hotels}" style="width:75%"
+			rowKey="#{hotel.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
+		<f:facet name="header">  
+            Avaible Hotels  
+        </f:facet>  
+		<p:column headerText="Name">
+			#{hotel.title}
+		</p:column>
+		<p:column headerText="Place">
+			#{hotel.place}
+		</p:column>
+		<p:column headerText="check-in">
+			#{hotel.checkin}
+		</p:column>
+		<p:column headerText="check-out">
+			#{hotel.checkout}
+		</p:column>
+		<p:column headerText="Price">
+			#{hotel.price}
+		</p:column>
+		<p:column headerText="id">  
+            #{hotel.idComponent}  
+        </p:column>
+	</p:dataTable>
+	<br />
+	<p:dataTable id="excursions" var="excursion" value="#{newPackage.excursions}" style="width:75%"
+				rowKey="#{excursion.idComponent}" selectionMode="multiple" scrollable="true" scrollHeight="170">
+		<f:facet name="header">  
+            Avaible Excursions  
+        </f:facet>  
+		<p:column headerText="Name">
+			#{excursion.title}
+		</p:column>
+		<p:column headerText="Place">
+			#{excursion.place}
+		</p:column>
+		<p:column headerText="Description">
+			#{excursion.description}
+		</p:column>
+		<p:column headerText="Start">
+			#{excursion.start}
+		</p:column>
+		<p:column headerText="Finish">
+			#{excursion.finish}
+		</p:column>
+		<p:column headerText="id">  
+            #{excursion.idComponent}  
+        </p:column>
+	</p:dataTable>
+	<br />
+	<p:commandButton value="Create" id="createPack">
+	</p:commandButton>
 	
 	</form>
 	
