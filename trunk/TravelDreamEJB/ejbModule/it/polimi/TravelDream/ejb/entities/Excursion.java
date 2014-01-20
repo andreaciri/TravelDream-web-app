@@ -1,9 +1,11 @@
 package it.polimi.TravelDream.ejb.entities;
 
 import it.polimi.TravelDream.ejb.entities.Component;
+
 import java.io.Serializable;
 import java.lang.String;
 import java.sql.Date;
+
 import javax.persistence.*;
 
 /**
@@ -16,10 +18,17 @@ import javax.persistence.*;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Excursion extends Component implements Serializable {
 
-	   
+	
+	@Column(nullable=false)
 	private int idComponent;
+	
+	@Column(nullable=false)
 	private String place;
+	
+	@Column(nullable=false)
 	private Date start;
+	
+	@Column(nullable=false)
 	private Date finish;
 	private static final long serialVersionUID = 1L;
 

@@ -81,6 +81,9 @@ public class ComponentBean implements Serializable{
 		compMgr.save(newComponent);
 		RequestContext context = RequestContext.getCurrentInstance();
 		context.execute("createDialog.show();");
+		//aggiorna lista di componenti
+		allComponents = compMgr.getAllComponentDTO();
+		context.update("allCompTable");
 	}
 	
 	
@@ -105,7 +108,7 @@ public class ComponentBean implements Serializable{
 			hotelRend=false;
 			excursionRend=false;
 			
-			newComponent = new FlightDTO(title, description, price);
+			newComponent = new FlightDTO(title, description, price, 0);
 			((FlightDTO) newComponent).setDeparturePlace("Milan");
 			((FlightDTO) newComponent).setArrivalPlace(holidayPlace);
 			((FlightDTO) newComponent).setDepartureDate(addDays(now, 7));
@@ -120,7 +123,7 @@ public class ComponentBean implements Serializable{
 			hotelRend=true;
 			excursionRend=false;
 			
-			newComponent = new HotelDTO(title, description, price);
+			newComponent = new HotelDTO(title, description, price, 0);
 			((HotelDTO) newComponent).setPlace(holidayPlace);
 			((HotelDTO) newComponent).setCheckin(addDays(now, 7));
 			((HotelDTO) newComponent).setCheckout(addDays(now, 14));
@@ -133,7 +136,7 @@ public class ComponentBean implements Serializable{
 			hotelRend=false;
 			excursionRend=true;
 			
-			newComponent = new ExcursionDTO(title, description, price);
+			newComponent = new ExcursionDTO(title, description, price, 0);
 			((ExcursionDTO) newComponent).setPlace(holidayPlace);
 			((ExcursionDTO) newComponent).setStart(addDays(now, 8));
 			((ExcursionDTO) newComponent).setFinish(addDays(now, 11));

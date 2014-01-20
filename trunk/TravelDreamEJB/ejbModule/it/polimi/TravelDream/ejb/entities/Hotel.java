@@ -20,8 +20,13 @@ public class Hotel extends Component implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Column(nullable=false)
 	private String place;
+	
+	@Column(nullable=false)
 	private Date checkin;
+	
+	@Column(nullable=false)
 	private Date checkout;
 	
 	public Hotel() {

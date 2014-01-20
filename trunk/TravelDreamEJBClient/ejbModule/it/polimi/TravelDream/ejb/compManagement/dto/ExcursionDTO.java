@@ -8,10 +8,11 @@ public class ExcursionDTO extends ComponentDTO {
 	private Date start;
 	private Date finish;
 	
-	public ExcursionDTO (String title, String description, Integer price){
+	public ExcursionDTO (String title, String description, Integer price, Integer id){
 		this.title = title;
 		this.description = description;
 		this.price = price;
+		this.idComponent = id;
 		
 	}
 	

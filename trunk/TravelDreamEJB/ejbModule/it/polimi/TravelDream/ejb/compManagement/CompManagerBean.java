@@ -96,20 +96,20 @@ public class CompManagerBean implements CompMgrInterface {
 	private ComponentDTO convertToDTO (Component c) {
 		ComponentDTO newDTO;
 		if(c instanceof Flight){
-			newDTO = new FlightDTO(c.getName(), c.getDescription(), c.getPrice());
+			newDTO = new FlightDTO(c.getName(), c.getDescription(), c.getPrice(), c.getIdComponent());
 			((FlightDTO) newDTO).setDeparturePlace(((Flight) c).getDeparturePlace());
 			((FlightDTO) newDTO).setDepartureDate(((Flight) c).getDepartureDate());
 			((FlightDTO) newDTO).setArrivalPlace(((Flight) c).getArrivalPlace());
 			((FlightDTO) newDTO).setReturnDate(((Flight) c).getReturnDate());
 		}
 		else if(c instanceof Hotel){
-			newDTO = new HotelDTO(c.getName(), c.getDescription(), c.getPrice());
+			newDTO = new HotelDTO(c.getName(), c.getDescription(), c.getPrice(), c.getIdComponent());
 			((HotelDTO) newDTO).setPlace(((Hotel) c).getPlace());
 			((HotelDTO) newDTO).setCheckin(((Hotel) c).getCheckin());
 			((HotelDTO) newDTO).setCheckout(((Hotel) c).getCheckout());
 		}
 		else if(c instanceof Excursion){
-			newDTO = new ExcursionDTO(c.getName(), c.getDescription(), c.getPrice());
+			newDTO = new ExcursionDTO(c.getName(), c.getDescription(), c.getPrice(), c.getIdComponent());
 			((ExcursionDTO) newDTO).setPlace(((Excursion) c).getPlace());
 			((ExcursionDTO) newDTO).setStart(((Excursion) c).getStart());
 			((ExcursionDTO) newDTO).setFinish(((Excursion) c).getFinish());
