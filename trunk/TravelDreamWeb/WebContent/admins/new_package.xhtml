@@ -17,7 +17,7 @@
 	
 	<form id="createPackage">
 	
-	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" style="width:75%"
+	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" style="width:75%" selection="#{newPackage.selected}"
 			rowKey="#{flight.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
             Avaible Flights  
