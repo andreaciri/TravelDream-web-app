@@ -4,31 +4,36 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
+<h:head>
+</h:head>
 <h:body>
+
 	<h1>Hello #{userBean.username}</h1>
 	<h:outputText value="#{homeContentBean.userHome}" />
 
-	<p:accordionPanel value="#{packageBean.allPackages}" var="package">  
-    <p:tab title="#{package.title}">  
-        <h:panelGrid columns="2" cellpadding="10">  
-            <p:graphicImage value="/images/barca/#{player.photo}" />  
-  
-            <h:panelGrid columns="2" cellpadding="10">  
-                <h:outputText value="In this package: " />  
-                <h:outputText value="#{package.description}" style="font-weight: bold"/>  
-  
-            </h:panelGrid>  
-  
-        </h:panelGrid>  
-  
-    </p:tab>  
-</p:accordionPanel>  
-		
-		<br />
-		<h:form>
-			<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-		</h:form>
+	<br />
+	<br />
+	<p:accordionPanel value="#{packageBean.allPackages}" var="package" dynamic="true" cache="true" multiple="true">
+		<p:tab title="#{package.title}">
+			<h:panelGrid columns="2" cellpadding="10">
+				<p:graphicImage value= "/WEB-INF/pics/okt.png"/>
+
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:outputText value="In this package: " style="font-weight: bold"/>
+					<h:outputText value="#{package.description}" />
+
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+		</p:tab>
+	</p:accordionPanel> 
+	
+	<br />
+	<br />
+	<h:form>
+		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
+	</h:form>
 
 </h:body>
 </html>
