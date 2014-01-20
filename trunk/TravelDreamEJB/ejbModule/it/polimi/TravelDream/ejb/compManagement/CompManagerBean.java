@@ -83,14 +83,65 @@ public class CompManagerBean implements CompMgrInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
-	/* restituisce tutti i componenti come oggetti entita' */
+	/* QUERY CHE RESTITUISCONO LISTE DI OGGETTI ENTITA' */
 	public List<Component> getAllComponent(){
 		
 		//createNamedQuery riceve nel costruttore il nome della query, e la classe del risultato
 		return em.createNamedQuery(Component.FIND_ALL, Component.class).getResultList();
 	}
+	
+	public List<Flight> getAllFlights(){
+		return em.createNamedQuery(Component.FIND_FLIGHTS, Flight.class).getResultList();
+	}
+	
+	public List<Hotel> getAllHotels(){
+		return em.createNamedQuery(Component.FIND_HOTELS, Hotel.class).getResultList();
+	}
+	
+	public List<Excursion> getAllExcs(){
+		return em.createNamedQuery(Component.FIND_EXCS, Excursion.class).getResultList();
+	}
+
+	/* QUERY CHE RESTITUISCONO LISTE DI OGGETTI DTO */
+
+	public List<ComponentDTO> getAllComponentDTO () {
+		List<ComponentDTO> DTOList = new ArrayList<ComponentDTO>();
+		List<Component> compList = getAllComponent();
+		for(Component c : compList){
+			DTOList.add(convertToDTO(c));
+		}
+		return DTOList;
+	}
+	
+	public List<FlightDTO> getAllFlightsDTO () {
+		List <FlightDTO> DTOList = new ArrayList<FlightDTO>();
+		List<Flight> flightList = getAllFlights();
+		for(Flight f : flightList){
+			DTOList.add((FlightDTO) convertToDTO(f));
+		}
+		return DTOList;
+	}
+	
+	public List<HotelDTO> getAllHotelsDTO () {
+		List <HotelDTO> DTOList = new ArrayList<HotelDTO>();
+		List<Hotel> hotelList = getAllHotels();
+		for (Hotel h : hotelList){
+			DTOList.add((HotelDTO) convertToDTO(h));
+		}
+		return DTOList;
+	}
+	
+	public List<ExcursionDTO> getAllExcsDTO () {
+		List <ExcursionDTO> DTOList = new ArrayList<ExcursionDTO>();
+		List<Excursion> excursionList = getAllExcs();
+		for (Excursion e : excursionList){
+			DTOList.add((ExcursionDTO) convertToDTO(e));
+		}
+		return DTOList;
+	}
+	
+	
 
 	/* converte una entita' componente in un DTO  */
 	private ComponentDTO convertToDTO (Component c) {
@@ -121,14 +172,6 @@ public class CompManagerBean implements CompMgrInterface {
 		return newDTO;
 	}
 	
-	public List<ComponentDTO> getAllComponentDTO () {
-		List<ComponentDTO> DTOList = new ArrayList<ComponentDTO>();
-		List<Component> compList = getAllComponent();
-		for(Component c : compList){
-			DTOList.add(convertToDTO(c));
-		}
-		return DTOList;
-	}
 	
 	
 	

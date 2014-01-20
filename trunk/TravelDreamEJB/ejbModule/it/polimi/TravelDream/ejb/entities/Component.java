@@ -13,10 +13,20 @@ import javax.persistence.*;
 @Table(name="COMPONENT")
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="idType", discriminatorType=DiscriminatorType.STRING)
-@NamedQuery(name=Component.FIND_ALL, query="SELECT c FROM Component c")
+@NamedQueries({
+	@NamedQuery(name=Component.FIND_ALL, query="SELECT c FROM Component c"),
+	@NamedQuery(name=Component.FIND_FLIGHTS, query="SELECT c FROM Component c WHERE c.idType='FLG'"),
+	@NamedQuery(name=Component.FIND_HOTELS, query="SELECT c FROM Component c WHERE c.idType='HTL'"),
+	@NamedQuery(name=Component.FIND_EXCS, query="SELECT c FROM Component c WHERE c.idType='XCR'")
+})
 public class Component implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	public static final String FIND_ALL = "Component.findAll";
+	public static final String FIND_HOTELS = "Component.findHotels";
+	public static final String FIND_FLIGHTS = "Component.findFlights";
+	public static final String FIND_EXCS = "Component.findExcursions";
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idComponent;
@@ -32,7 +42,6 @@ public class Component implements Serializable {
 	@Column(nullable=false)
 	private int price;
 	
-	public static final String FIND_ALL = "Component.findAll";
 
 	public Component() {
 	}

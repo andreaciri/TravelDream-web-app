@@ -5,6 +5,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
+	<f:metadata>
+        <f:event type="preRenderView" listener="#{componentBean.compManPreRender()}"/>
+	</f:metadata>
+	
 	<h:head>  
   		<title>Components manager</title>
     </h:head>

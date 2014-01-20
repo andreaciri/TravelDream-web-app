@@ -47,21 +47,22 @@ public class ComponentBean implements Serializable{
 	
 	public ComponentBean(){
 		
-		basicRend=false;
-		flightRend=false;
-		hotelRend=false;
-		excursionRend=false;
-		
-		type = "null";
-		newComponent = new ComponentDTO();
-		newComponent.setTitle("Component name");
-		newComponent.setDescription("");
-		newComponent.setPrice(50);
-		holidayPlace = City.randomCity().toString();
-		
-		types.add("Flight");
-		types.add("Hotel");
-		types.add("Excursion");
+		//INIZIALIZZAZIONE SPOSTATA IN preRender()
+//		basicRend=false;
+//		flightRend=false;
+//		hotelRend=false;
+//		excursionRend=false;
+//		
+//		type = "null";
+//		newComponent = new ComponentDTO();
+//		newComponent.setTitle("Component name");
+//		newComponent.setDescription("");
+//		newComponent.setPrice(50);
+//		holidayPlace = City.randomCity().toString();
+//		
+//		types.add("Flight");
+//		types.add("Hotel");
+//		types.add("Excursion");
 			
 		}
 	
@@ -146,6 +147,25 @@ public class ComponentBean implements Serializable{
 		}
 		
 	}
+	
+	public void compManPreRender () {
+		basicRend=false;
+		flightRend=false;
+		hotelRend=false;
+		excursionRend=false;
+		
+		type = "null";
+		newComponent = new ComponentDTO();
+		newComponent.setTitle("Component name");
+		newComponent.setDescription("");
+		newComponent.setPrice(50);
+		holidayPlace = City.randomCity().toString();
+		
+		types.add("Flight");
+		types.add("Hotel");
+		types.add("Excursion");
+	}
+	
 
 	//add days to the variable date
 	private Date addDays(Date date, int days){
