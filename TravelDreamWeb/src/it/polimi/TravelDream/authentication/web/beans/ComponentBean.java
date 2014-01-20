@@ -47,22 +47,21 @@ public class ComponentBean implements Serializable{
 	
 	public ComponentBean(){
 		
-		//INIZIALIZZAZIONE SPOSTATA IN preRender()
-//		basicRend=false;
-//		flightRend=false;
-//		hotelRend=false;
-//		excursionRend=false;
-//		
-//		type = "null";
-//		newComponent = new ComponentDTO();
-//		newComponent.setTitle("Component name");
-//		newComponent.setDescription("");
-//		newComponent.setPrice(50);
-//		holidayPlace = City.randomCity().toString();
-//		
-//		types.add("Flight");
-//		types.add("Hotel");
-//		types.add("Excursion");
+		basicRend=false;
+		flightRend=false;
+		hotelRend=false;
+		excursionRend=false;
+		
+		type = "null";
+		newComponent = new ComponentDTO();
+		newComponent.setTitle("Component name");
+		newComponent.setDescription("");
+		newComponent.setPrice(50);
+		holidayPlace = City.randomCity().toString();
+		
+		types.add("Flight");
+		types.add("Hotel");
+		types.add("Excursion");
 			
 		}
 	
@@ -149,21 +148,23 @@ public class ComponentBean implements Serializable{
 	}
 	
 	public void compManPreRender () {
-		basicRend=false;
-		flightRend=false;
-		hotelRend=false;
-		excursionRend=false;
-		
-		type = "null";
-		newComponent = new ComponentDTO();
-		newComponent.setTitle("Component name");
-		newComponent.setDescription("");
-		newComponent.setPrice(50);
-		holidayPlace = City.randomCity().toString();
-		
-		types.add("Flight");
-		types.add("Hotel");
-		types.add("Excursion");
+		//BELLA IDEA, PECCATO CHE PARTE AD OGNI UPDATE AJAX!! DIO CANE
+//		System.out.println("RENDER COMPONENT MANAGER");
+//		basicRend=false;
+//		flightRend=false;
+//		hotelRend=false;
+//		excursionRend=false;
+//		
+//		type = "null";
+//		newComponent = new ComponentDTO();
+//		newComponent.setTitle("Component name");
+//		newComponent.setDescription("");
+//		newComponent.setPrice(50);
+//		holidayPlace = City.randomCity().toString();
+//		
+//		types.add("Flight");
+//		types.add("Hotel");
+//		types.add("Excursion");
 	}
 	
 

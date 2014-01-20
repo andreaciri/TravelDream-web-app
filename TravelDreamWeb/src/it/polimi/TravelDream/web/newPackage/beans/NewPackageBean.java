@@ -26,6 +26,7 @@ public class NewPackageBean implements Serializable{
 	}
 	
 	public void newPackPreRender(){
+		//ATTENZIONE PUO PARTIRE AD OGNI UPDATE AJAX - RISOLVERE
 		flights = compMgr.getAllFlightsDTO();
 		hotels = compMgr.getAllHotelsDTO();
 		excursions = compMgr.getAllExcsDTO();
