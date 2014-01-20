@@ -42,6 +42,7 @@ public class Package implements Serializable {
 	public Package(PackageDTO p){
         this.description = p.getDescription();       
         this.title = p.getTitle();
+        this.type = p.getTitle();
         this.idPackage = p.getIdPackage();
     }
 	
