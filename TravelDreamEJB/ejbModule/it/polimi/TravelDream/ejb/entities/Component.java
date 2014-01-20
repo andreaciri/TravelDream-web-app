@@ -23,10 +23,13 @@ public class Component implements Serializable {
 
 	private String description;
 
+	@Column(nullable=false)
 	private String idType;
 
+	@Column(nullable=false)
 	private String name;
 
+	@Column(nullable=false)
 	private int price;
 	
 	public static final String FIND_ALL = "Component.findAll";

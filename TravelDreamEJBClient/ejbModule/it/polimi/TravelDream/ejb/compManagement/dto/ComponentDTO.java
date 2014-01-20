@@ -9,6 +9,7 @@ public class ComponentDTO {
 	protected String title;
 	protected String description;
 	protected Integer price;
+	protected Integer idComponent;
 	
 	public ComponentDTO(){
 		
@@ -40,5 +41,13 @@ public class ComponentDTO {
 	}
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public Integer getIdComponent() {
+		return idComponent;
+	}
+
+	public void setIdComponent(Integer idComponent) {
+		this.idComponent = idComponent;
 	}
 }

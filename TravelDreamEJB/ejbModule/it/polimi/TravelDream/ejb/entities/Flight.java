@@ -20,9 +20,16 @@ public class Flight extends Component implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Column(nullable=false)
 	private String departurePlace;
+	
+	@Column(nullable=false)
 	private String arrivalPlace;
+	
+	@Column(nullable=false)
 	private Date departureDate;
+	
+	@Column(nullable=false)
 	private Date returnDate;
 
 	public Flight() {

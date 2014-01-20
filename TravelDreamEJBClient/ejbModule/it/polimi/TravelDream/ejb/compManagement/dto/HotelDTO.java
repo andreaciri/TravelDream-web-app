@@ -8,10 +8,11 @@ public class HotelDTO extends ComponentDTO {
 	private Date checkin;
 	private Date checkout;
 
-	public HotelDTO (String title, String description, Integer price){
+	public HotelDTO (String title, String description, Integer price, Integer id){
 		this.title = title;
 		this.description = description;
 		this.price = price;
+		this.idComponent = id;
 		
 	}
 	

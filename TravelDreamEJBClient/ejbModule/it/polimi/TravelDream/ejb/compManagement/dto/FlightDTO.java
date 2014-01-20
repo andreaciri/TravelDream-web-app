@@ -9,10 +9,11 @@ public class FlightDTO extends ComponentDTO {
 	private Date returnDate;
 	
 	
-	public FlightDTO (String title, String description, Integer price){
+	public FlightDTO (String title, String description, Integer price, Integer id){
 		this.title = title;
 		this.description = description;
 		this.price = price;
+		this.idComponent = id;
 		
 	}
 	
