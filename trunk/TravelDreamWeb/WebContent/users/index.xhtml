@@ -16,10 +16,12 @@
 	<p:accordionPanel value="#{packageBean.allPackages}" var="package" dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">
 			<h:panelGrid columns="2" cellpadding="10">
-				<p:graphicImage value= "/WEB-INF/pics/okt.png"/>
 
 				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="In this package: " style="font-weight: bold"/>
+					<p:button outcome="selectedPackage" value="In this package" icon="ui-icon-star">
+						<f:param name="idPackage" value="#{package.idPackage}" />
+					</p:button>
+					
 					<h:outputText value="#{package.description}" />
 
 				</h:panelGrid>
