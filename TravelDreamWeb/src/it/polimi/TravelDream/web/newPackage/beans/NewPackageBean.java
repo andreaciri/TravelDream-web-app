@@ -2,6 +2,8 @@ package it.polimi.TravelDream.web.newPackage.beans;
 
 import it.polimi.TravelDream.ejb.compManagement.CompMgrInterface;
 import it.polimi.TravelDream.ejb.compManagement.dto.*;
+import it.polimi.TravelDream.ejb.packageManagement.PackageMgr;
+import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +23,9 @@ public class NewPackageBean implements Serializable{
 	@EJB
 	private CompMgrInterface compMgr;
 	
+	@EJB
+	private PackageMgr packMgr;
+	
 	private List<FlightDTO> flights;
 	private List<HotelDTO> hotels;
 	private List<ExcursionDTO> excursions;
@@ -30,11 +35,14 @@ public class NewPackageBean implements Serializable{
 	private HotelDTO selectedHotel;
 	private List<ExcursionDTO> selectedExcs;
 	
+	private PackageDTO newPack;
+	
 	public NewPackageBean(){
 	}
 	
 	@PostConstruct
 	public void afterConstruct() {
+		newPack = new PackageDTO();
 		flights = compMgr.getAllFlightsDTO();
 		hotels = compMgr.getAllHotelsDTO();
 		excursions = compMgr.getAllExcsDTO();
@@ -47,10 +55,24 @@ public class NewPackageBean implements Serializable{
 	public void handleNewStandardPack(){
 		RequestContext context = RequestContext.getCurrentInstance();		
 		if(selectedFlight == null || selectedHotel == null){
-			context.execute("notValidDialog.show();");
-		} else {
+			context.execute("notValidDialog.show();");	
+		}
+		else if(newPack.getTitle().equals("")){
+			context.execute("notValidTitle.show();");
+		}
+		else
+		{
+			List<ComponentDTO> content = new ArrayList<ComponentDTO>();
+			content.add(selectedFlight);
+			content.add(selectedHotel);
+			content.addAll(selectedExcs);
+			newPack.setComponents(content);
+			newPack.setType("standard");
+			packMgr.save(newPack);
 			context.execute("newPackDialog.show();");
 		}
+		
+		
 	}
 	
 	public void newPackPreRender(){
@@ -98,6 +120,14 @@ public class NewPackageBean implements Serializable{
 
 	public void setSelectedExcs(List<ExcursionDTO> selectedExcs) {
 		this.selectedExcs = selectedExcs;
+	}
+
+	public PackageDTO getNewPack() {
+		return newPack;
+	}
+
+	public void setNewPack(PackageDTO newPack) {
+		this.newPack = newPack;
 	}
 
 	

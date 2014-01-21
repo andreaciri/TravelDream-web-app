@@ -1,5 +1,9 @@
 package it.polimi.TravelDream.ejb.packageManagement.dto;
 
+import java.util.List;
+
+import it.polimi.TravelDream.ejb.compManagement.dto.*;
+
 
 public class PackageDTO {
 	
@@ -10,6 +14,8 @@ public class PackageDTO {
 	private String title;
 
 	private String type;
+	
+	private List<ComponentDTO> components;
 	
 	public PackageDTO(){
 	}
@@ -44,6 +50,14 @@ public class PackageDTO {
 	
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<ComponentDTO> getComponents() {
+		return components;
+	}
+
+	public void setComponents(List<ComponentDTO> components) {
+		this.components = components;
 	}
 	
 }
