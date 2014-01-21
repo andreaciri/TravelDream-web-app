@@ -45,7 +45,7 @@ public class PackageManagerBean implements PackageMgr{
 	
 	//* ritorna il pacchetto selezionato cercandolo via id nel db *//
 	public Package getSelectedFromDB(EntityManager em, int idPackage){
-		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_PACKAGE_BY_ID, Package.class);
+		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_ID, Package.class);
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
 	
