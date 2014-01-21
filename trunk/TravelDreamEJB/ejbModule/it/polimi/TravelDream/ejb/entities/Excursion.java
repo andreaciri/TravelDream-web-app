@@ -35,6 +35,11 @@ public class Excursion extends Component implements Serializable {
 	public Excursion() {
 		super();
 	}   
+	
+	public Excursion(String name, String description, int price, int idComponent, String idType) {
+		super(name, description, price, idComponent, idType);
+	}
+
 	public int getIdComponent() {
 		return this.idComponent;
 	}

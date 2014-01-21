@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import it.polimi.TravelDream.ejb.packageManagement.dto.*;
+import it.polimi.TravelDream.ejb.compManagement.CompManagerBean;
 import it.polimi.TravelDream.ejb.compManagement.dto.ComponentDTO;
 import it.polimi.TravelDream.ejb.entities.Package;
 
@@ -20,6 +21,7 @@ public class PackageManagerBean implements PackageMgr{
 	
 	@PersistenceContext
     private EntityManager em;
+	private CompManagerBean compMgr;
 	
 	//ritorna la lista di tutti i pacchetti standard attualmente presenti nel db
 	public List<Package> getAllStandard() {
@@ -72,10 +74,16 @@ public class PackageManagerBean implements PackageMgr{
 	}
 
 	@Override
-	public void save(PackageDTO newPack) {
-		for(ComponentDTO c : newPack.getComponents()){
+	public void save(PackageDTO newPackDTO) {
+		for(ComponentDTO c : newPackDTO.getComponents()){
 			System.out.println(c.getClass().toString()+" "+c.getTitle());
 		}
+		Package newPack = new Package(newPackDTO);
+		compMgr = new CompManagerBean();
+		for (ComponentDTO c : newPackDTO.getComponents()){
+			newPack.addComponent(compMgr.convertToEntity(c));
+		}
+		em.persist(newPack);
 		
 	}
 }

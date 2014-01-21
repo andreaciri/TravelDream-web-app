@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,6 +33,12 @@ public class Package implements Serializable {
 	private String title;
 	@Column(name = "type")
 	private String type;
+	
+	@ManyToMany
+	@JoinTable(name="PACK_CONTENT", 
+			joinColumns={@JoinColumn(name="idPackage")},
+			inverseJoinColumns={@JoinColumn(name="idComponent")})
+	private List<Component> components = null;
 
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
 	public static final String FIND_PACKAGE_BY_ID = "Package.getPackageById";
@@ -46,8 +53,9 @@ public class Package implements Serializable {
 	public Package(PackageDTO p){
         this.description = p.getDescription();       
         this.title = p.getTitle();
-        this.type = p.getTitle();
+        this.type = p.getType();
         this.idPackage = p.getIdPackage();
+        components = new ArrayList<Component>();
     }
 	
 	public int getIdPackage() {
@@ -89,6 +97,17 @@ public class Package implements Serializable {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	
+
+	public List<Component> getComponents() {
+		return components;
+	}
+
+	public void setComponents(List<Component> components) {
+		this.components = components;
+	}
+
+	public void addComponent(Component c){
+		components.add(c);
+	}
 
 }

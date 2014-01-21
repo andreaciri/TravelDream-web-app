@@ -18,6 +18,7 @@ import javax.persistence.*;
 public class Flight extends Component implements Serializable {
 
 	
+
 	private static final long serialVersionUID = 1L;
 	
 	@Column(nullable=false)
@@ -34,6 +35,10 @@ public class Flight extends Component implements Serializable {
 
 	public Flight() {
 		super();
+	}
+
+	public Flight(String name, String description, int price, int idComponent, String idType) {
+		super(name, description, price, idComponent, idType);
 	}
 
 	public String getArrivalPlace() {
