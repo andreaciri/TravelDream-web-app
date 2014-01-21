@@ -2,12 +2,15 @@ package it.polimi.TravelDream.ejb.packageManagement;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import it.polimi.TravelDream.ejb.packageManagement.dto.*;
+import it.polimi.TravelDream.ejb.compManagement.dto.ComponentDTO;
 import it.polimi.TravelDream.ejb.entities.Package;
 
 
@@ -66,6 +69,14 @@ public class PackageManagerBean implements PackageMgr{
 	public List<PackageDTO> getAllPackagesDTO() {
 		List<PackageDTO> allPackages = convertToDTO(getAllStandard());
 		return allPackages;
+	}
+
+	@Override
+	public void save(PackageDTO newPack) {
+		for(ComponentDTO c : newPack.getComponents()){
+			System.out.println(c.getClass().toString()+" "+c.getTitle());
+		}
+		
 	}
 }
 

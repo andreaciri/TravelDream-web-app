@@ -14,8 +14,27 @@
     </h:head>
 	
 	<h:body>
+	<h1>Create a new standard package</h1>
 	
 	<form id="createPackage">
+	
+	<p:panel id="basicInfo" header="New Package">  
+  
+        <h:panelGrid columns="3">  
+            <h:outputLabel for="title" value="Title: *" />  
+            <p:inputText id="title" value="#{newPackage.newPack.title}" label="Title" size="44">
+            </p:inputText>  
+            <p:message for="title" display="icon"/>  
+  
+            <h:outputLabel for="description" value="Description:" />  
+            <p:inputTextarea id="description" value="#{newPackage.newPack.description}" label="Description" rows="6" cols="33">   
+            </p:inputTextarea>
+            <p:commandButton value="Create" id="createPack"
+            	actionListener="#{newPackage.handleNewStandardPack()}"/> 
+  
+        </h:panelGrid>
+</p:panel>
+	
 	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" style="width:75%" selection="#{newPackage.selectedFlight}"
 			rowKey="#{flight.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
@@ -92,9 +111,11 @@
         </p:column>
 	</p:dataTable>
 	<br />
-	<p:commandButton value="Create" id="createPack" actionListener="#{newPackage.handleNewStandardPack()}" />
 	<p:dialog id="notValidDialog" header="Attention:" widgetVar="notValidDialog">  
     				<h:outputText value="The package does not fulfill all the requirements." />  
+	</p:dialog>
+	<p:dialog id="notValidTitle" header="Attention:" widgetVar="notValidTitle">  
+    				<h:outputText value="Insert a title for the new package." />  
 	</p:dialog>
 	<p:dialog id="newPackDialog" header="Package created" widgetVar="newPackDialog">  
     				<h:outputText value="The component has been successfully created." />  
