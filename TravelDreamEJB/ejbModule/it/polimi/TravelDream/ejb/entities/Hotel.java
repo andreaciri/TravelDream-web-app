@@ -33,6 +33,10 @@ public class Hotel extends Component implements Serializable {
 		super();
 	}
 	
+	public Hotel(String name, String description, int price, int idComponent, String idType) {
+		super(name, description, price, idComponent, idType);
+	}
+
 	public String getPlace() {
 		return place;
 	}

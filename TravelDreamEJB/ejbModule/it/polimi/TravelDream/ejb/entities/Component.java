@@ -45,6 +45,14 @@ public class Component implements Serializable {
 
 	public Component() {
 	}
+	
+	public Component(String name, String description, int price, int idComponent, String idType) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.idComponent = idComponent;
+		this.idType = idType;
+	}
 
 	public int getIdComponent() {
 		return this.idComponent;

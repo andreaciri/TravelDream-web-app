@@ -26,18 +26,7 @@ public class CompManagerBean implements CompMgrInterface {
 	@Override
 	public void save(ComponentDTO newComp) {
 		if(newComp instanceof FlightDTO){
-			Flight newFlight = new Flight();
-			newFlight.setName(newComp.getTitle());
-			newFlight.setIdType("FLG");
-			newFlight.setDescription(newComp.getDescription());
-			newFlight.setPrice(newComp.getPrice());
-			newFlight.setDeparturePlace(((FlightDTO) newComp).getDeparturePlace());
-			newFlight.setArrivalPlace(((FlightDTO) newComp).getArrivalPlace());
-			
-			//convertion from utils.date to sql.date - NON CORRETTA - DA CAMBIARE
-			
-			newFlight.setDepartureDate(new java.sql.Date(((FlightDTO) newComp).getDepartureDate().getTime()));
-			newFlight.setReturnDate(new java.sql.Date(((FlightDTO) newComp).getReturnDate().getTime()));
+			Flight newFlight = (Flight) convertToEntity(newComp);
 			
 			em.persist(newFlight);
 			System.out.println("New flight added to database:"+newComp.getTitle()+" "+newComp.getDescription()
@@ -45,27 +34,15 @@ public class CompManagerBean implements CompMgrInterface {
 		}
 		
 		else if (newComp instanceof HotelDTO){
-			Hotel newHotel = new Hotel();
-			newHotel.setName(newComp.getTitle());
-			newHotel.setIdType("HTL");
-			newHotel.setDescription(newComp.getDescription());
-			newHotel.setPrice(newComp.getPrice());
-			newHotel.setPlace(((HotelDTO) newComp).getPlace());
-			newHotel.setCheckin(new java.sql.Date(((HotelDTO) newComp).getCheckin().getTime()));
-			newHotel.setCheckout(new java.sql.Date(((HotelDTO) newComp).getCheckout().getTime()));
+			Hotel newHotel = (Hotel) convertToEntity(newComp);
+			
 			em.persist(newHotel);
 			
 		}
 
 		else if(newComp instanceof ExcursionDTO){
-			Excursion newExcursion = new Excursion();
-			newExcursion.setName(newComp.getTitle());
-			newExcursion.setIdType("XCR");
-			newExcursion.setDescription(newComp.getDescription());
-			newExcursion.setPrice(newComp.getPrice());
-			newExcursion.setPlace(((ExcursionDTO) newComp).getPlace());
-			newExcursion.setStart(new java.sql.Date(((ExcursionDTO) newComp).getStart().getTime()));
-			newExcursion.setFinish(new java.sql.Date(((ExcursionDTO) newComp).getFinish().getTime()));
+			Excursion newExcursion = (Excursion) convertToEntity(newComp); 
+					
 			em.persist(newExcursion);
 			System.out.println("New Excursion added to database:");
 			
@@ -144,7 +121,7 @@ public class CompManagerBean implements CompMgrInterface {
 	
 
 	/* converte una entita' componente in un DTO  */
-	private ComponentDTO convertToDTO (Component c) {
+	public ComponentDTO convertToDTO (Component c) {
 		ComponentDTO newDTO;
 		if(c instanceof Flight){
 			newDTO = new FlightDTO(c.getName(), c.getDescription(), c.getPrice(), c.getIdComponent());
@@ -172,7 +149,34 @@ public class CompManagerBean implements CompMgrInterface {
 		return newDTO;
 	}
 	
+	public Component convertToEntity (ComponentDTO c){
+		Component newEntity;
+		if(c instanceof FlightDTO){
+			newEntity = new Flight(c.getTitle(), c.getDescription(), c.getPrice(), c.getIdComponent(), "FLG");
+			((Flight) newEntity).setDepartureDate(convertDate(((FlightDTO) c).getDepartureDate()));
+			((Flight) newEntity).setReturnDate(convertDate(((FlightDTO) c).getReturnDate()));
+			((Flight) newEntity).setDeparturePlace(((FlightDTO) c).getDeparturePlace());
+			((Flight) newEntity).setArrivalPlace(((FlightDTO) c).getArrivalPlace());
+		}
+		else if(c instanceof HotelDTO){
+			newEntity = new Hotel(c.getTitle(), c.getDescription(), c.getPrice(), c.getIdComponent(), "HTL");
+			((Hotel) newEntity).setPlace(((HotelDTO) c).getPlace());
+			((Hotel) newEntity).setCheckin(convertDate(((HotelDTO) c).getCheckin()));
+			((Hotel) newEntity).setCheckout(convertDate(((HotelDTO) c).getCheckout()));
+		}
+		else if(c instanceof ExcursionDTO){
+			newEntity = new Excursion (c.getTitle(), c.getDescription(), c.getPrice(), c.getIdComponent(), "XCR");
+			((Excursion) newEntity).setPlace(((ExcursionDTO) c).getPlace());
+			((Excursion) newEntity).setStart(convertDate(((ExcursionDTO) c).getStart()));
+			((Excursion) newEntity).setFinish(convertDate(((ExcursionDTO) c).getFinish()));
+		}
+		else {
+			System.out.println("compMgrBean: componentDTO not recognised");
+			return null;}
+		return newEntity;
+	}
 	
-	
-	
+	public java.sql.Date convertDate (java.util.Date d) {
+		return new java.sql.Date(d.getTime());
+	}
 }
