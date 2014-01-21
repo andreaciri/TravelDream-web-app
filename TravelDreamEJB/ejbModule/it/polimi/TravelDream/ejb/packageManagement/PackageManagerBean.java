@@ -23,7 +23,7 @@ public class PackageManagerBean implements PackageMgr{
     private EntityManager em;
 	private CompManagerBean compMgr;
 	
-	//ritorna la lista di tutti i pacchetti standard attualmente presenti nel db
+	//* ritorna la lista di tutti i pacchetti standard attualmente presenti nel db *//
 	public List<Package> getAllStandard() {
     	return em.createNamedQuery(Package.FIND_ALL_STANDARDP, Package.class)
                 .getResultList();
@@ -74,10 +74,10 @@ public class PackageManagerBean implements PackageMgr{
 	}
 	
 	//* ritorna il pacchettoCustomDTO cercato *//
-		@Override
-		public PackageDTO getCustomPackageDTO(int id) {
-			PackageDTO select = convertSelectedToDTO(getCustomFromDB(em,id));
-			return select;
+	@Override
+	public PackageDTO getCustomPackageDTO(int id) {
+		PackageDTO select = convertSelectedToDTO(getCustomFromDB(em,id));
+		return select;
 		}
 	
 	//* ritorna la lista di pacchettiDTO *//
