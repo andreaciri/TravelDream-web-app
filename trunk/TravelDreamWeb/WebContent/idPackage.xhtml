@@ -8,23 +8,31 @@
 <h:body>
 
 	<br />
-	<h:outputText value="Here you can search a custom package by ID"/>
-	<br /><br />
-	
-	<h:form>  
-                              
-    <h:panelGrid columns="4" cellpadding="5">  
-        <h:outputLabel for="idPackage" value="ID:" style="font-weight:bold"/>  
-          
-        <p:inputText id="idPackage" value="#{packageBean.idPackage}" />
+	<h:outputText value="Here you can search a custom package by ID" />
+	<br />
+	<br />
 
-			<p:button value="Submit" outcome="selectedPackage">
-				<f:param name="idPackage" value="#{packageBean.idPackage}" />
+	<h:form>
+
+		<h:panelGrid columns="4" cellpadding="5">
+			<h:outputLabel for="id" value="ID:" style="font-weight:bold" />
+
+			<p:inputText id="idPackage" value="#{packageBean.idPackage}" label="idPackage"
+				required="true">
+				<f:validateDoubleRange minimum="1" maximum="8" />
+			</p:inputText>
+			<p:message for="idPackage" />
+			<br />
+			<br />
+			<h:outputText value="You have selected the package number #{packageBean.idPackage}" />
+			<br />
+			<br />
+			<p:button outcome="customPackageDetail" value="See more details" icon="ui-icon-star">
+			<f:param name="idPackage" value="#{packageBean.idPackage}" />
 			</p:button>
+		</h:panelGrid>
 
-    </h:panelGrid>  
-      
-</h:form>  
+	</h:form>
 
 </h:body>
 </html>
