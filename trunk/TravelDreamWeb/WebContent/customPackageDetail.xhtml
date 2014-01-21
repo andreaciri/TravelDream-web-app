@@ -13,14 +13,14 @@
 	</f:metadata>
 	<p:outputPanel deferred="true" deferredMode="visible">
 		<br />
-		<h:outputText value="This is the package number #{packageBean.idPackage}" />
+		<h:outputText value="This is the package number #{packageBean.selectedPackage.idPackage}" />
 
 		<br />
 		<br />
 
 		<p:fieldset legend="#{packageBean.selectedPackage.title}">
 			<h:panelGrid columns="2" cellpadding="10">
-				<p:graphicImage value="/pics/okt.png" />
+				<h:graphicImage library="images" name="okt.png" />
 				<h:outputText value="#{packageBean.selectedPackage.description}"
 					styleClass="ui-li-count" />
 			</h:panelGrid>
