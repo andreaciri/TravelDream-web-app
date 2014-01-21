@@ -33,6 +33,10 @@ public class PackageBean implements Serializable {
 		return;
 	}
 	
+	public void selectCustom(int idPackage){
+		selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
+	}
+	
 	public List<PackageDTO> getAllPackages() {
 		return packageMgr.getAllPackagesDTO();
 	}	
