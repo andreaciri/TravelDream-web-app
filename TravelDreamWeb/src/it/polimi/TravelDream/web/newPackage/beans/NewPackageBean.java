@@ -12,6 +12,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.context.RequestContext;
+
 @ManagedBean(name="newPackage")
 @ViewScoped
 public class NewPackageBean implements Serializable{
@@ -22,8 +24,11 @@ public class NewPackageBean implements Serializable{
 	private List<FlightDTO> flights;
 	private List<HotelDTO> hotels;
 	private List<ExcursionDTO> excursions;
+	
 	//selected non puo' essere una lista per dataTable con selezione singola
-	private FlightDTO selected;			
+	private FlightDTO selectedFlight;
+	private HotelDTO selectedHotel;
+	private List<ExcursionDTO> selectedExcs;
 	
 	public NewPackageBean(){
 	}
@@ -33,7 +38,19 @@ public class NewPackageBean implements Serializable{
 		flights = compMgr.getAllFlightsDTO();
 		hotels = compMgr.getAllHotelsDTO();
 		excursions = compMgr.getAllExcsDTO();
+		selectedExcs = new ArrayList<ExcursionDTO>();
+		selectedFlight = null;
+		selectedHotel = null;
 		
+	}
+	
+	public void handleNewStandardPack(){
+		RequestContext context = RequestContext.getCurrentInstance();		
+		if(selectedFlight == null || selectedHotel == null){
+			context.execute("notValidDialog.show();");
+		} else {
+			context.execute("newPackDialog.show();");
+		}
 	}
 	
 	public void newPackPreRender(){
@@ -59,12 +76,29 @@ public class NewPackageBean implements Serializable{
 		this.excursions = excursions;
 	}
 
-	public FlightDTO getSelected() {
-		return selected;
+	public FlightDTO getSelectedFlight() {
+		return selectedFlight;
 	}
 
-	public void setSelected(FlightDTO selected) {
-		this.selected = selected;
+	public void setSelectedFlight(FlightDTO selectedFlight) {
+		this.selectedFlight = selectedFlight;
 	}
+
+	public HotelDTO getSelectedHotel() {
+		return selectedHotel;
+	}
+
+	public void setSelectedHotel(HotelDTO selectedHotel) {
+		this.selectedHotel = selectedHotel;
+	}
+
+	public List<ExcursionDTO> getSelectedExcs() {
+		return selectedExcs;
+	}
+
+	public void setSelectedExcs(List<ExcursionDTO> selectedExcs) {
+		this.selectedExcs = selectedExcs;
+	}
+
 	
 }
