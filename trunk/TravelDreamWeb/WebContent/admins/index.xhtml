@@ -3,7 +3,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
 <h:head>
 </h:head>
@@ -24,11 +25,11 @@
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<h:panelGrid columns="2" cellpadding="10">
+					<h:outputText value="#{fn:substring(package.description,0,15)}..." />
 					<p:button outcome="selectedPackage" value="In this package"
 						icon="ui-icon-star">
 						<f:param name="idPackage" value="#{package.idPackage}" />
 					</p:button>
-					<h:outputText value="#{package.description}" />
 				</h:panelGrid>
 
 			</h:panelGrid>

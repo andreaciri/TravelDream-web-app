@@ -9,15 +9,33 @@
 <h:head>
 </h:head>
 <h:body>
-        <h:graphicImage library="images" name="banner.jpg" />
-        <br /><br />
-        <h:outputText value="Welcome to TravelDream" styleClass="ui-li-count" />
-        <br /><br />
-        <h:outputText value="Select where you want to go:" styleClass="ui-li-count" /><br /><br />
-        <h:form>
-        <h:button value="Admin section" outcome="admins/index" /><br /><br /> 
-        <h:button value="User section" outcome="users/index?user=true" /><br /><br />
-        <h:commandButton value="ID PACKAGE section" action="#{packageBean.reset}" />
-        </h:form>
-    </h:body>
+	<h:graphicImage library="images" name="banner.jpg" />
+	<br />
+	<br />
+	<h:outputText value="Welcome to TravelDream" styleClass="ui-li-count" />
+	<br />
+	<br />
+	<h:outputText value="Sei cliente Traveldream? Loggati qui: "
+		styleClass="ui-li-count" />
+	<h:button value="User" outcome="users/index" />
+	<br />
+	<br />
+	<h:outputText
+		value="Vuoi visualizzare i dettagli di un pacchetto custom? Clicca qui: "
+		styleClass="ui-li-count" />
+	<h:button value="ID PACKAGE" outcome="idPackage" />
+	<br />
+	<br />
+	<h:outputText
+		value="Vuoi diventare cliente Traveldream e usufruire dei nostri servizi? Iscriviti qui: "
+		styleClass="ui-li-count" />
+	<h:button value="Sign up" outcome="register" />
+	<br />
+	<br />
+	<h:outputText value="Sei un admin? Loggati qui: "
+		styleClass="ui-li-count" />
+	<h:button value="Admin" outcome="admins/index" />
+	<br />
+	<br />
+</h:body>
 </html>
