@@ -15,11 +15,10 @@
 	<h:form>
 
 		<h:panelGrid columns="4" cellpadding="5">
-			<h:outputLabel for="id" value="ID:" style="font-weight:bold" />
+			<h:outputLabel for="idPackage" value="ID:" style="font-weight:bold" />
 
 			<p:inputText id="idPackage" value="#{packageBean.idPackage}" label="idPackage"
 				required="true">
-				<f:validateDoubleRange minimum="1" maximum="8" />
 			</p:inputText>
 			<p:message for="idPackage" />
 			<br />
@@ -27,9 +26,9 @@
 			<h:outputText value="You have selected the package number #{packageBean.idPackage}" />
 			<br />
 			<br />
-			<p:button outcome="customPackageDetail" value="See more details" icon="ui-icon-star">
+			<p:commandButton value="See more details" icon="ui-icon-star" actionListener="#{packageBean.handleSearchById('custom')}">
 			<f:param name="idPackage" value="#{packageBean.idPackage}" />
-			</p:button>
+			</p:commandButton>
 		</h:panelGrid>
 
 	</h:form>
