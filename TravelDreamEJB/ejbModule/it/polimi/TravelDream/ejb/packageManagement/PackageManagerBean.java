@@ -50,6 +50,7 @@ public class PackageManagerBean implements PackageMgr{
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
 	
+	//* ritorna il pacchetto custom cercandolo via id nel db *//
 	public Package getCustomFromDB(int idPackage){
 		System.out.println("MANAGERBEAN - ID:"+idPackage);
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_CPACKAGE_BY_ID, Package.class);

@@ -22,7 +22,7 @@ public class HomeBean implements HomeContent {
 	@Override
 	@RolesAllowed({"ADMIN"})
 	public String getAdminHome() {
-		return "Admin homepage: create package, create component...\n";
+		return "Questi sono i pacchetti standard nel DB:\n";
 	}
 
 	@Override
