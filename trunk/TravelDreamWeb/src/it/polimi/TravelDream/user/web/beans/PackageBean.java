@@ -9,9 +9,7 @@ import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 
@@ -29,7 +27,6 @@ public class PackageBean implements Serializable {
 	
 	private int idPackage=0;
 	
-
 	private PackageDTO selectedPackage; 
 		
 	public PackageBean(){
@@ -49,6 +46,11 @@ public class PackageBean implements Serializable {
 		else{
 		}
 	}
+	
+	public String reset() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	    return "idPackage";
+	  }
 	
 	public void choose(int idPackage){
 		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);

@@ -2,14 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+</h:head>
 <h:body>
 	<h1>Hello #{userBean.username}</h1>
-	<h:outputText value="Admin content: #{homeContentBean.adminHome}" />
+	<p:button outcome="components" value="Manage Components"
+		icon="ui-icon-star" />
+	<p:button outcome="new_package" value="Create New Package"
+		icon="ui-icon-star" />
 	<br />
-        <h:link outcome="components" value="Manage Components" /> <br />
-        <h:link outcome="new_package" value="Create New Package" /> <br />
+	<br />
+	<h:outputText value="#{homeContentBean.adminHome}" />
+	<br />
+	<br />
+	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
+		dynamic="true" cache="true" multiple="true">
+		<p:tab title="#{package.title}">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:panelGrid columns="2" cellpadding="10">
+					<p:button outcome="selectedPackage" value="In this package"
+						icon="ui-icon-star">
+						<f:param name="idPackage" value="#{package.idPackage}" />
+					</p:button>
+					<h:outputText value="#{package.description}" />
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+		</p:tab>
+	</p:accordionPanel>
 	<h:form>
 		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
 	</h:form>
