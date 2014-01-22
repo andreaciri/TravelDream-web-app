@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import it.polimi.TravelDream.ejb.packageManagement.dto.*;
 import it.polimi.TravelDream.ejb.compManagement.CompManagerBean;
 import it.polimi.TravelDream.ejb.compManagement.dto.ComponentDTO;
+import it.polimi.TravelDream.ejb.entities.Component;
 import it.polimi.TravelDream.ejb.entities.Package;
 
 
@@ -44,13 +45,13 @@ public class PackageManagerBean implements PackageMgr{
 		}
 	
 	//* ritorna il pacchetto selezionato cercandolo via id nel db *//
-	public Package getSelectedFromDB(EntityManager em, int idPackage){
+	public Package getSelectedFromDB(int idPackage){
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_ID, Package.class);
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
 	
-	//* ritorna il pacchetto custom cercandolo via id nel db *//
-	public Package getCustomFromDB(EntityManager em, int idPackage){
+	public Package getCustomFromDB(int idPackage){
+		System.out.println("MANAGERBEAN - ID:"+idPackage);
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_CPACKAGE_BY_ID, Package.class);
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
@@ -69,14 +70,14 @@ public class PackageManagerBean implements PackageMgr{
 	//* ritorna il pacchettoDTO selezionato *//
 	@Override
 	public PackageDTO getselectedPackageDTO(int id) {
-		PackageDTO select = convertSelectedToDTO(getSelectedFromDB(em,id));
+		PackageDTO select = convertSelectedToDTO(getSelectedFromDB(id));
 		return select;
 	}
 	
 	//* ritorna il pacchettoCustomDTO cercato *//
 	@Override
 	public PackageDTO getCustomPackageDTO(int id) {
-		PackageDTO select = convertSelectedToDTO(getCustomFromDB(em,id));
+		PackageDTO select = convertSelectedToDTO(getCustomFromDB(id));
 		return select;
 		}
 	

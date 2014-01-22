@@ -18,8 +18,8 @@ import java.util.List;
 @Table(name="PACKAGE")
 @NamedQueries({
 	@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p WHERE p.type='standard'"),
-	@NamedQuery(name="Package.getStandardPackageById", query="SELECT p FROM Package p WHERE p.idPackage = :idPackage AND p.type='standard'"),
-	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE p.idPackage = :idPackage AND p.type='custom'")
+	@NamedQuery(name="Package.getStandardPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='standard')"),
+	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='custom')")
 })
 
 public class Package implements Serializable {

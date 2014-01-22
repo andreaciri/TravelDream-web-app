@@ -1,16 +1,22 @@
 package it.polimi.TravelDream.user.web.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+
 import it.polimi.TravelDream.ejb.packageManagement.PackageMgr;
 import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 
 @ManagedBean(name="packageBean")
-@ViewScoped
+@SessionScoped
 public class PackageBean implements Serializable {
 	
 	/**
@@ -21,11 +27,27 @@ public class PackageBean implements Serializable {
 	@EJB
 	private PackageMgr packageMgr;
 	
-	private int idPackage;
+	private int idPackage=0;
 	
+
 	private PackageDTO selectedPackage; 
 		
 	public PackageBean(){
+		System.out.println("costruttore - id="+idPackage);
+	}
+	
+	public void handleSearchById(String type){
+		System.out.println("HANDLE - ID:"+idPackage);
+		if(type.equals("custom")){
+			selectCustom();
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("customPackageDetail.xhtml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else{
+		}
 	}
 	
 	public void choose(int idPackage){
@@ -33,7 +55,8 @@ public class PackageBean implements Serializable {
 		return;
 	}
 	
-	public void selectCustom(int idPackage){
+	public void selectCustom(){
+		System.out.println("selectCustom - ID= "+idPackage);
 		selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
 	}
 	
@@ -56,5 +79,6 @@ public class PackageBean implements Serializable {
 	public void setSelectedPackage(PackageDTO selectedPackage) {
 		this.selectedPackage = selectedPackage;
 	}
+
   
 }
