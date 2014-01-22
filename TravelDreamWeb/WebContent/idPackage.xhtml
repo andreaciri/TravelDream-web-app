@@ -13,24 +13,15 @@
 	<br />
 
 	<h:form>
-
-		<h:panelGrid columns="4" cellpadding="5">
-			<h:outputLabel for="idPackage" value="ID:" style="font-weight:bold" />
-
-			<p:inputText id="idPackage" value="#{packageBean.idPackage}" label="idPackage"
-				required="true">
-			</p:inputText>
-			<p:message for="idPackage" />
-			<br />
-			<br />
-			<h:outputText value="You have selected the package number #{packageBean.idPackage}" />
-			<br />
-			<br />
-			<p:commandButton value="See more details" icon="ui-icon-star" actionListener="#{packageBean.handleSearchById('custom')}">
-			<f:param name="idPackage" value="#{packageBean.idPackage}" />
+		<h:panelGrid id="grid" columns="2" cellpadding="5">
+			<h:outputLabel value="ID PACKAGE:" style="font-weight:bold" />
+			<p:inputText id="number" value="#{packageBean.idPackage}"/>
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-star"
+				actionListener="#{packageBean.handleSearchById('custom')}">
+				<f:param name="idPackage" value="#{packageBean.idPackage}"/>
 			</p:commandButton>
-		</h:panelGrid>
-
+			<p:commandButton value="Reset" icon="ui-icon-star" type="reset" />
 	</h:form>
 
 </h:body>

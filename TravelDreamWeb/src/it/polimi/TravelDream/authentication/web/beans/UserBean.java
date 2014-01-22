@@ -6,6 +6,7 @@ import it.polimi.TravelDream.ejb.userManagement.UsrMgr;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;  
+import javax.faces.context.FacesContext;
 
 
 @ManagedBean(name="userBean")
@@ -21,6 +22,5 @@ public class UserBean {
 	public String getUsername () {
 		return usrMgr.getUserDTO().getUsername();
 	} 
-	
 	
 }

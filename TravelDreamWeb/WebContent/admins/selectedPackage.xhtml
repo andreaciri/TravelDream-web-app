@@ -6,14 +6,15 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
 <h:body>
-	
+
 	<f:metadata>
-		<f:viewParam name="idPpackage" value="#{packageBean.idPackage}" />
+		<f:viewParam name="idPackage" value="#{packageBean.idPackage}" />
+		<f:viewAction action="#{packageBean.choose(packageBean.idPackage)}" />
 	</f:metadata>
-	
 	<p:outputPanel deferred="true" deferredMode="visible">
 		<br />
-		<h:outputText value="This is the package number #{packageBean.idPackage}" />
+		<h:outputText
+			value="This is the package number #{packageBean.selectedPackage.idPackage}" />
 
 		<br />
 		<br />
@@ -21,8 +22,7 @@
 		<p:fieldset legend="#{packageBean.selectedPackage.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 				<h:graphicImage library="images" name="okt.png" />
-				<h:outputText value="#{packageBean.selectedPackage.description}"
-					styleClass="ui-li-count" />
+				<h:outputText value="#{packageBean.selectedPackage.description}" styleClass="ui-li-count" />
 			</h:panelGrid>
 		</p:fieldset>
 
@@ -31,12 +31,13 @@
 		<br />
 		<p:commandButton value="Customize" disabled="true" />
 		<p:commandButton value="Buy" disabled="true" />
-		<br />
-		<br />
-		<h:outputText value="Per acquistare/salvare/customizzare pacchetti viaggio registrati e diventa anche tu cliente Traveldream!" styleClass="ui-li-count"/>
-		<br />
-		<h:button value="Sign up" outcome="register" />
 	</p:outputPanel>
+
+	<br />
+	<br />
+	<h:form>
+		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
+	</h:form>
 
 </h:body>
 </html>

@@ -10,11 +10,14 @@
 </h:head>
 <h:body>
         <h:graphicImage library="images" name="banner.jpg" />
+        <br /><br />
         <h:outputText value="Welcome to TravelDream" styleClass="ui-li-count" />
         <br /><br />
         <h:outputText value="Select where you want to go:" styleClass="ui-li-count" /><br /><br />
-        <h:link outcome="admins/index" value="To the admin section" /> <br /> 
-        <h:link outcome="users/index?user=true" value="To the user section" /> <br />
-        <h:link outcome="idPackage" value="To the idPackage section" />
+        <h:form>
+        <h:button value="Admin section" outcome="admins/index" /><br /><br /> 
+        <h:button value="User section" outcome="users/index?user=true" /><br /><br />
+        <h:commandButton value="ID PACKAGE section" action="#{packageBean.reset}" />
+        </h:form>
     </h:body>
 </html>
