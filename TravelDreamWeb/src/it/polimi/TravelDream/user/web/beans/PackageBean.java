@@ -8,6 +8,7 @@ import it.polimi.TravelDream.ejb.packageManagement.PackageMgr;
 import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -25,6 +26,8 @@ public class PackageBean implements Serializable {
 	@EJB
 	private PackageMgr packageMgr;
 	
+	private String keyword;    
+	
 	private int idPackage=0;
 	
 	private PackageDTO selectedPackage; 
@@ -40,17 +43,13 @@ public class PackageBean implements Serializable {
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("customPackageDetail.xhtml");
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.printStackTrace();;
 			}
 		}
-		else{
-		}
+
+		return;
 	}
-	
-	public String reset() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-	    return "idPackage";
-	  }
+
 	
 	public void choose(int idPackage){
 		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);
@@ -59,7 +58,7 @@ public class PackageBean implements Serializable {
 	
 	public void selectCustom(){
 		System.out.println("selectCustom - ID= "+idPackage);
-		selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
+			selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
 	}
 	
 	public List<PackageDTO> getAllPackages() {
@@ -81,6 +80,18 @@ public class PackageBean implements Serializable {
 	public void setSelectedPackage(PackageDTO selectedPackage) {
 		this.selectedPackage = selectedPackage;
 	}
+	
+	public String getKeyword() {  
+        return keyword;  
+    }  
+  
+    public void setKeyword(String keyword) {  
+        this.keyword = keyword;  
+    }  
+  
+    public void search() {  
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"No results found with ", "'" + keyword + "'"));  
+    }
 
   
 }
