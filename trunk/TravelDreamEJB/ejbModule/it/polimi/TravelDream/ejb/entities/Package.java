@@ -19,7 +19,8 @@ import java.util.List;
 @NamedQueries({
 	@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p WHERE p.type='standard'"),
 	@NamedQuery(name="Package.getStandardPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='standard')"),
-	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='custom')")
+	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='custom')"),
+	@NamedQuery(name="Package.getStandardPackageByKeyword", query="SELECT p FROM Package p WHERE (p.type='custom') AND ((p.title like '%:keyword%') OR (p.description like '%:keyword%'))")
 })
 
 public class Package implements Serializable {
@@ -44,6 +45,7 @@ public class Package implements Serializable {
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
 	public static final String FIND_SPACKAGE_BY_ID = "Package.getStandardPackageById";
 	public static final String FIND_CPACKAGE_BY_ID = "Package.getCustomPackageById";
+	public static final String FIND_SPACKAGE_BY_KEY = "Package.getStandardPackageByKeyword";
 	
 	//bi-directional many-to-many association to User
 	@ManyToMany(mappedBy="packages")
