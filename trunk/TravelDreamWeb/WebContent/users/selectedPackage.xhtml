@@ -22,11 +22,15 @@
 		<p:fieldset legend="#{packageBean.selectedPackage.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 				<h:graphicImage library="images" name="okt.png" />
-				<h:outputText value="#{packageBean.selectedPackage.description}" styleClass="ui-li-count" />
+				<h:outputText value="#{packageBean.selectedPackage.description}"
+					styleClass="ui-li-count" />
 			</h:panelGrid>
+			<h3>Il pacchetto comprende:</h3> 
+			<p:dataList value="#{packageBean.selectedPackage.components}"
+				var="comp" itemType="comp">  
+    		<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br /><br /> 
+		</p:dataList>
 		</p:fieldset>
-
-		<br />
 		<br />
 		<br />
 		<p:commandButton value="Customize" disabled="true" />
