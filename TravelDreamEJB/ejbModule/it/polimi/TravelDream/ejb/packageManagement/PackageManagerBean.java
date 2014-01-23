@@ -3,6 +3,7 @@ package it.polimi.TravelDream.ejb.packageManagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,7 +23,9 @@ public class PackageManagerBean implements PackageMgr{
 	
 	@PersistenceContext
     private EntityManager em;
-	private CompManagerBean compMgr;
+	
+	@EJB
+	CompManagerBean compMan;
 	
 	//* ritorna la lista di tutti i pacchetti standard attualmente presenti nel db *//
 	public List<Package> getAllStandard() {
@@ -72,6 +75,9 @@ public class PackageManagerBean implements PackageMgr{
 		packageDTO.setTitle(p.getTitle());
 		packageDTO.setType(p.getType());
 		packageDTO.setDescription(p.getDescription());
+		for(Component c : p.getComponents()){
+			packageDTO.addComponent(compMan.convertToDTO(c));
+		}
 		return packageDTO;
 	}
 
