@@ -20,7 +20,7 @@ import java.util.List;
 	@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p WHERE p.type='standard'"),
 	@NamedQuery(name="Package.getStandardPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='standard')"),
 	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='custom')"),
-	@NamedQuery(name="Package.getStandardPackageByKeyword", query="SELECT p FROM Package p WHERE (p.type='custom') AND ((p.title like '%:keyword%') OR (p.description like '%:keyword%'))")
+	@NamedQuery(name="Package.getStandardPackageByKeyword", query="SELECT p FROM Package p WHERE (p.type='standard') AND (p.title like :keyword)")
 })
 
 public class Package implements Serializable {
@@ -58,7 +58,6 @@ public class Package implements Serializable {
         this.description = p.getDescription();       
         this.title = p.getTitle();
         this.type = p.getType();
-        this.idPackage = p.getIdPackage();
         components = new ArrayList<Component>();
     }
 	
