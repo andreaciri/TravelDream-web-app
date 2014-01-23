@@ -29,6 +29,8 @@ public class PackageBean implements Serializable {
 	private int idPackage=0;
 	
 	private PackageDTO selectedPackage; 
+	
+	private String keyword;
 		
 	public PackageBean(){
 		System.out.println("costruttore - id="+idPackage);
@@ -38,6 +40,12 @@ public class PackageBean implements Serializable {
 		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);
 		return;
 	}
+	
+	public void search() {  
+		packageMgr.getStandardPackageDTO(keyword);
+		if(getAllPackages().isEmpty())
+        	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"No results found with ", "'" + keyword + "'"));
+       }
 	
 	public List<PackageDTO> getAllPackages() {
 		return packageMgr.getAllPackagesDTO();
@@ -57,6 +65,14 @@ public class PackageBean implements Serializable {
 
 	public void setSelectedPackage(PackageDTO selectedPackage) {
 		this.selectedPackage = selectedPackage;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
   
 }
