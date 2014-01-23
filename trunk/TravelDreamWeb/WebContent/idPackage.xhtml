@@ -15,11 +15,11 @@
 	<h:form>
 		<h:panelGrid id="grid" columns="2" cellpadding="5">
 			<h:outputLabel value="ID PACKAGE:" style="font-weight:bold" />
-			<p:inputText id="number" value="#{packageBean.idPackage}"/>
+			<p:inputText id="number" value="#{searchPackageBean.idPackage}"/>
 			</h:panelGrid>
 			<p:commandButton value="Submit" icon="ui-icon-star"
-				actionListener="#{packageBean.handleSearchById('custom')}">
-				<f:param name="idPackage" value="#{packageBean.idPackage}"/>
+				actionListener="#{searchPackageBean.handleSearchById()}">
+				<f:param name="idPackage" value="#{searchPackageBean.idPackage}"/>
 			</p:commandButton>
 			<p:commandButton value="Reset" icon="ui-icon-star" type="reset" />
 	</h:form>
