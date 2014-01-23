@@ -26,7 +26,8 @@ import java.util.List;
 public class Package implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "idPackage")
 	private int idPackage;
 	@Column(name = "description")

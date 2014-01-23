@@ -10,3 +10,7 @@ insert into USER_GROUP (username,idGroup) values ('user','USER');
 insert into USER_GROUP (username,idGroup) values ('serena','ADMIN');
 insert into USER_GROUP (username,idGroup) values ('ciro','ADMIN');
 insert into USER_GROUP (username,idGroup) values ('billi','USER');
+
+INSERT INTO `TravelDreamDB`.`COMPONENT_TYPE` (`idType`, `type`) VALUES ('FLG', 'flight');
+INSERT INTO `TravelDreamDB`.`COMPONENT_TYPE` (`idType`, `type`) VALUES ('HTL', 'hotel');
+INSERT INTO `TravelDreamDB`.`COMPONENT_TYPE` (`idType`, `type`) VALUES ('XCR', 'excursion');

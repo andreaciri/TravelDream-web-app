@@ -103,9 +103,8 @@ public class PackageManagerBean implements PackageMgr{
 			System.out.println(c.getClass().toString()+" "+c.getTitle());
 		}
 		newPack = new Package(newPackDTO);
-		compMgr = new CompManagerBean();
 		for (ComponentDTO c : newPackDTO.getComponents()){
-			Component entity = compMgr.convertToEntity(c);
+			Component entity = em.find(Component.class, c.getIdComponent());
 			newPack.addComponent(entity);
 		}
 		em.persist(newPack);
