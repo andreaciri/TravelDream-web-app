@@ -11,11 +11,11 @@
 
 	<h1>Hello #{userBean.username}</h1>
 	<h:outputText value="#{homeContentBean.userHome}" />
-	<h:form style="float:right;" id="form">
+	<h:form id="form">
 
 		<p:messages showDetail="true" />
 
-		<h:panelGrid columns="3">
+		<h:panelGrid columns="3" style="float:right;">
 			<h:outputLabel value="Search: " />
 			<p:inputText id="keyword" value="#{packageBean.keyword}"
 				required="true" label="Keyword" />
