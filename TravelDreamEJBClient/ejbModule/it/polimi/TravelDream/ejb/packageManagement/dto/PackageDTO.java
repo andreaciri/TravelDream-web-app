@@ -1,5 +1,6 @@
 package it.polimi.TravelDream.ejb.packageManagement.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.polimi.TravelDream.ejb.compManagement.dto.*;
@@ -18,6 +19,7 @@ public class PackageDTO {
 	private List<ComponentDTO> components;
 	
 	public PackageDTO(){
+		components=new ArrayList<ComponentDTO>();
 	}
 	
 	public int getIdPackage() {
@@ -60,6 +62,9 @@ public class PackageDTO {
 		this.components = components;
 	}
 	
+	public void addComponent(ComponentDTO c){
+		components.add(c);
+	}
 }
 
 	
