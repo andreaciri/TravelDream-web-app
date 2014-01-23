@@ -56,6 +56,13 @@ public class PackageManagerBean implements PackageMgr{
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_CPACKAGE_BY_ID, Package.class);
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
+	
+	//* ritorna il pacchetto custom cercandolo via keyword nel db *//
+	public List<Package> getStandardFromDB(String keyword){
+		System.out.println("MANAGERBEAN - KEY:"+keyword);
+		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_KEY, Package.class);
+		return query.setParameter("keyword", "%"+keyword+"%").getResultList();
+		}
 
 	
 	//* converte il singolo pacchetto in DTO *//
@@ -75,7 +82,7 @@ public class PackageManagerBean implements PackageMgr{
 		return select;
 	}
 	
-	//* ritorna il pacchettoCustomDTO cercato *//
+	//* ritorna il pacchettoCustomDTO cercato via id *//
 	@Override
 	public PackageDTO getCustomPackageDTO(int id) {
 		PackageDTO select = convertSelectedToDTO(getCustomFromDB(id));
@@ -104,5 +111,12 @@ public class PackageManagerBean implements PackageMgr{
 		em.persist(newPack);
 		
 	}
+
+	//* ritorna il pacchettoStandardDTO cercato via keyword *//
+	@Override
+	public List<PackageDTO> getStandardPackageDTO(String keyword) {
+		List<PackageDTO> select = convertToDTO(getStandardFromDB(keyword));
+		return select;
+		}
 }
 
