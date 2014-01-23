@@ -23,15 +23,11 @@ public class SearchPackageBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private PackageMgr packageMgr;
-	
-	private String keyword;    
+	private PackageMgr packageMgr;    
 	
 	private int idPackage;
 	
 	private PackageDTO selectedPackage; 
-	
-	private List<PackageDTO> foundPackages;
 		
 	public SearchPackageBean(){
 		System.out.println("costruttore - id="+idPackage);
@@ -50,8 +46,6 @@ public class SearchPackageBean implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();;
 		}
-
-
 		return;
 	}
 	
@@ -59,12 +53,6 @@ public class SearchPackageBean implements Serializable {
 		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);
 		return;
 	}
-	
-	public void search() {  
-		foundPackages = packageMgr.getStandardPackageDTO(keyword);
-		if(foundPackages.isEmpty())
-        	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"No results found with ", "'" + keyword + "'"));
-       }
 	
 	public void selectCustom(){
 		System.out.println("selectCustom - ID= "+idPackage);
@@ -89,22 +77,6 @@ public class SearchPackageBean implements Serializable {
 
 	public void setSelectedPackage(PackageDTO selectedPackage) {
 		this.selectedPackage = selectedPackage;
-	}
-	
-	public String getKeyword() {  
-        return keyword;  
-    }  
-  
-    public void setKeyword(String keyword) {  
-        this.keyword = keyword;  
-    }
-
-    public List<PackageDTO> getFoundPackages() {
-		return foundPackages;
-	}
-
-	public void setFoundPackages(List<PackageDTO> foundPackages) {
-		this.foundPackages = foundPackages;
 	}
   
 }
