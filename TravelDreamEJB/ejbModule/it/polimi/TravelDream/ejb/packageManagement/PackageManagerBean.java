@@ -91,13 +91,15 @@ public class PackageManagerBean implements PackageMgr{
 
 	@Override
 	public void save(PackageDTO newPackDTO) {
+		Package newPack;
 		for(ComponentDTO c : newPackDTO.getComponents()){
 			System.out.println(c.getClass().toString()+" "+c.getTitle());
 		}
-		Package newPack = new Package(newPackDTO);
+		newPack = new Package(newPackDTO);
 		compMgr = new CompManagerBean();
 		for (ComponentDTO c : newPackDTO.getComponents()){
-			newPack.addComponent(compMgr.convertToEntity(c));
+			Component entity = compMgr.convertToEntity(c);
+			newPack.addComponent(entity);
 		}
 		em.persist(newPack);
 		
