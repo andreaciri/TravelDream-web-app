@@ -1,6 +1,8 @@
 package it.polimi.TravelDream.ejb.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -42,6 +44,8 @@ public class Component implements Serializable {
 	@Column(nullable=false)
 	private int price;
 	
+	@ManyToMany(mappedBy="components", cascade=CascadeType.ALL)
+	private Set<Package> packages;
 
 	public Component() {
 	}
@@ -93,5 +97,5 @@ public class Component implements Serializable {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
 }

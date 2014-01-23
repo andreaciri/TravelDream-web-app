@@ -38,8 +38,8 @@ public class Package implements Serializable {
 	
 	@ManyToMany
 	@JoinTable(name="PACK_CONTENT", 
-			joinColumns={@JoinColumn(name="idPackage")},
-			inverseJoinColumns={@JoinColumn(name="idComponent")})
+			joinColumns={@JoinColumn(name="idPackage", referencedColumnName="idPackage")},
+			inverseJoinColumns={@JoinColumn(name="idComponent", referencedColumnName="idComponent")})
 	private List<Component> components = null;
 
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
