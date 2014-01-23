@@ -8,20 +8,20 @@
 <h:body>
 	
 	<f:metadata>
-		<f:viewParam name="idPpackage" value="#{packageBean.idPackage}" />
+		<f:viewParam name="idPpackage" value="#{searchPackageBean.idPackage}" />
 	</f:metadata>
 	
 	<p:outputPanel deferred="true" deferredMode="visible">
 		<br />
-		<h:outputText value="This is the package number #{packageBean.idPackage}" />
+		<h:outputText value="This is the package number #{searchPackageBean.idPackage}" />
 
 		<br />
 		<br />
 
-		<p:fieldset legend="#{packageBean.selectedPackage.title}">
+		<p:fieldset legend="#{searchPackageBean.selectedPackage.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 				<h:graphicImage library="images" name="okt.png" />
-				<h:outputText value="#{packageBean.selectedPackage.description}"
+				<h:outputText value="#{searchPackageBean.selectedPackage.description}"
 					styleClass="ui-li-count" />
 			</h:panelGrid>
 		</p:fieldset>

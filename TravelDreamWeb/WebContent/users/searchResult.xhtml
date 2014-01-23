@@ -9,26 +9,12 @@
 </h:head>
 <h:body>
 
-	<h1>Hello #{userBean.username}</h1>
-	<h:outputText value="#{homeContentBean.userHome}" />
-	<h:form style="float:right;">
+<f:metadata>
+		<f:viewParam name="keyword" value="#{searchPackageBean.keyword}" />
+	</f:metadata>
 
-		<p:messages showDetail="true" />
-
-		<h:panelGrid columns="3">
-			<h:outputLabel value="Search: " />
-			<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
-				required="true" label="Keyword" />
-			<p:watermark for="keyword" value="Search" />
-			<p:commandButton actionListener="#{searchPackageBean.search()}" value="Submit"
-			ajax="false" >
-			<f:param name="keyword" value="#{searchPackageBean.keyword}"/>
-			</p:commandButton>
-			<p:commandButton value="Reset" type="reset"/>
-		</h:panelGrid>
-	</h:form>
-	<br /><br /><br /><br /><br /><br /><br /><br /><br />
-	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
+<h:outputText value="Risultato della ricerca via #{searchPackageBean.keyword}" />
+	<p:accordionPanel value="#{searchPackageBean.foundPackages}" var="package"
 		dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">
 			<h:panelGrid columns="2" cellpadding="10">
