@@ -3,7 +3,9 @@ package it.polimi.TravelDream.ejb.packageManagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.EJBContext;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -15,6 +17,7 @@ import it.polimi.TravelDream.ejb.compManagement.CompManagerBean;
 import it.polimi.TravelDream.ejb.compManagement.dto.ComponentDTO;
 import it.polimi.TravelDream.ejb.entities.Component;
 import it.polimi.TravelDream.ejb.entities.Package;
+import it.polimi.TravelDream.ejb.entities.User;
 
 
 @Stateless
@@ -26,6 +29,9 @@ public class PackageManagerBean implements PackageMgr{
 	
 	@EJB
 	CompManagerBean compMan;
+	
+	@Resource
+	private EJBContext context;
 	
 	//* ritorna la lista di tutti i pacchetti standard attualmente presenti nel db *//
 	public List<Package> getAllStandard() {
@@ -47,6 +53,17 @@ public class PackageManagerBean implements PackageMgr{
 			return allPackages;
 		}
 	
+	//restituisce un pacchetto cercando l'id, independentemente dal tipo
+	public Package getPackById (int idPackage){
+		return  em.find(Package.class, idPackage);
+	}
+	
+	//restituisce il DTO cercando l'id, indipendentemente dal tipo
+	public PackageDTO getPackDTOById (int idPackage){
+		 Package requestPack = getPackById(idPackage);
+		 return convertSelectedToDTO(requestPack);
+	}
+	
 	//* ritorna il pacchetto selezionato cercandolo via id nel db *//
 	public Package getSelectedFromDB(int idPackage){
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_ID, Package.class);
@@ -65,7 +82,7 @@ public class PackageManagerBean implements PackageMgr{
 		System.out.println("MANAGERBEAN - KEY:"+keyword);
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_KEY, Package.class);
 		return query.setParameter("keyword", "%"+keyword+"%").getResultList();
-	}
+		}
 
 	
 	//* converte il singolo pacchetto in DTO *//
@@ -114,7 +131,14 @@ public class PackageManagerBean implements PackageMgr{
 			newPack.addComponent(entity);
 		}
 		em.persist(newPack);
+		addPackToUser(newPack);
 		
+	}
+	
+	private void addPackToUser(Package p) {
+		User current = em.find(User.class, context.getCallerPrincipal().getName());
+		current.addPackage(p);
+		em.merge(current);
 	}
 
 	//* ritorna il pacchettoStandardDTO cercato via keyword *//
