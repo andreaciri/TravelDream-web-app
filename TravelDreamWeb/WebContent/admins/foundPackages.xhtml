@@ -5,44 +5,29 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-
 <h:head>
 </h:head>
 <h:body>
-	<h1>Hello #{userBean.username}</h1>
-	<p:button outcome="components" value="Manage Components"
-		icon="ui-icon-star" />
-	<p:button outcome="new_package" value="Create New Package"
-		icon="ui-icon-star" />
+
+	<f:metadata>
+		<f:viewParam name="keyword" value="#{searchPackageBean.keyword}" />
+	</f:metadata>
 	<br />
-	<br />
-	<h:outputText value="#{homeContentBean.adminHome}" />
+	<h:outputText value="Questi sono i pacchetti trovati per la parola #{searchPackageBean.keyword}:" />
+	<br /><br />
 	<h:form>
-
-		<p:messages showDetail="true" />
-
-		<h:panelGrid columns="3" style="float:right;">
-			<h:outputLabel value="Search: " />
-			<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
-				required="true" label="Keyword" />
-			<p:watermark for="keyword" value="Search" />
-			<p:commandButton action="foundPackages" value="Submit">
-			<f:param name="keyword" value="#{searchPackageBean.keyword}" />
-			</p:commandButton>
-			<p:commandButton value="Reset" type="reset"/>
-		</h:panelGrid>
-	<br /><br /><br /><br /><br />
-	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
+	<p:accordionPanel value="#{searchPackageBean.foundPackages}" var="package"
 		dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 
 				<h:panelGrid columns="2" cellpadding="10">
 					<h:outputText value="#{fn:substring(package.description,0,15)}..." />
-					<p:button outcome="selectedPackage" value="In this package"
+					<p:button outcome="selectedPackage" value="see more"
 						icon="ui-icon-star">
 						<f:param name="idPackage" value="#{package.idPackage}" />
 					</p:button>
+
 				</h:panelGrid>
 
 			</h:panelGrid>
@@ -50,8 +35,11 @@
 		</p:tab>
 	</p:accordionPanel>
 	</h:form>
+	<br />
+	<br />
 	<h:form>
 		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
 	</h:form>
+
 </h:body>
 </html>
