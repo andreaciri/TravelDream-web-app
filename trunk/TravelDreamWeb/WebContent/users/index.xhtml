@@ -11,20 +11,21 @@
 
 	<h1>Hello #{userBean.username}</h1>
 	<h:outputText value="#{homeContentBean.userHome}" />
-	<h:form id="form">
+	<h:form>
 
 		<p:messages showDetail="true" />
 
 		<h:panelGrid columns="3" style="float:right;">
 			<h:outputLabel value="Search: " />
-			<p:inputText id="keyword" value="#{packageBean.keyword}"
+			<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
 				required="true" label="Keyword" />
 			<p:watermark for="keyword" value="Search" />
-			<p:commandButton actionListener="#{packageBean.search()}" value="Submit"
-			ajax="false" update="form" />
+			<p:commandButton action="foundPackages" value="Submit">
+			<f:param name="keyword" value="#{searchPackageBean.keyword}" />
+			</p:commandButton>
 			<p:commandButton value="Reset" type="reset"/>
 		</h:panelGrid>
-	<br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br />
 	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
 		dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">

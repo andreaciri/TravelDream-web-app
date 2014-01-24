@@ -6,6 +6,7 @@ import java.util.List;
 
 import it.polimi.TravelDream.ejb.packageManagement.PackageMgr;
 import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -28,6 +29,8 @@ public class SearchPackageBean implements Serializable {
 	private int idPackage;
 	
 	private PackageDTO selectedPackage; 
+	
+	private String keyword;
 		
 	public SearchPackageBean(){
 		System.out.println("costruttore - id="+idPackage);
@@ -49,10 +52,6 @@ public class SearchPackageBean implements Serializable {
 		return;
 	}
 	
-	public void choose(int idPackage){
-		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);
-		return;
-	}
 	
 	public void selectCustom(){
 		System.out.println("selectCustom - ID= "+idPackage);
@@ -61,7 +60,11 @@ public class SearchPackageBean implements Serializable {
 	
 	public List<PackageDTO> getAllPackages() {
 		return packageMgr.getAllPackagesDTO();
-	}	
+	}
+	
+	public List<PackageDTO> getFoundPackages() {
+		return packageMgr.getStandardPackageDTO(keyword);
+	}
 	
 	public int getIdPackage() {
 		return idPackage;
@@ -77,6 +80,14 @@ public class SearchPackageBean implements Serializable {
 
 	public void setSelectedPackage(PackageDTO selectedPackage) {
 		this.selectedPackage = selectedPackage;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
   
 }
