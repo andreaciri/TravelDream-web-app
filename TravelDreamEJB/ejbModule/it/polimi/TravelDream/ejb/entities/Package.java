@@ -41,7 +41,7 @@ public class Package implements Serializable {
 	@JoinTable(name="PACK_CONTENT", 
 			joinColumns={@JoinColumn(name="idPackage", referencedColumnName="idPackage")},
 			inverseJoinColumns={@JoinColumn(name="idComponent", referencedColumnName="idComponent")})
-	private List<Component> components = null;
+	private List<Component> components;
 
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
 	public static final String FIND_SPACKAGE_BY_ID = "Package.getStandardPackageById";
@@ -49,7 +49,7 @@ public class Package implements Serializable {
 	public static final String FIND_SPACKAGE_BY_KEY = "Package.getStandardPackageByKeyword";
 	
 	//bi-directional many-to-many association to User
-	@ManyToMany(mappedBy="packages")
+	@ManyToMany(mappedBy="packages", cascade=CascadeType.MERGE)
 	private List<User> users;
 
 	public Package(){

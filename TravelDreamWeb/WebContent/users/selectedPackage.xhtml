@@ -33,7 +33,9 @@
 		</p:fieldset>
 		<br />
 		<br />
-		<p:commandButton value="Customize" disabled="true" />
+		<p:button value="Customize" outcome="customize">
+			<f:param name="idPackage" value="#{packageBean.selectedPackage.idPackage}" />
+		</p:button>
 		<p:commandButton value="Buy" disabled="true" />
 	</p:outputPanel>
 

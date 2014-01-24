@@ -14,6 +14,7 @@ public interface PackageMgr {
 	public PackageDTO getCustomPackageDTO(int idPackage);
 	public List<PackageDTO> getStandardPackageDTO(String keyword);
 	public void save(PackageDTO newPack);
+	public PackageDTO getPackDTOById(int idPackage);
 	
 }
 
