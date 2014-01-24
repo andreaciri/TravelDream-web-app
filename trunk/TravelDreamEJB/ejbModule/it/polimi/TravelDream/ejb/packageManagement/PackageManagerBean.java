@@ -65,7 +65,7 @@ public class PackageManagerBean implements PackageMgr{
 		System.out.println("MANAGERBEAN - KEY:"+keyword);
 		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_KEY, Package.class);
 		return query.setParameter("keyword", "%"+keyword+"%").getResultList();
-		}
+	}
 
 	
 	//* converte il singolo pacchetto in DTO *//
