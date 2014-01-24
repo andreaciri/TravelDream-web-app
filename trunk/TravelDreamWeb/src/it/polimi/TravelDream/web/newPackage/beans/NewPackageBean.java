@@ -75,10 +75,6 @@ public class NewPackageBean implements Serializable{
 		
 	}
 	
-	public void newPackPreRender(){
-		//ATTENZIONE PUO PARTIRE AD OGNI UPDATE AJAX - RISOLVERE
-	}
-	
 	public List<FlightDTO> getFlights() {
 		return flights;
 	}

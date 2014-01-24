@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,20 +42,14 @@ public static final String FIND_ALL = "User.findAll";
 
 
 	//bi-directional many-to-many association to Package
-	@ManyToMany
-	@JoinTable(
-		name="SAVED_PACK"
-		, joinColumns={
-			@JoinColumn(name="username")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="idPackage")
-			}
-		)
+	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="SAVED_PACK", 
+		joinColumns={@JoinColumn(name="username")},
+		inverseJoinColumns={@JoinColumn(name="idPackage")})
 	private List<Package> packages;
 
 	public User() {
-		super();
+		packages = new ArrayList<Package>();
 	}
 	
 	public User(UserDTO user){
@@ -94,6 +89,10 @@ public static final String FIND_ALL = "User.findAll";
 
 	public void setPackages(List<Package> packages) {
 		this.packages = packages;
+	}
+	
+	public void addPackage(Package pack) {
+		packages.add(pack);
 	}
 
 	public List<Group> getGroup() {

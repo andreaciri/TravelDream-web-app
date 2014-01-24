@@ -6,37 +6,42 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 	<h:head>  
-  		<title>Create Package</title>
+  		<title>Customize Package</title>
     </h:head>
+    
+    <h:body>
+    
+    <f:metadata>
+		<f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
+		<f:viewAction action="#{customizeBean.initFromView()}" />
+	</f:metadata>
+    
+	<h1>Create a new custom package</h1>
 	
-	<h:body>
-	<h1>Create a new standard package</h1>
-	
-	<form id="createPackage">
+	<form id="customizePackage">
 	
 	<p:panel id="basicInfo" header="New Package">  
   
         <h:panelGrid columns="3">  
             <h:outputLabel for="title" value="Title: *" />  
-            <p:inputText id="title" value="#{newPackage.newPack.title}" label="Title" size="44">
+            <p:inputText id="title" value="#{customizeBean.currentPack.title}" label="Title" size="44">
             </p:inputText>  
             <p:message for="title" display="icon"/>  
   
             <h:outputLabel for="description" value="Description:" />  
-            <p:inputTextarea id="description" value="#{newPackage.newPack.description}" label="Description" rows="6" cols="33">   
+            <p:inputTextarea id="description" value="#{customizeBean.currentPack.description}" label="Description" rows="6" cols="33">   
             </p:inputTextarea>
-            <p:commandButton value="Create" id="createPack"
-            	actionListener="#{newPackage.handleNewStandardPack()}"/> 
-  
+            <p:commandButton value="Save" actionListener="#{customizeBean.handleSavePack()}">
+            </p:commandButton> 
         </h:panelGrid>
 </p:panel>
-	
-	<p:outputPanel>
-  		<p>You can choose only one flight, and only one hotel for every package; for choose multiple excursions, press ctrl (cmd).</p>
+  		<p:outputPanel>
+  		<p>Here you can add and remove any components you want; for choose multiple components 
+  			of the same type, or remove a selected component, press ctrl (cmd). For save a package it must content at least one component.</p>
   		</p:outputPanel>
 	
-	<p:dataTable id="flights" var="flight" value="#{newPackage.flights}" style="width:75%" selection="#{newPackage.selectedFlight}"
-			rowKey="#{flight.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
+	<p:dataTable id="flights" var="flight" value="#{customizeBean.flights}" style="width:75%" selection="#{customizeBean.selectedFlights}"
+			rowKey="#{flight.idComponent}" selectionMode="multiple" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
             Avaible Flights  
         </f:facet>  
@@ -54,15 +59,15 @@
             #{flight.returnDate}  
         </p:column>
         <p:column headerText="Price">  
-            #{flight.price}  
+            #{flight.price} € 
         </p:column>
         <p:column headerText="id">  
             #{flight.idComponent}  
         </p:column>
 	</p:dataTable>
 	<br />
-	<p:dataTable id="hotels" var="hotel" value="#{newPackage.hotels}" style="width:75%" selection="#{newPackage.selectedHotel}"
-			rowKey="#{hotel.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
+	<p:dataTable id="hotels" var="hotel" value="#{customizeBean.hotels}" style="width:75%" selection="#{customizeBean.selectedHotels}"
+			rowKey="#{hotel.idComponent}" selectionMode="multiple" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
             Avaible Hotels  
         </f:facet>  
@@ -79,14 +84,14 @@
 			#{hotel.checkout}
 		</p:column>
 		<p:column headerText="Price">
-			#{hotel.price}
+			#{hotel.price} €
 		</p:column>
 		<p:column headerText="id">  
             #{hotel.idComponent}  
         </p:column>
 	</p:dataTable>
 	<br />
-	<p:dataTable id="excursions" var="excursion" value="#{newPackage.excursions}" style="width:75%" selection="#{newPackage.selectedExcs}"
+	<p:dataTable id="excursions" var="excursion" value="#{customizeBean.excursions}" style="width:75%" selection="#{customizeBean.selectedExcs}"
 				rowKey="#{excursion.idComponent}" selectionMode="multiple" scrollable="true" scrollHeight="170">
 		<f:facet name="header">  
             Avaible Excursions  
@@ -115,19 +120,18 @@
 	</p:dataTable>
 	<br />
 	<p:dialog id="notValidDialog" header="Attention:" widgetVar="notValidDialog">  
-    				<h:outputText value="The package does not fulfill all the requirements." />  
+    				<h:outputText value="The package does not contain any component." />  
 	</p:dialog>
 	<p:dialog id="notValidTitle" header="Attention:" widgetVar="notValidTitle">  
     				<h:outputText value="Insert a title for the new package." />  
 	</p:dialog>
-	<p:dialog id="newPackDialog" header="Package created" widgetVar="newPackDialog">  
-    				<h:outputText value="The package has been successfully created." />  
+	<p:dialog id="newPackDialog" header="Custom Package saved" widgetVar="newPackDialog">  
+    				<h:outputText value='The package has been successfully created.&lt;br /&gt;You can find it in the section "Saved Packages".' escape="false"/>  
 	</p:dialog>
 	</form>
 	
 	
-	
-	
 	</h:body>
-
-</html>
+	</html>
+	
+	
