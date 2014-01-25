@@ -57,9 +57,12 @@ public class PackageBean implements Serializable {
 		this.selectedPackage = selectedPackage;
 	}
 
-
 	public List<PackageDTO> getAllPackages() {
 		return packageMgr.getAllPackagesDTO();
+	}
+	
+	public List<PackageDTO> getSavedPackages() {
+		return packageMgr.getSavedPackagesDTO();
 	}
   
 }
