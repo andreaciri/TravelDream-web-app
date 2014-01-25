@@ -4,133 +4,161 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-	<h:head>  
-  		<title>Modify Package</title>
-    </h:head>
-    
-    <h:body>
-    
-    <f:metadata>
+
+<h:head>
+	<title>Modify Package</title>
+</h:head>
+
+<h:body>
+
+	<f:metadata>
 		<f:viewParam name="idPackage" value="#{modifyBean.idPackage}" />
 		<f:viewAction action="#{modifyBean.initFromView()}" />
 	</f:metadata>
-    
-	<h1>Modify an existing standard package</h1>
-	
-	<form id="modifyPackage">
-	
-	<p:panel id="basicInfo" header="Change Info">  
-  
-        <h:panelGrid columns="3">  
-            <h:outputLabel for="title" value="Title: *" />  
-            <p:inputText id="title" value="#{modifyBean.currentPack.title}" label="Title" size="44">
-            </p:inputText>  
-            <p:message for="title" display="icon"/>  
-  
-            <h:outputLabel for="description" value="Description:" />  
-            <p:inputTextarea id="description" value="#{modifyBean.currentPack.description}" label="Description" rows="6" cols="33">   
-            </p:inputTextarea>
-            <p:commandButton value="Update" actionListener="#{modifyBean.handleModifyPack()}">
-            </p:commandButton> 
-        </h:panelGrid>
-</p:panel>
-  		<p:outputPanel>
-  		<p>For save a package it must content one flight and one hotel. For choose multiple excursions, or remove a selected component, press ctrl (cmd).</p>
-  		</p:outputPanel>
-	
-	<p:dataTable id="flights" var="flight" value="#{modifyBean.flights}" style="width:75%" selection="#{modifyBean.selectedFlight}"
-			rowKey="#{flight.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
-		<f:facet name="header">  
-            Avaible Flights  
-        </f:facet>  
-        
-        <p:column headerText="Departure place">  
+
+	<div id="page">
+
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerAdmin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:panel id="panel"
+				header="Modify the package #{modifyBean.currentPack.title}"
+				style="margin-bottom:10px;">
+
+				<form id="modifyPackage">
+
+					<p:panel id="basicInfo" header="Change Info">
+
+						<h:panelGrid columns="3">
+							<h:outputLabel for="title" value="Title: *" />
+							<p:inputText id="title" value="#{modifyBean.currentPack.title}"
+								label="Title" size="44">
+							</p:inputText>
+							<p:message for="title" display="icon" />
+
+							<h:outputLabel for="description" value="Description:" />
+							<p:inputTextarea id="description"
+								value="#{modifyBean.currentPack.description}"
+								label="Description" rows="6" cols="33">
+							</p:inputTextarea>
+							<p:commandButton value="Update"
+								actionListener="#{modifyBean.handleModifyPack()}">
+							</p:commandButton>
+						</h:panelGrid>
+					</p:panel>
+					<br />
+					<h:outputText
+						value="A package must contain at least one flight and one
+							hotel to be saved. Press ctrl (cmd) to select multiple excursions or deselect a
+							component."
+						styleClass="ui-li-count" />
+					<br /><br />
+					<p:dataTable id="flights" var="flight"
+						value="#{modifyBean.flights}" style="width:75%"
+						selection="#{modifyBean.selectedFlight}"
+						rowKey="#{flight.idComponent}" selectionMode="single"
+						scrollable="true" scrollHeight="170">
+						<f:facet name="header">
+							<h:outputText value="Available Flights" styleClass="ui-li-count" />
+						</f:facet>
+
+						<p:column headerText="Departure place">  
             #{flight.departurePlace}  
-        </p:column>  
-        <p:column headerText="Arrival place">  
+        </p:column>
+						<p:column headerText="Arrival place">  
             #{flight.arrivalPlace}  
         </p:column>
-        <p:column headerText="Departure date">  
+						<p:column headerText="Departure date">  
             #{flight.departureDate}  
         </p:column>
-        <p:column headerText="Return date">  
+						<p:column headerText="Return date">  
             #{flight.returnDate}  
         </p:column>
-        <p:column headerText="Price">  
+						<p:column headerText="Price">  
             #{flight.price} € 
         </p:column>
-        <p:column headerText="id">  
+						<p:column headerText="id">  
             #{flight.idComponent}  
         </p:column>
-	</p:dataTable>
-	<br />
-	<p:dataTable id="hotels" var="hotel" value="#{modifyBean.hotels}" style="width:75%" selection="#{modifyBean.selectedHotel}"
-			rowKey="#{hotel.idComponent}" selectionMode="single" scrollable="true" scrollHeight="170">
-		<f:facet name="header">  
-            Avaible Hotels  
-        </f:facet>  
-		<p:column headerText="Name">
+					</p:dataTable>
+					<p:dataTable id="hotels" var="hotel" value="#{modifyBean.hotels}"
+						style="width:75%" selection="#{modifyBean.selectedHotel}"
+						rowKey="#{hotel.idComponent}" selectionMode="single"
+						scrollable="true" scrollHeight="170">
+						<f:facet name="header">
+							<h:outputText value="Available Hotels" styleClass="ui-li-count" />
+						</f:facet>
+						<p:column headerText="Name">
 			#{hotel.title}
 		</p:column>
-		<p:column headerText="Place">
+						<p:column headerText="Place">
 			#{hotel.place}
 		</p:column>
-		<p:column headerText="check-in">
+						<p:column headerText="check-in">
 			#{hotel.checkin}
 		</p:column>
-		<p:column headerText="check-out">
+						<p:column headerText="check-out">
 			#{hotel.checkout}
 		</p:column>
-		<p:column headerText="Price">
+						<p:column headerText="Price">
 			#{hotel.price} €
 		</p:column>
-		<p:column headerText="id">  
+						<p:column headerText="id">  
             #{hotel.idComponent}  
         </p:column>
-	</p:dataTable>
-	<br />
-	<p:dataTable id="excursions" var="excursion" value="#{modifyBean.excursions}" style="width:75%" selection="#{modifyBean.selectedExcs}"
-				rowKey="#{excursion.idComponent}" selectionMode="multiple" scrollable="true" scrollHeight="170">
-		<f:facet name="header">  
-            Avaible Excursions  
-        </f:facet>  
-		<p:column headerText="Name">
+					</p:dataTable>
+					<p:dataTable id="excursions" var="excursion"
+						value="#{modifyBean.excursions}" style="width:75%"
+						selection="#{modifyBean.selectedExcs}"
+						rowKey="#{excursion.idComponent}" selectionMode="multiple"
+						scrollable="true" scrollHeight="170">
+						<f:facet name="header">
+							<h:outputText value="Available Excursions"
+								styleClass="ui-li-count" />
+						</f:facet>
+						<p:column headerText="Name">
 			#{excursion.title}
 		</p:column>
-		<p:column headerText="Place">
+						<p:column headerText="Place">
 			#{excursion.place}
 		</p:column>
-		<p:column headerText="Description">
+						<p:column headerText="Description">
 			#{excursion.description}
 		</p:column>
-		<p:column headerText="Start">
+						<p:column headerText="Start">
 			#{excursion.start}
 		</p:column>
-		<p:column headerText="Finish">
+						<p:column headerText="Finish">
 			#{excursion.finish}
 		</p:column>
-		<p:column headerText="Price">
+						<p:column headerText="Price">
 			#{excursion.price} €
 		</p:column>
-		<p:column headerText="id">  
+						<p:column headerText="id">  
             #{excursion.idComponent}  
         </p:column>
-	</p:dataTable>
-	<br />
-	<p:dialog id="notValidDialog" header="Attention:" widgetVar="notValidDialog">  
-    				<h:outputText value="The package does not fulfills all the requirements." />  
-	</p:dialog>
-	<p:dialog id="notValidTitle" header="Attention:" widgetVar="notValidTitle">  
-    				<h:outputText value="Insert a title for the new package." />  
-	</p:dialog>
-	<p:dialog id="newPackDialog" header="Custom Package saved" widgetVar="newPackDialog">  
-    				<h:outputText value='The package has been successfully updated.'/>  
-	</p:dialog>
-	</form>
-	
-	
-	</h:body>
-	</html>
-	
-	
+					</p:dataTable>
+					<br />
+					<p:dialog id="notValidDialog" header="Attention:"
+						widgetVar="notValidDialog">
+						<h:outputText
+							value="The package does not fulfills all the requirements." />
+					</p:dialog>
+					<p:dialog id="notValidTitle" header="Attention:"
+						widgetVar="notValidTitle">
+						<h:outputText value="Insert a title for the new package." />
+					</p:dialog>
+					<p:dialog id="newPackDialog" header="Custom Package saved"
+						widgetVar="newPackDialog">
+						<h:outputText value='The package has been successfully updated.' />
+					</p:dialog>
+				</form>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>
+</html>
+

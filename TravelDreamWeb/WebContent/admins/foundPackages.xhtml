@@ -12,15 +12,21 @@
 	<f:metadata>
 		<f:viewParam name="keyword" value="#{searchPackageBean.keyword}" />
 	</f:metadata>
-	<br />
-	<h:outputText value="Questi sono i pacchetti trovati per la parola #{searchPackageBean.keyword}:" />
-	<br /><br />
-	<h:form>
+	<div id="page">
+
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerAdmin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+		<p:panel id="panel"
+				header="Questi sono i pacchetti trovati per la parola #{searchPackageBean.keyword}:"
+				style="margin-bottom:10px;">
 	<p:accordionPanel value="#{searchPackageBean.foundPackages}" var="package"
 		dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">
 			<h:panelGrid columns="2" cellpadding="10">
-
 				<h:panelGrid columns="2" cellpadding="10">
 					<h:outputText value="#{fn:substring(package.description,0,15)}..." />
 					<p:button outcome="selectedPackage" value="see more"
@@ -34,12 +40,9 @@
 
 		</p:tab>
 	</p:accordionPanel>
+	</p:panel>
 	</h:form>
-	<br />
-	<br />
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
+	</div>
 
 </h:body>
 </html>
