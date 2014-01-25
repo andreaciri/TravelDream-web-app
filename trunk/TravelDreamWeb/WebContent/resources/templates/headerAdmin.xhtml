@@ -11,13 +11,13 @@
     <h:form>
     <p:menubar>  
       
-        <p:menuitem value="Home" outcome="home.xhtml" icon="ui-icon-home" />     
+        <p:menuitem value="Home" url="index.xhtml" icon="ui-icon-home" />  
   
-        <p:menuitem value="Id Package" label="Id Package" icon="ui-icon-help"  url="idPackage.xhtml"/>
+        <p:menuitem value="Components" label="Components" icon="ui-icon-wrench" url="components.xhtml"/>   
+  
+        <p:menuitem value="New Package" label="New Package" icon="ui-icon-pencil"  url="new_package.xhtml"/>
         
-        <p:menuitem value="Sign Up" label="Sign Up" icon="ui-icon-pencil" url="register.xhtml"/> 
-            
-  		<p:menuitem value="Admin Section" outcome="admins/index.xhtml" icon="ui-icon-wrench" />
+        <p:menuitem value="Logout" label="Logout" icon="ui-icon-extlink"  action="#{logoutBean.logout}"/>     
   
         <f:facet name="options"> 
         <h:graphicImage library="images" name="banner.png" style="margin-right:10px"/> 

@@ -4,112 +4,154 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-	<f:metadata>
-        <f:event type="preRenderView" listener="#{componentBean.compManPreRender()}"/>
-	</f:metadata>
-	
-	<h:head>  
-  		<title>Components manager</title>
-    </h:head>
-	
-	<h:body>
-	<h1>Components manager</h1>
-		<h:form id="form">
-			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" border-width="3" frame="border">
-				<f:facet name="header">  
-       			 Create new component 
-    			</f:facet> 
-				<h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5"  id="BASIC"> 
-			        <h:outputText value="Type of the Component:" />  
-			        <p:selectOneMenu id="CompType" value="#{componentBean.type}" style="width:150px"> 
-			        	<f:selectItem itemLabel="Select One" itemValue="null" /> 
-			            <f:selectItems value="#{componentBean.types}" />
-			            <p:ajax update="OPTIONAL" listener="#{componentBean.handleTypeChange}" /> 
-			        </p:selectOneMenu>
-			        <h:outputText value="Title:"/>
-			        <h:panelGrid columns="2">
-				        <p:inputText id="title" required="true" value="#{componentBean.newComponent.title}" size="40">
-				        	<f:validateLength minimum="1" maximum="45" />  
-	                		<p:clientValidator />
-				        </p:inputText>
-				        <p:message for="title" display="icon" />
-			        </h:panelGrid>
-			        <h:outputText value="Description:" />
-			        <p:inputTextarea rows="6" cols="33" value="#{componentBean.newComponent.description}"/>
-			        <h:outputText value="Price:" />
-			        <h:panelGrid columns="3">
-			        	<h:outputText value="€" />
-				        <p:inputText id="price" required="true" value="#{componentBean.newComponent.price}" style="width:150px">  
-	                		<p:clientValidator event="keyup"/>  
-	            		</p:inputText>  
-	          			<p:message for="price" display="icon" />
-          			</h:panelGrid>
-		        </h:panelGrid>
-		        <p:outputPanel id="OPTIONAL">
-			        <h:panelGrid id="FLG" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.flightRend}">
-			        	<h:outputText value="Departure date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.departureDate}" required="true" />
-	   					<h:outputText value="Return date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.returnDate}" required="true" />
-	   					<h:outputText value="Departure place:" />
-	   					<p:inputText value="#{componentBean.newComponent.departurePlace}" required="true" />
-	   					<h:outputText value="Arrival place:" />
-	   					<p:inputText value="#{componentBean.newComponent.arrivalPlace}" required="true" />
-	   				 </h:panelGrid>
-		       		<h:panelGrid id="HTL" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.hotelRend}">
-	   					<h:outputText value="Place:" />
-	   					<p:inputText value="#{componentBean.newComponent.place}" required="true" />
-			        	<h:outputText value="Check-in date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.checkin}" required="true" />
-	   					<h:outputText value="Check-out date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.checkout}" required="true" />
-	   				 </h:panelGrid>
-	   				 <h:panelGrid id="XCR" columns="1" style="margin-bottom:10px" cellpadding="5" rendered="#{componentBean.excursionRend}">
-	   					<h:outputText value="Place:" />
-	   					<p:inputText value="#{componentBean.newComponent.place}" required="true" />
-			        	<h:outputText value="Start date:" />  
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.start}" required="true" />
-	   					<h:outputText value="Finish date:" />
-	   					<p:calendar  pattern="dd/MM/yyyy HH:mm" value="#{componentBean.newComponent.finish}" required="true" />
-	   				 </h:panelGrid>
-   				</p:outputPanel>
- 				<p:commandButton value="Create" id="CREATE" update="form"
-             actionListener="#{componentBean.createComp()}" styleClass="ui-priority-primary"/>
- 				<p:dialog id="createDialog" header="Component created" widgetVar="createDialog">  
-    				<h:outputText value="The component has been successfully created" />  
-				</p:dialog>
 
-	        </h:panelGrid>
-	        <p:dataTable id="allCompTable" var="comp" value="#{componentBean.allComponents}" style="width:75%">
-	        	<f:facet name="header">  
-       			 Created components 
-    			</f:facet> 
-		        <p:column headerText="Type" style="width:10%">
-		        	<h:outputText value="#{comp.typeToString()}" />
-		        </p:column>
-		        <p:column headerText="Id" style="width:6%">
-		        	<h:outputText value="#{comp.idComponent}" />
-		        </p:column>
-		        <p:column headerText="Name" style="width:24%">
-		        	<h:outputText value="#{comp.title}" />
-		        </p:column>
-		        <p:column headerText="Description" style="width:30%">
-		        	<h:outputText value="#{comp.description}" />
-		        </p:column>
-		        <p:column headerText="Price" style="width:6%">
-		        	<h:outputText value="#{comp.price}" />
-		        </p:column>
-		        <p:column headerText="Other info" style="width:35%">
-		        	<h:outputText value="#{comp.infoToString()}" />
-		        </p:column>
-		        <p:column headerText="Delete" style="width:4%">  
-                <p:commandButton id="deleteButton" update="" oncomplete="" icon="ui-icon-circle-close" title="Delete">  
-            </p:commandButton>  
-        </p:column> 
-	        </p:dataTable>
-        </h:form> 
-	</h:body>
+<f:metadata>
+	<f:event type="preRenderView"
+		listener="#{componentBean.compManPreRender()}" />
+</f:metadata>
+
+<h:head>
+	<title>Components manager</title>
+</h:head>
+
+<h:body>
+	<div id="page">
+
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerAdmin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:panel id="panel" header="Components manager"
+				style="margin-bottom:10px;">
+				<h:form id="form">
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+						border-width="3" frame="border">
+						<f:facet name="header">
+							<h:outputText value="Create new component"
+								styleClass="ui-li-count" />
+						</f:facet>
+						<h:panelGrid columns="1" style="margin-bottom:10px"
+							cellpadding="5" id="BASIC">
+							<h:outputText value="Type of the Component:" />
+							<p:selectOneMenu id="CompType" value="#{componentBean.type}"
+								style="width:150px">
+								<f:selectItem itemLabel="Select One" itemValue="null" />
+								<f:selectItems value="#{componentBean.types}" />
+								<p:ajax update="OPTIONAL"
+									listener="#{componentBean.handleTypeChange}" />
+							</p:selectOneMenu>
+							<h:outputText value="Title:" />
+							<h:panelGrid columns="2">
+								<p:inputText id="title" required="true"
+									value="#{componentBean.newComponent.title}" size="40">
+									<f:validateLength minimum="1" maximum="45" />
+									<p:clientValidator />
+								</p:inputText>
+								<p:message for="title" display="icon" />
+							</h:panelGrid>
+							<h:outputText value="Description:" />
+							<p:inputTextarea rows="6" cols="33"
+								value="#{componentBean.newComponent.description}" />
+							<h:outputText value="Price:" />
+							<h:panelGrid columns="3">
+								<h:outputText value="€" />
+								<p:inputText id="price" required="true"
+									value="#{componentBean.newComponent.price}" style="width:150px">
+									<p:clientValidator event="keyup" />
+								</p:inputText>
+								<p:message for="price" display="icon" />
+							</h:panelGrid>
+						</h:panelGrid>
+						<p:outputPanel id="OPTIONAL">
+							<h:panelGrid id="FLG" columns="1" style="margin-bottom:10px"
+								cellpadding="5" rendered="#{componentBean.flightRend}">
+								<h:outputText value="Departure date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.departureDate}"
+									required="true" />
+								<h:outputText value="Return date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.returnDate}"
+									required="true" />
+								<h:outputText value="Departure place:" />
+								<p:inputText
+									value="#{componentBean.newComponent.departurePlace}"
+									required="true" />
+								<h:outputText value="Arrival place:" />
+								<p:inputText value="#{componentBean.newComponent.arrivalPlace}"
+									required="true" />
+							</h:panelGrid>
+							<h:panelGrid id="HTL" columns="1" style="margin-bottom:10px"
+								cellpadding="5" rendered="#{componentBean.hotelRend}">
+								<h:outputText value="Place:" />
+								<p:inputText value="#{componentBean.newComponent.place}"
+									required="true" />
+								<h:outputText value="Check-in date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.checkin}" required="true" />
+								<h:outputText value="Check-out date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.checkout}" required="true" />
+							</h:panelGrid>
+							<h:panelGrid id="XCR" columns="1" style="margin-bottom:10px"
+								cellpadding="5" rendered="#{componentBean.excursionRend}">
+								<h:outputText value="Place:" />
+								<p:inputText value="#{componentBean.newComponent.place}"
+									required="true" />
+								<h:outputText value="Start date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.start}" required="true" />
+								<h:outputText value="Finish date:" />
+								<p:calendar pattern="dd/MM/yyyy HH:mm"
+									value="#{componentBean.newComponent.finish}" required="true" />
+							</h:panelGrid>
+						</p:outputPanel>
+						<p:commandButton value="Create" id="CREATE" update="form"
+							actionListener="#{componentBean.createComp()}"
+							styleClass="ui-priority-primary" />
+						<p:dialog id="createDialog" header="Component created"
+							widgetVar="createDialog">
+							<h:outputText value="The component has been successfully created" />
+						</p:dialog>
+
+					</h:panelGrid>
+					<p:dataTable id="allCompTable" var="comp"
+						value="#{componentBean.allComponents}" style="width:75%">
+						<f:facet name="header">
+							<h:outputText value="Created components "
+								styleClass="ui-li-count" />
+						</f:facet>
+						<p:column headerText="Type" style="width:10%">
+							<h:outputText value="#{comp.typeToString()}" />
+						</p:column>
+						<p:column headerText="Id" style="width:6%">
+							<h:outputText value="#{comp.idComponent}" />
+						</p:column>
+						<p:column headerText="Name" style="width:24%">
+							<h:outputText value="#{comp.title}" />
+						</p:column>
+						<p:column headerText="Description" style="width:30%">
+							<h:outputText value="#{comp.description}" />
+						</p:column>
+						<p:column headerText="Price" style="width:6%">
+							<h:outputText value="#{comp.price}" />
+						</p:column>
+						<p:column headerText="Other info" style="width:35%">
+							<h:outputText value="#{comp.infoToString()}" />
+						</p:column>
+						<p:column headerText="Delete" style="width:4%">
+							<p:commandButton id="deleteButton" update="" oncomplete=""
+								icon="ui-icon-circle-close" title="Delete">
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>
 
 
 

@@ -9,49 +9,53 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Hello #{userBean.username}</h1>
-	<p:button outcome="components" value="Manage Components"
-		icon="ui-icon-star" />
-	<p:button outcome="new_package" value="Create New Package"
-		icon="ui-icon-star" />
-	<br />
-	<br />
-	<h:outputText value="#{homeContentBean.adminHome}" />
-	<h:form>
+	<div id="page">
 
-		<p:messages showDetail="true" />
-
-		<h:panelGrid columns="3" style="float:right;">
-			<h:outputLabel value="Search: " />
-			<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
-				required="true" label="Keyword" />
-			<p:watermark for="keyword" value="Search" />
-			<p:commandButton action="foundPackages" value="Submit">
-			<f:param name="keyword" value="#{searchPackageBean.keyword}" />
-			</p:commandButton>
-			<p:commandButton value="Reset" type="reset"/>
-		</h:panelGrid>
-	<br /><br /><br /><br /><br />
-	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
-		dynamic="true" cache="true" multiple="true">
-		<p:tab title="#{package.title}">
-			<h:panelGrid columns="2" cellpadding="10">
-
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="#{fn:substring(package.description,0,15)}..." />
-					<p:button outcome="selectedPackage" value="In this package"
-						icon="ui-icon-star">
-						<f:param name="idPackage" value="#{package.idPackage}" />
-					</p:button>
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerAdmin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:panel id="panel" header="Hello #{userBean.username}"
+				style="margin-bottom:10px;">
+				<h:outputText value="#{homeContentBean.adminHome}"
+					styleClass="ui-li-count" />
+				<br />
+				<h:panelGrid columns="3" style="float:right;">
+					<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
+						required="true" label="Keyword" />
+					<p:watermark for="keyword" value="Search" />
+					<p:commandButton action="foundPackages" icon="ui-icon-search"
+						value="Submit">
+						<f:param name="keyword" value="#{searchPackageBean.keyword}" />
+					</p:commandButton>
 				</h:panelGrid>
+				<br />
+				<br />
+				<br />
+				<p:accordionPanel value="#{packageBean.allPackages}" var="package"
+					dynamic="true" cache="true" multiple="true">
+					<p:tab title="#{package.title}">
+						<h:panelGrid columns="2" cellpadding="10">
 
-			</h:panelGrid>
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText
+									value="#{fn:substring(package.description,0,15)}..." />
+								<p:button outcome="selectedPackage" value="see more"
+									icon="ui-icon-star">
+									<f:param name="idPackage" value="#{package.idPackage}" />
+								</p:button>
 
-		</p:tab>
-	</p:accordionPanel>
-	</h:form>
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
+							</h:panelGrid>
+
+						</h:panelGrid>
+
+					</p:tab>
+				</p:accordionPanel>
+			</p:panel>
+		</h:form>
+
+	</div>
 </h:body>
 </html>
