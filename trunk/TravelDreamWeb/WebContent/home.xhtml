@@ -9,33 +9,24 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:graphicImage library="images" name="banner.png" />
-	<br />
-	<br />
-	<h:outputText value="Welcome to TravelDream" styleClass="ui-li-count" />
-	<br />
-	<br />
-	<h:outputText value="Sei cliente Traveldream? Loggati qui: "
-		styleClass="ui-li-count" />
-	<h:button value="User" outcome="users/index" />
-	<br />
-	<br />
-	<h:outputText
-		value="Vuoi visualizzare i dettagli di un pacchetto custom? Clicca qui: "
-		styleClass="ui-li-count" />
-	<h:button value="ID PACKAGE" outcome="idPackage" />
-	<br />
-	<br />
-	<h:outputText
-		value="Vuoi diventare cliente Traveldream e usufruire dei nostri servizi? Iscriviti qui: "
-		styleClass="ui-li-count" />
-	<h:button value="Sign up" outcome="register" />
-	<br />
-	<br />
-	<h:outputText value="Sei un admin? Loggati qui: "
-		styleClass="ui-li-count" />
-	<h:button value="Admin" outcome="admins/index" />
-	<br />
-	<br />
+	<div id="page">
+
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerBeforeLogin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:growl id="growl" showDetail="true"/>   
+    <p:panel header="Welcome To Traveldream">  
+        <h:outputText value="Traveldream è una compagnia specializzata nell'organizzazione di viaggi."/><br />   
+       	<h:outputText value="Diventa nostro cliente e potrai usufruire di molti servizi come la customizzazione di pacchetti viaggio e la condivisione con amici e parenti!"/><br />
+       	<h:outputText value="Se sei già nostro cliente loggati qui:"/><br />
+       	<h:button value="Login" outcome="users/index"/>
+    </p:panel> 
+		</h:form>
+	</div>
 </h:body>
 </html>
+
+

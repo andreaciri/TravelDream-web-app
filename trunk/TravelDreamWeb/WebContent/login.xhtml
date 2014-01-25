@@ -9,6 +9,13 @@
 	<title>Login</title>
 </h:head>
 <h:body>
+<div id="page">
+ 
+	    <div id="header">
+		<ui:insert name="header" >
+		  <ui:include src="/resources/templates/headerBeforeLogin.xhtml" />
+		</ui:insert>
+	    </div>
 	<p:panel header="Login Form">
 		<h:form id="login"
 			onsubmit="document.getElementById('login').action='j_security_check';"
@@ -22,5 +29,6 @@
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
+	</div>
 </h:body>
 </html>

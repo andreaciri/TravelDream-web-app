@@ -7,7 +7,25 @@
 
 <h:head></h:head>
 <h:body>
-            Sorry, you made an Error. <br /> Please try again: <h:link
-		value="Login" outcome="home"/>
+	<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerBeforeLogin.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:growl id="growl" showDetail="true" />
+			<p:panel header="Error">
+				<h:outputText value="Sorry, you made an error."
+					styleClass="ui-li-count" />
+				<br />
+				<h:outputText value="Please try again" styleClass="ui-li-count" />
+				<br />
+				<h:link value="Login" outcome="login" />
+			</p:panel>
+
+
+		</h:form>
+	</div>
 </h:body>
 </html>

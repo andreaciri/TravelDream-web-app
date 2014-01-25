@@ -6,18 +6,20 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
 <h:body>
-	
+	<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerBeforeLogin.xhtml" />
+			</ui:insert>
+		</div>
 	<f:metadata>
 		<f:viewParam name="idPpackage" value="#{searchPackageBean.idPackage}" />
 	</f:metadata>
-	
+	<h:form>
+			<p:growl id="growl" showDetail="true" />
+			<p:panel header="This is the package number #{searchPackageBean.idPackage}">
 	<p:outputPanel deferred="true" deferredMode="visible">
-		<br />
-		<h:outputText value="This is the package number #{searchPackageBean.idPackage}" />
-
-		<br />
-		<br />
-
+	
 		<p:fieldset legend="#{searchPackageBean.selectedPackage.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 				<h:graphicImage library="images" name="okt.png" />
@@ -25,8 +27,6 @@
 					styleClass="ui-li-count" />
 			</h:panelGrid>
 		</p:fieldset>
-
-		<br />
 		<br />
 		<br />
 		<p:commandButton value="Customize" disabled="true" />
@@ -34,9 +34,10 @@
 		<br />
 		<br />
 		<h:outputText value="Per acquistare/salvare/customizzare pacchetti viaggio registrati e diventa anche tu cliente Traveldream!" styleClass="ui-li-count"/>
-		<br />
 		<h:button value="Sign up" outcome="register" />
 	</p:outputPanel>
-
+	</p:panel>
+		</h:form>
+</div>
 </h:body>
 </html>
