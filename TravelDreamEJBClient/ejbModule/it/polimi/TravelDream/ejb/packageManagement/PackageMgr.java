@@ -16,6 +16,7 @@ public interface PackageMgr {
 	public List<PackageDTO> getStandardPackageDTO(String keyword);
 	public void save(PackageDTO newPack);
 	public PackageDTO getPackDTOById(int idPackage);
+	public void update(PackageDTO currentPack);
 	
 }
 

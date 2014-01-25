@@ -140,6 +140,19 @@ public class PackageManagerBean implements PackageMgr{
 		
 	}
 	
+	/* aggiorna titolo, descrizione, e lista componenti di un pacchetto */
+	public void update(PackageDTO currentDTO) {
+		Package currentPack = em.find(Package.class, currentDTO.getIdPackage());
+		currentPack.setTitle(currentDTO.getTitle());
+		currentPack.setDescription(currentDTO.getDescription());
+		List<Component> newList = new ArrayList<Component>();
+		for(ComponentDTO c : currentDTO.getComponents()){
+			newList.add(compMan.convertToEntity(c));
+		}
+		currentPack.setComponents(newList);
+		em.merge(currentPack);
+	}
+	
 	private void addPackToUser(Package p) {
 		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
 		currentUser.addPackage(p);
