@@ -34,7 +34,9 @@
 		<br />
 		<br />
 		<br />
-		<p:commandButton value="Customize" disabled="true" />
+		<p:button value="Modify" outcome="modify">
+		<f:param name="idPackage" value="#{packageBean.selectedPackage.idPackage}"/>
+		</p:button>
 		<p:commandButton value="Buy" disabled="true" />
 	</p:outputPanel>
 
