@@ -10,6 +10,7 @@ import javax.ejb.Local;
 public interface PackageMgr {
 	
 	public List<PackageDTO> getAllPackagesDTO();
+	public List<PackageDTO> getSavedPackagesDTO();
 	public PackageDTO getselectedPackageDTO(int idPackage);
 	public PackageDTO getCustomPackageDTO(int idPackage);
 	public List<PackageDTO> getStandardPackageDTO(String keyword);
