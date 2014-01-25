@@ -18,7 +18,7 @@ import java.util.List;
 @Table(name="PACKAGE")
 @NamedQueries({
 	@NamedQuery(name="Package.findAllStandard", query="SELECT p FROM Package p WHERE p.type='standard'"),
-	@NamedQuery(name="Package.getStandardPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='standard')"),
+	@NamedQuery(name="Package.getPackageById", query="SELECT p FROM Package p WHERE p.idPackage = :idPackage"),
 	@NamedQuery(name="Package.getCustomPackageById", query="SELECT p FROM Package p WHERE (p.idPackage = :idPackage) AND (p.type='custom')"),
 	@NamedQuery(name="Package.getStandardPackageByKeyword", query="SELECT p FROM Package p WHERE (p.type='standard') AND (p.title like :keyword)")
 })
@@ -44,7 +44,7 @@ public class Package implements Serializable {
 	private List<Component> components;
 
 	public static final String FIND_ALL_STANDARDP = "Package.findAllStandard";
-	public static final String FIND_SPACKAGE_BY_ID = "Package.getStandardPackageById";
+	public static final String FIND_PACKAGE_BY_ID = "Package.getPackageById";
 	public static final String FIND_CPACKAGE_BY_ID = "Package.getCustomPackageById";
 	public static final String FIND_SPACKAGE_BY_KEY = "Package.getStandardPackageByKeyword";
 	
