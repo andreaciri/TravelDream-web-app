@@ -66,7 +66,7 @@ public class PackageManagerBean implements PackageMgr{
 	
 	//* ritorna il pacchetto selezionato cercandolo via id nel db *//
 	public Package getSelectedFromDB(int idPackage){
-		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_SPACKAGE_BY_ID, Package.class);
+		TypedQuery<Package> query = em.createNamedQuery(Package.FIND_PACKAGE_BY_ID, Package.class);
 		return query.setParameter("idPackage", idPackage).getSingleResult();
 	}
 	
@@ -84,6 +84,11 @@ public class PackageManagerBean implements PackageMgr{
 		return query.setParameter("keyword", "%"+keyword+"%").getResultList();
 		}
 
+	/* restituisce i pacchetti customizzati dall' utente loggato correntemente */
+	public List<Package> getSavedPack() {
+		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
+		return currentUser.getPackages();
+	}
 	
 	//* converte il singolo pacchetto in DTO *//
 	private PackageDTO convertSelectedToDTO(Package p){
@@ -147,11 +152,12 @@ public class PackageManagerBean implements PackageMgr{
 		List<PackageDTO> select = convertToDTO(getStandardFromDB(keyword));
 		return select;
 		}
-	
-	/* restituisce i pacchetti customizzati dall' utente loggato correntemente */
-	public List<Package> getSavedPack() {
-		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
-		return currentUser.getPackages();
+
+	//* ritorna la lista di pacchettiCustomDTO salvati dall'utente *//
+	@Override
+	public List<PackageDTO> getSavedPackagesDTO() {
+		List<PackageDTO> select = convertToDTO(getSavedPack());
+		return select;
 	}
 }
 
