@@ -8,24 +8,24 @@
 <h:head>
 </h:head>
 <h:body>
-
-	<h1>Hello #{userBean.username}</h1>
-	<h:outputText value="#{homeContentBean.userHome}" /><br/><br/>
+	<div id="page">
+ 
+	    <div id="header">
+		<ui:insert name="header" >
+		  <ui:include src="/resources/templates/headerUser.xhtml" />
+		</ui:insert>
+	    </div>
 	<h:form>
-		<p:button outcome="savedPackages" value="I miei Pacchetti" icon="ui-icon-star"/>
-		<h:panelGrid columns="3" style="float:right;">
-			<h:outputLabel value="Search: " />
-			<p:inputText id="keyword" value="#{searchPackageBean.keyword}"
-				required="true" label="Keyword" />
+	<p:panel id="panel" header="#{homeContentBean.userHome}" style="margin-bottom:10px;">	
+	<h:panelGrid columns="3" style="float:right;">
+		<p:inputText id="keyword" value="#{searchPackageBean.keyword}" required="true" label="Keyword" />
 			<p:watermark for="keyword" value="Search" />
-			<p:commandButton action="foundPackages" value="Submit">
+		<p:commandButton action="foundPackages" icon="ui-icon-search" value="Submit">
 			<f:param name="keyword" value="#{searchPackageBean.keyword}" />
-			</p:commandButton>
-			<p:commandButton value="Reset" type="reset"/>
-		</h:panelGrid>
-	<br /><br /><br /><br /><br />
-	<p:accordionPanel value="#{packageBean.allPackages}" var="package"
-		dynamic="true" cache="true" multiple="true">
+		</p:commandButton>
+	</h:panelGrid>
+	<br /><br /><br />	
+	<p:accordionPanel value="#{packageBean.allPackages}" var="package" dynamic="true" cache="true" multiple="true">
 		<p:tab title="#{package.title}">
 			<h:panelGrid columns="2" cellpadding="10">
 
@@ -42,12 +42,9 @@
 
 		</p:tab>
 	</p:accordionPanel>
+	</p:panel>
 	</h:form>
-	<br />
-	<br />
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
-
+	
+ </div>
 </h:body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	
+	<f:metadata>
+		<f:viewParam name="idPpackage" value="#{searchPackageBean.idPackage}" />
+	</f:metadata>
+	
+	<p:outputPanel deferred="true" deferredMode="visible">
+		<br />
+		<h:outputText value="This is the package number #{searchPackageBean.idPackage}" />
+
+		<br />
+		<br />
+
+		<p:fieldset legend="#{searchPackageBean.selectedPackage.title}">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:graphicImage library="images" name="okt.png" />
+				<h:outputText value="#{searchPackageBean.selectedPackage.description}"
+					styleClass="ui-li-count" />
+			</h:panelGrid>
+		</p:fieldset>
+
+		<br />
+		<br />
+		<br />
+		<p:button value="Customize" outcome="customize">
+			<f:param name="idPackage" value="#{packageBean.selectedPackage.idPackage}" />
+		</p:button>
+		<p:commandButton value="Buy" disabled="true" />
+	</p:outputPanel>
+
+</h:body>
+</html>

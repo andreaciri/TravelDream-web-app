@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+
+	<br />
+	<h:outputText value="Here you can search a custom package by ID" />
+	<br />
+	<br />
+
+	<h:form>
+		<h:panelGrid id="grid" columns="2" cellpadding="5">
+			<h:outputLabel value="ID PACKAGE:" style="font-weight:bold" />
+			<p:inputText id="number" value="#{searchPackageBean.idPackage}"/>
+			</h:panelGrid>
+			<p:commandButton value="Submit" icon="ui-icon-star"
+				actionListener="#{searchPackageBean.handleSearchById()}">
+				<f:param name="idPackage" value="#{searchPackageBean.idPackage}"/>
+			</p:commandButton>
+			<p:commandButton value="Reset" icon="ui-icon-star" type="reset" />
+	</h:form>
+
+</h:body>
+</html>
