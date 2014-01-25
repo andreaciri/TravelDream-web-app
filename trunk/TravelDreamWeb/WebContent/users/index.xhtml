@@ -8,7 +8,6 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:outputText value="Welcome back #{userBean.username}" styleClass="ui-li-count" /><br />
 	<div id="page">
  
 	    <div id="header">
@@ -17,7 +16,8 @@
 		</ui:insert>
 	    </div>
 	<h:form>
-	<p:panel id="panel" header="#{homeContentBean.userHome}" style="margin-bottom:10px;">	
+	<p:panel id="panel" header="Welcome back #{userBean.username}" style="margin-bottom:10px;">	
+	<h:outputText value="#{homeContentBean.userHome}" styleClass="ui-li-count" /><br />
 	<h:panelGrid columns="3" style="float:right;">
 		<p:inputText id="keyword" value="#{searchPackageBean.keyword}" required="true" label="Keyword" />
 			<p:watermark for="keyword" value="Search" />

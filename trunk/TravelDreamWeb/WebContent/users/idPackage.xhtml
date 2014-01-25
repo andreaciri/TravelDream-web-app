@@ -6,23 +6,29 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head></h:head>
 <h:body>
+	<div id="page">
 
-	<br />
-	<h:outputText value="Here you can search a custom package by ID" />
-	<br />
-	<br />
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerUser.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:panel id="panel"
+				header="Here you can search a custom package by ID:"
+				style="margin-bottom:10px;">
+				<h:panelGrid id="grid" columns="2" cellpadding="5">
+					<h:outputLabel value="ID PACKAGE:" style="font-weight:bold" />
+					<p:inputText id="number" value="#{searchPackageBean.idPackage}" />
+				</h:panelGrid>
+				<p:commandButton value="Submit" icon="ui-icon-star"
+					actionListener="#{searchPackageBean.handleSearchById()}">
+					<f:param name="idPackage" value="#{searchPackageBean.idPackage}" />
+				</p:commandButton>
+				<p:commandButton value="Reset" icon="ui-icon-star" type="reset" />
 
-	<h:form>
-		<h:panelGrid id="grid" columns="2" cellpadding="5">
-			<h:outputLabel value="ID PACKAGE:" style="font-weight:bold" />
-			<p:inputText id="number" value="#{searchPackageBean.idPackage}"/>
-			</h:panelGrid>
-			<p:commandButton value="Submit" icon="ui-icon-star"
-				actionListener="#{searchPackageBean.handleSearchById()}">
-				<f:param name="idPackage" value="#{searchPackageBean.idPackage}"/>
-			</p:commandButton>
-			<p:commandButton value="Reset" icon="ui-icon-star" type="reset" />
-	</h:form>
-
+			</p:panel>
+		</h:form>
+	</div>
 </h:body>
 </html>

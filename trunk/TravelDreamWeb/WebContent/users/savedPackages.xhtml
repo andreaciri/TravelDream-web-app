@@ -9,34 +9,40 @@
 </h:head>
 <h:body>
 
-	<br />
-	<h:outputText value="Questi sono i tuoi pacchetti custom salvati:" />
-	<br /><br />
-	<h:form>
-	<p:accordionPanel value="#{packageBean.savedPackages}" var="package"
-		dynamic="true" cache="true" multiple="true">
-		<p:tab title="#{package.title}">
-			<h:panelGrid columns="2" cellpadding="10">
+	<div id="page">
 
-				<h:panelGrid columns="2" cellpadding="10">
-					<h:outputText value="#{fn:substring(package.description,0,15)}..." />
-					<p:button outcome="selectedPackage" value="see more"
-						icon="ui-icon-star">
-						<f:param name="idPackage" value="#{package.idPackage}" />
-					</p:button>
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerUser.xhtml" />
+			</ui:insert>
+		</div>
+		<h:form>
+			<p:panel id="panel"
+				header="Questi sono i tuoi pacchetti custom salvati:"
+				style="margin-bottom:10px;">
+				<p:accordionPanel value="#{packageBean.savedPackages}" var="package"
+					dynamic="true" cache="true" multiple="true">
+					<p:tab title="#{package.title}">
+						<h:panelGrid columns="2" cellpadding="10">
 
-				</h:panelGrid>
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:outputText
+									value="#{fn:substring(package.description,0,15)}..." />
+								<p:button outcome="selectedPackage" value="see more"
+									icon="ui-icon-star">
+									<f:param name="idPackage" value="#{package.idPackage}" />
+								</p:button>
 
-			</h:panelGrid>
+							</h:panelGrid>
 
-		</p:tab>
-	</p:accordionPanel>
-	</h:form>
-	<br />
-	<br />
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
+						</h:panelGrid>
+
+					</p:tab>
+				</p:accordionPanel>
+
+			</p:panel>
+		</h:form>
+	</div>
 
 </h:body>
 </html>
