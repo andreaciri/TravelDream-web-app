@@ -136,9 +136,9 @@ public class PackageManagerBean implements PackageMgr{
 	}
 	
 	private void addPackToUser(Package p) {
-		User current = em.find(User.class, context.getCallerPrincipal().getName());
-		current.addPackage(p);
-		em.merge(current);
+		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
+		currentUser.addPackage(p);
+		em.merge(currentUser);
 	}
 
 	//* ritorna il pacchettoStandardDTO cercato via keyword *//
@@ -147,5 +147,11 @@ public class PackageManagerBean implements PackageMgr{
 		List<PackageDTO> select = convertToDTO(getStandardFromDB(keyword));
 		return select;
 		}
+	
+	/* restituisce i pacchetti customizzati dall' utente loggato correntemente */
+	public List<Package> getSavedPack() {
+		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
+		return currentUser.getPackages();
+	}
 }
 
