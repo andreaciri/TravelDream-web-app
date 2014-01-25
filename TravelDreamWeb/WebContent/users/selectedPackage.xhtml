@@ -11,39 +11,40 @@
 		<f:viewParam name="idPackage" value="#{packageBean.idPackage}" />
 		<f:viewAction action="#{packageBean.choose(packageBean.idPackage)}" />
 	</f:metadata>
-	<p:outputPanel deferred="true" deferredMode="visible">
-		<br />
-		<h:outputText
-			value="This is the package number #{packageBean.selectedPackage.idPackage}" />
+	<div id="page">
 
-		<br />
-		<br />
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="/resources/templates/headerUser.xhtml" />
+			</ui:insert>
+		</div>
+		<p:panel id="panel"
+			header="This is the package number #{packageBean.selectedPackage.idPackage}"
+			style="margin-bottom:10px;">
+			<p:outputPanel deferred="true" deferredMode="visible">
+				<p:fieldset legend="#{packageBean.selectedPackage.title}">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:graphicImage library="images" name="okt.png" />
+						<h:outputText value="#{packageBean.selectedPackage.description}"
+							styleClass="ui-li-count" />
+					</h:panelGrid>
+					<h:outputText value="Il pacchetto comprende:"
+						styleClass="ui-li-count" />
 
-		<p:fieldset legend="#{packageBean.selectedPackage.title}">
-			<h:panelGrid columns="2" cellpadding="10">
-				<h:graphicImage library="images" name="okt.png" />
-				<h:outputText value="#{packageBean.selectedPackage.description}"
-					styleClass="ui-li-count" />
-			</h:panelGrid>
-			<h3>Il pacchetto comprende:</h3> 
-			<p:dataList value="#{packageBean.selectedPackage.components}"
-				var="comp" itemType="comp">  
-    		<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br /><br /> 
-		</p:dataList>
-		</p:fieldset>
-		<br />
-		<br />
-		<p:button value="Customize" outcome="customize">
-			<f:param name="idPackage" value="#{packageBean.selectedPackage.idPackage}" />
-		</p:button>
-		<p:commandButton value="Buy" disabled="true" />
-	</p:outputPanel>
+					<p:dataList value="#{packageBean.selectedPackage.components}"
+						var="comp" itemType="comp">
+						<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br />
+						<br />
+					</p:dataList>
+				</p:fieldset><br />
+				<p:button value="Customize" outcome="customize">
+					<f:param name="idPackage"
+						value="#{packageBean.selectedPackage.idPackage}" />
+				</p:button>
+				<p:commandButton value="Buy" disabled="true" />
+			</p:outputPanel>
 
-	<br />
-	<br />
-	<h:form>
-		<h:commandButton action="#{logoutBean.logout}" value="Logout" />
-	</h:form>
-
+		</p:panel>
+	</div>
 </h:body>
 </html>
