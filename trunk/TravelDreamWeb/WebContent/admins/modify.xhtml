@@ -46,6 +46,8 @@
 							</p:inputTextarea>
 							<p:commandButton value="Update"
 								actionListener="#{modifyBean.handleModifyPack()}">
+								<f:param name="idPackage"
+						value="#{modifyBean.idPackage}" />
 							</p:commandButton>
 						</h:panelGrid>
 					</p:panel>
