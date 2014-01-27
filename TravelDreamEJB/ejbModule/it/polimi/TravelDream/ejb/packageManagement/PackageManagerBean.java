@@ -40,7 +40,7 @@ public class PackageManagerBean implements PackageMgr{
     }
 	
 	//* converte la lista di pacchetti standard in DTO *//
-	private List<PackageDTO> convertToDTO(List<Package> ps) {
+	public List<PackageDTO> convertToDTO(List<Package> ps) {
 		List<PackageDTO> allPackages = new ArrayList<PackageDTO>();
 		for(Package p : ps){
 			PackageDTO packageDTO = new PackageDTO();

@@ -147,6 +147,10 @@ public class ComponentBean implements Serializable{
 		
 	}
 	
+	public void handleDelete(int idComp){
+		compMgr.delete(idComp);
+	}
+	
 	public void compManPreRender () {
 		//BELLA IDEA, PECCATO CHE PARTE AD OGNI UPDATE AJAX!! DIO CANE
 //		System.out.println("RENDER COMPONENT MANAGER");
