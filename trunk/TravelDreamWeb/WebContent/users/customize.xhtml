@@ -21,11 +21,9 @@
 		<f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
 		<f:viewAction action="#{customizeBean.initFromView()}" />
 	</f:metadata>
-		<h:form>
+		<h:form id="customizePackage">
 			<p:panel id="panel" header="Create a new custom package:"
 				style="width:703px; min-height:500px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
-
-				<form id="customizePackage">
 
 					<p:panel id="basicInfo" header="New Package">
 
@@ -44,8 +42,6 @@
 							</p:inputTextarea>
 							<p:commandButton value="Save"
 								actionListener="#{customizeBean.handleSavePack()}">
-								<f:param name="idPackage"
-						value="#{customizeBean.idPackage}" />
 							</p:commandButton>
 						</h:panelGrid>
 					</p:panel>
@@ -158,7 +154,6 @@
 							value='The package has been successfully created.&lt;br /&gt;You can find it in the section "Saved Packages".'
 							escape="false" />
 					</p:dialog>
-				</form>
 			</p:panel>
 		</h:form>
 	</div>
