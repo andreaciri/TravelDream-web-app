@@ -11,16 +11,16 @@
 
 <h:body>
 
-	<f:metadata>
-		<f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
-		<f:viewAction action="#{customizeBean.initFromView()}" />
-	</f:metadata>
 	<div id="page">
 		<div id="header">
 			<ui:insert name="header">
 				<ui:include src="/resources/templates/headerUser.xhtml" />
 			</ui:insert>
 		</div>
+	<f:metadata>
+		<f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
+		<f:viewAction action="#{customizeBean.initFromView()}" />
+	</f:metadata>
 		<h:form>
 			<p:panel id="panel" header="Create a new custom package:"
 				style="width:703px; min-height:500px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
@@ -44,6 +44,8 @@
 							</p:inputTextarea>
 							<p:commandButton value="Save"
 								actionListener="#{customizeBean.handleSavePack()}">
+								<f:param name="idPackage"
+						value="#{customizeBean.idPackage}" />
 							</p:commandButton>
 						</h:panelGrid>
 					</p:panel>
