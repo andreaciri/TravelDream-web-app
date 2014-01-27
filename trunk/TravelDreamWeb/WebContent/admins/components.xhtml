@@ -141,9 +141,14 @@
 							<h:outputText value="#{comp.infoToString()}" />
 						</p:column>
 						<p:column headerText="Delete" style="width:4%">
-							<p:commandButton id="deleteButton" update="" oncomplete=""
+							<p:commandButton id="deleteButton" update="allCompTable" actionListener="#{componentBean.handleDelete(comp.idComponent)}"
 								icon="ui-icon-circle-close" title="Delete">
+								<p:confirm header="Confirmation" message=" Are you sure?" icon="ui-icon-alert"/>
 							</p:commandButton>
+							<p:confirmDialog global="true">  
+        						<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+    						    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+  							</p:confirmDialog>
 						</p:column>
 					</p:dataTable>
 				</h:form>
