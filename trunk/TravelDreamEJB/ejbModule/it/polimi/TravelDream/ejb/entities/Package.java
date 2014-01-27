@@ -37,7 +37,7 @@ public class Package implements Serializable {
 	@Column(name = "type")
 	private String type;
 	
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="PACK_CONTENT", 
 			joinColumns={@JoinColumn(name="idPackage", referencedColumnName="idPackage")},
 			inverseJoinColumns={@JoinColumn(name="idComponent", referencedColumnName="idComponent")})

@@ -11,7 +11,7 @@ import javax.ejb.Local;
 public interface CompMgrInterface {
 	
 	public void save(ComponentDTO newComp);
-	public void delete();
+	public void delete(int idComp);
 	public ComponentDTO getComponentDTO();
 	public List<ComponentDTO> getAllComponentDTO();
 	public List<FlightDTO> getAllFlightsDTO();

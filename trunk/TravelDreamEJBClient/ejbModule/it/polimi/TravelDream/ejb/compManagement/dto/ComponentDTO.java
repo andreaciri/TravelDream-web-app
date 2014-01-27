@@ -1,5 +1,9 @@
 package it.polimi.TravelDream.ejb.compManagement.dto;
 
+import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
+
+import java.util.List;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class ComponentDTO {
@@ -12,7 +16,6 @@ public class ComponentDTO {
 	protected int idComponent;
 	
 	public ComponentDTO(){
-		
 	}
 	
 	public String infoToString () {
@@ -50,4 +53,20 @@ public class ComponentDTO {
 	public void setIdComponent(int idComponent) {
 		this.idComponent = idComponent;
 	}
+
+//	public List<PackageDTO> getCriticalPacks() {
+//		return criticalPacks;
+//	}
+//
+//	public void setCriticalPacks(List<PackageDTO> criticalPacks) {
+//		this.criticalPacks = criticalPacks;
+//	}
+//	
+//	public String criticalPacksToString() {
+//		StringBuilder sb = new StringBuilder();
+//		for (PackageDTO p : criticalPacks){
+//			sb.append(p.getType()+" package: "+p.getTitle()+", id: "+p.getIdPackage());
+//		}
+//		return sb.toString();
+//	}
 }

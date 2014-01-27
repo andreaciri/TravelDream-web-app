@@ -9,7 +9,10 @@ import it.polimi.TravelDream.ejb.entities.Excursion;
 import it.polimi.TravelDream.ejb.entities.Flight;
 import it.polimi.TravelDream.ejb.entities.Hotel;
 import it.polimi.TravelDream.ejb.entities.Component;
+import it.polimi.TravelDream.ejb.entities.Package;
+import it.polimi.TravelDream.ejb.packageManagement.PackageManagerBean;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,6 +25,9 @@ public class CompManagerBean implements CompMgrInterface {
 
 	@PersistenceContext
     private EntityManager em;
+	
+	@EJB
+	PackageManagerBean packMgr;
 	
 	@Override
 	public void save(ComponentDTO newComp) {
@@ -51,9 +57,28 @@ public class CompManagerBean implements CompMgrInterface {
 	}
 
 	@Override
-	public void delete() {
-		
+	public void delete(int idComp) {
+		Component toRemove = em.find(Component.class, idComp);
+		for (Package p : getCriticalPack(toRemove)){
+			em.remove(p);
+			System.out.println("rimozione pacchetto "+p.getType()+" vincolato: "+p.getTitle()+" - id: "+p.getIdPackage());
+		}
+		em.remove(toRemove);
 	}
+	
+	private List<Package> getCriticalPack(Component c){
+		List<Package> criticalList = new ArrayList<Package>();
+		for ( Package p : c.getPackages()){
+			if(p.getType().equals("standard") && 
+					(c instanceof Flight || c instanceof Hotel)){
+				criticalList.add(p);				
+			}
+			if(p.getType().equals("custom") && p.getComponents().size() < 1){
+				criticalList.add(p);
+			}
+	}
+		return criticalList;
+}
 
 	@Override
 	public ComponentDTO getComponentDTO() {
@@ -145,7 +170,7 @@ public class CompManagerBean implements CompMgrInterface {
 		else {
 			System.out.println("compMgrBean: component not recognised");
 			return null;}
-		
+//		newDTO.setCriticalPacks(packMgr.convertToDTO(getCriticalPack(c)));
 		return newDTO;
 	}
 	

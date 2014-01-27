@@ -44,7 +44,7 @@ public class Component implements Serializable {
 	@Column(nullable=false)
 	private int price;
 	
-	@ManyToMany(mappedBy="components", cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="components", cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private Set<Package> packages;
 
 	public Component() {
@@ -97,5 +97,13 @@ public class Component implements Serializable {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
+	public Set<Package> getPackages() {
+		return packages;
+	}
+
+	public void setPackages(Set<Package> packages) {
+		this.packages = packages;
+	}
+
 }
