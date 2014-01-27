@@ -149,6 +149,9 @@ public class ComponentBean implements Serializable{
 	
 	public void handleDelete(int idComp){
 		compMgr.delete(idComp);
+		RequestContext context = RequestContext.getCurrentInstance();
+		allComponents = compMgr.getAllComponentDTO();
+		context.update("allCompTable");
 	}
 	
 	public void compManPreRender () {
