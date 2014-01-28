@@ -140,6 +140,13 @@ public class PackageManagerBean implements PackageMgr{
 		
 	}
 	
+	@Override
+	public void delete(int idPackage) {
+		Package toRemove = em.find(Package.class, idPackage);
+		System.out.println("RIMOZIONE PACCHETTO "+toRemove.getTitle()+" - ID = "+idPackage);
+//		em.remove(toRemove);
+	}
+	
 	/* aggiorna titolo, descrizione, e lista componenti di un pacchetto */
 	public void update(PackageDTO currentDTO) {
 		Package currentPack = em.find(Package.class, currentDTO.getIdPackage());

@@ -6,6 +6,7 @@ import java.util.List;
 import it.polimi.TravelDream.ejb.packageManagement.PackageMgr;
 import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -29,16 +30,27 @@ public class PackageBean implements Serializable {
 	
 	private int idPackage=0;
 	
+	private List<PackageDTO> allPackages;
+	
 	private PackageDTO selectedPackage; 
 		
 	public PackageBean(){
-		System.out.println("costruttore - id="+idPackage);
+	}
+	
+	@PostConstruct
+	public void packageBeanPostConstruct() {
+		allPackages = packageMgr.getAllPackagesDTO();
 	}
 	
 	public void choose(int idPackage){
 		selectedPackage = packageMgr.getselectedPackageDTO(idPackage);
 		return;
-	}	
+	}
+	
+	public void delete(){
+		System.out.println("DELETE ");
+//		packageMgr.delete(idPack);
+	}
 	
 	public int getIdPackage() {
 		return idPackage;
@@ -56,12 +68,17 @@ public class PackageBean implements Serializable {
 		this.selectedPackage = selectedPackage;
 	}
 
-	public List<PackageDTO> getAllPackages() {
-		return packageMgr.getAllPackagesDTO();
-	}
 	
 	public List<PackageDTO> getSavedPackages() {
 		return packageMgr.getSavedPackagesDTO();
+	}
+
+	public List<PackageDTO> getAllPackages() {
+		return allPackages;
+	}
+
+	public void setAllPackages(List<PackageDTO> allPackages) {
+		this.allPackages = allPackages;
 	}
   
 }
