@@ -17,6 +17,7 @@ import it.polimi.TravelDream.ejb.compManagement.CompManagerBean;
 import it.polimi.TravelDream.ejb.compManagement.dto.ComponentDTO;
 import it.polimi.TravelDream.ejb.entities.Component;
 import it.polimi.TravelDream.ejb.entities.Package;
+import it.polimi.TravelDream.ejb.entities.PurchasedPack;
 import it.polimi.TravelDream.ejb.entities.User;
 
 
@@ -140,11 +141,26 @@ public class PackageManagerBean implements PackageMgr{
 		
 	}
 	
+	public void buy(int idPackage, int guests){
+		Package selectedPack = em.find(Package.class, idPackage);
+		User currentUser = em.find(User.class, context.getCallerPrincipal().getName());
+		PurchasedPack purchase = new PurchasedPack();
+		purchase.setPurchasedPack(selectedPack);
+		purchase.setUser(currentUser);
+		purchase.setGuests(guests);
+		int total = 0;
+		for (Component c : selectedPack.getComponents()) {
+			total = total + c.getPrice();
+		}
+		purchase.setTotalPrice(total*guests);
+		em.persist(purchase);
+	}
+	
 	@Override
 	public void delete(int idPackage) {
 		Package toRemove = em.find(Package.class, idPackage);
 		System.out.println("RIMOZIONE PACCHETTO "+toRemove.getTitle()+" - ID = "+idPackage);
-//		em.remove(toRemove);
+		em.remove(toRemove);
 	}
 	
 	/* aggiorna titolo, descrizione, e lista componenti di un pacchetto */

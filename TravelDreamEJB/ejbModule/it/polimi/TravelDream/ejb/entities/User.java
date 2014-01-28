@@ -47,6 +47,9 @@ public static final String FIND_ALL = "User.findAll";
 		joinColumns={@JoinColumn(name="username")},
 		inverseJoinColumns={@JoinColumn(name="idPackage")})
 	private List<Package> packages;
+	
+	@OneToMany(mappedBy="user")
+	private List<PurchasedPack> purchases;
 
 	public User() {
 		packages = new ArrayList<Package>();
