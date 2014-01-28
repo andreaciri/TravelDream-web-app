@@ -55,7 +55,7 @@
 						styleClass="ui-li-count" />
 					<br /><br />
 					<p:dataTable id="flights" var="flight"
-						value="#{modifyBean.flights}" style="width:75%"
+						value="#{modifyBean.flights}"
 						selection="#{modifyBean.selectedFlight}"
 						rowKey="#{flight.idComponent}" selectionMode="single"
 						scrollable="true" scrollHeight="170">
@@ -83,7 +83,7 @@
         </p:column>
 					</p:dataTable>
 					<p:dataTable id="hotels" var="hotel" value="#{modifyBean.hotels}"
-						style="width:75%" selection="#{modifyBean.selectedHotel}"
+						selection="#{modifyBean.selectedHotel}"
 						rowKey="#{hotel.idComponent}" selectionMode="single"
 						scrollable="true" scrollHeight="170">
 						<f:facet name="header">
@@ -109,7 +109,7 @@
         </p:column>
 					</p:dataTable>
 					<p:dataTable id="excursions" var="excursion"
-						value="#{modifyBean.excursions}" style="width:75%"
+						value="#{modifyBean.excursions}"
 						selection="#{modifyBean.selectedExcs}"
 						rowKey="#{excursion.idComponent}" selectionMode="multiple"
 						scrollable="true" scrollHeight="170">
