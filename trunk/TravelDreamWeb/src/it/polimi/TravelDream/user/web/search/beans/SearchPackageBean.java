@@ -14,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+
 
 @ManagedBean(name="searchPackageBean")
 @SessionScoped
@@ -45,7 +47,12 @@ public class SearchPackageBean implements Serializable {
 	
 	public void handleSearchById(){
 		System.out.println("HANDLE - ID:"+idPackage);
-		selectCustom();
+		selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
+		if(selectedPackage == null){
+			RequestContext context = RequestContext.getCurrentInstance();
+			context.execute("invalidId.show();");
+		}
+		else
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("customPackageDetail.xhtml");
 		} catch (IOException e) {
@@ -54,11 +61,6 @@ public class SearchPackageBean implements Serializable {
 		return;
 	}
 	
-	
-	public void selectCustom(){
-		System.out.println("selectCustom - ID= "+idPackage);
-		selectedPackage = packageMgr.getCustomPackageDTO(idPackage);
-	}
 	
 	public List<PackageDTO> getAllPackages() {
 		return packageMgr.getAllPackagesDTO();

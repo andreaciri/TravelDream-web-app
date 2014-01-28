@@ -53,7 +53,7 @@
 					</p:outputPanel>
 
 					<p:dataTable id="flights" var="flight"
-						value="#{customizeBean.flights}" style="width:75%"
+						value="#{customizeBean.flights}"
 						selection="#{customizeBean.selectedFlights}"
 						rowKey="#{flight.idComponent}" selectionMode="multiple"
 						scrollable="true" scrollHeight="170">
@@ -82,7 +82,7 @@
 					</p:dataTable>
 					<br />
 					<p:dataTable id="hotels" var="hotel"
-						value="#{customizeBean.hotels}" style="width:75%"
+						value="#{customizeBean.hotels}"
 						selection="#{customizeBean.selectedHotels}"
 						rowKey="#{hotel.idComponent}" selectionMode="multiple"
 						scrollable="true" scrollHeight="170">
@@ -110,7 +110,7 @@
 					</p:dataTable>
 					<br />
 					<p:dataTable id="excursions" var="excursion"
-						value="#{customizeBean.excursions}" style="width:75%"
+						value="#{customizeBean.excursions}"
 						selection="#{customizeBean.selectedExcs}"
 						rowKey="#{excursion.idComponent}" selectionMode="multiple"
 						scrollable="true" scrollHeight="170">
