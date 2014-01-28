@@ -15,6 +15,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.primefaces.context.RequestContext;
+
 
 @ManagedBean(name="packageBean")
 @ViewScoped
@@ -33,6 +35,8 @@ public class PackageBean implements Serializable {
 	private List<PackageDTO> allPackages;
 	
 	private PackageDTO selectedPackage; 
+	
+	private int guests;
 		
 	public PackageBean(){
 	}
@@ -40,6 +44,7 @@ public class PackageBean implements Serializable {
 	@PostConstruct
 	public void packageBeanPostConstruct() {
 		allPackages = packageMgr.getAllPackagesDTO();
+		guests = 1;
 	}
 	
 	public void choose(int idPackage){
@@ -47,9 +52,13 @@ public class PackageBean implements Serializable {
 		return;
 	}
 	
-	public void delete(){
-		System.out.println("DELETE ");
-//		packageMgr.delete(idPack);
+	public void delete(int idPack){
+		System.out.println("DELETE ID"+idPack);
+		packageMgr.delete(idPack);
+	}
+	
+	public void buy(){
+		packageMgr.buy(idPackage, guests);
 	}
 	
 	public int getIdPackage() {
@@ -79,6 +88,14 @@ public class PackageBean implements Serializable {
 
 	public void setAllPackages(List<PackageDTO> allPackages) {
 		this.allPackages = allPackages;
+	}
+
+	public int getGuests() {
+		return guests;
+	}
+
+	public void setGuests(int guests) {
+		this.guests = guests;
 	}
   
 }

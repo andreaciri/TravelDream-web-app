@@ -52,6 +52,9 @@ public class Package implements Serializable {
 	@ManyToMany(mappedBy="packages", cascade=CascadeType.MERGE)
 	private List<User> users;
 
+	@OneToMany(mappedBy="purchasedPack")
+	private List<PurchasedPack> purchases;
+	
 	public Package(){
 	}
 	

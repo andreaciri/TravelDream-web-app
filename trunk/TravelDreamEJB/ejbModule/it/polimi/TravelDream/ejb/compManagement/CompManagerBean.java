@@ -73,7 +73,7 @@ public class CompManagerBean implements CompMgrInterface {
 					(c instanceof Flight || c instanceof Hotel)){
 				criticalList.add(p);				
 			}
-			if(p.getType().equals("custom") && p.getComponents().size() < 1){
+			if(p.getType().equals("custom") && p.getComponents().size() == 1){
 				criticalList.add(p);
 			}
 	}

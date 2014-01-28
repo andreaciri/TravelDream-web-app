@@ -18,6 +18,7 @@ public interface PackageMgr {
 	public PackageDTO getPackDTOById(int idPackage);
 	public void update(PackageDTO currentPack);
 	public void delete(int idPackage);
+	public void buy(int idPackage, int guests);
 	
 }
 

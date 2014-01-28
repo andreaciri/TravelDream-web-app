@@ -9,5 +9,6 @@
 		<class>it.polimi.TravelDream.ejb.entities.Flight</class>
 		<class>it.polimi.TravelDream.ejb.entities.Hotel</class>
 		<class>it.polimi.TravelDream.ejb.entities.Excursion</class>
+		<class>it.polimi.TravelDream.ejb.entities.PurchasedPack</class>
 	</persistence-unit>
 </persistence>
