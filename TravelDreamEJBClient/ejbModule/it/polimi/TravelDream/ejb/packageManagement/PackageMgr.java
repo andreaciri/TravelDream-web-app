@@ -17,6 +17,7 @@ public interface PackageMgr {
 	public void save(PackageDTO newPack);
 	public PackageDTO getPackDTOById(int idPackage);
 	public void update(PackageDTO currentPack);
+	public void delete(int idPackage);
 	
 }
 
