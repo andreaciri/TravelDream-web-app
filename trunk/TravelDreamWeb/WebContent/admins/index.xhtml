@@ -35,8 +35,8 @@
 				<br />
 				<br />
 				<p:accordionPanel value="#{packageBean.allPackages}" var="package"
-					dynamic="true" cache="true" multiple="true" id="allPacks">
-					<p:tab title="#{package.title}">
+					dynamic="true" cache="true" multiple="true" >
+					<p:tab title="#{package.title}" id="allPacks">
 						<h:panelGrid columns="2" cellpadding="10">
 
 							<h:panelGrid columns="3" cellpadding="10">
