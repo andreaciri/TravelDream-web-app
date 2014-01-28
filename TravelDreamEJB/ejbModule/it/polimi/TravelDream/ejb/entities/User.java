@@ -97,6 +97,10 @@ public static final String FIND_ALL = "User.findAll";
 	public void addPackage(Package pack) {
 		packages.add(pack);
 	}
+	
+	public void removePackage(Package toRemove) {
+		packages.remove(toRemove);
+	}
 
 	public List<Group> getGroup() {
 		return this.group;
