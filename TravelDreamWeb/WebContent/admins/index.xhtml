@@ -46,14 +46,14 @@
 									icon="ui-icon-star">
 									<f:param name="idPackage" value="#{package.idPackage}" />
 								</p:button>
-								<p:commandButton value="delete" actionListener="#{packageBean.delete()}"
-									icon="ui-icon-trash">
+								<p:commandButton title="delete" value="delete" id="deleteButton" actionListener="#{packageBean.delete()}"
+									icon="ui-icon-trash" immediate="true">
 									<p:confirm header="Confirmation" message=" Are you sure?" icon="ui-icon-alert"/>
 								</p:commandButton>
 								<p:confirmDialog global="true">  
         						<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
-    						    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
-    						    </p:confirmDialog>
+    						    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+  							</p:confirmDialog>
 							</h:panelGrid>
 
 						</h:panelGrid>
