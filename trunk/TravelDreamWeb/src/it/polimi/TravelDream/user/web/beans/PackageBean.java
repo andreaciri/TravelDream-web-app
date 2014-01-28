@@ -54,7 +54,7 @@ public class PackageBean implements Serializable {
 	
 	public void delete(int idPack){
 		System.out.println("DELETE ID"+idPack);
-//		packageMgr.delete(idPack);
+		packageMgr.delete(idPack);
 	}
 	
 	public void buy(){
