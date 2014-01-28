@@ -60,7 +60,7 @@ public class CompManagerBean implements CompMgrInterface {
 	public void delete(int idComp) {
 		Component toRemove = em.find(Component.class, idComp);
 		for (Package p : getCriticalPack(toRemove)){
-			em.remove(p);
+			packMgr.delete(p.getIdPackage());
 			System.out.println("rimozione pacchetto "+p.getType()+" vincolato: "+p.getTitle()+" - id: "+p.getIdPackage());
 		}
 		em.remove(toRemove);

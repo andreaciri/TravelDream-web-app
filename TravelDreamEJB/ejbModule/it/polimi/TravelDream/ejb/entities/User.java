@@ -42,7 +42,7 @@ public static final String FIND_ALL = "User.findAll";
 
 
 	//bi-directional many-to-many association to Package
-	@ManyToMany(cascade=CascadeType.MERGE)
+	@ManyToMany
 	@JoinTable(name="SAVED_PACK", 
 		joinColumns={@JoinColumn(name="username")},
 		inverseJoinColumns={@JoinColumn(name="idPackage")})
