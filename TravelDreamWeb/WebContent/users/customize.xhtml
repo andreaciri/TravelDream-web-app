@@ -30,7 +30,7 @@
 						<h:panelGrid columns="3">
 							<h:outputLabel for="title" value="Title: *" />
 							<p:inputText id="title"
-								value="#{customizeBean.currentPack.title}(Custom)" label="Title"
+								value="#{customizeBean.currentPack.title} (Custom)" label="Title"
 								size="44">
 							</p:inputText>
 							<p:message for="title" display="icon" />
@@ -41,7 +41,7 @@
 								label="Description" rows="6" cols="33">
 							</p:inputTextarea>
 							<p:commandButton value="Save"
-								actionListener="#{customizeBean.handleSavePack()}">
+								actionListener="#{customizeBean.handleSavePack()}" immediate="true">
 							</p:commandButton>
 						</h:panelGrid>
 					</p:panel>
