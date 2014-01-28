@@ -49,7 +49,7 @@ public class Package implements Serializable {
 	public static final String FIND_SPACKAGE_BY_KEY = "Package.getStandardPackageByKeyword";
 	
 	//bi-directional many-to-many association to User
-	@ManyToMany(mappedBy="packages", cascade=CascadeType.MERGE)
+	@ManyToMany(mappedBy="packages", cascade={CascadeType.MERGE})
 	private List<User> users;
 
 	@OneToMany(mappedBy="purchasedPack")
