@@ -59,6 +59,8 @@ public class PackageBean implements Serializable {
 	
 	public void buy(){
 		packageMgr.buy(idPackage, guests);
+		RequestContext context = RequestContext.getCurrentInstance();
+		context.execute("buyDialog.show();");
 	}
 	
 	public int getIdPackage() {
