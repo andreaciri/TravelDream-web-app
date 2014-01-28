@@ -41,7 +41,9 @@
 					<f:param name="idPackage"
 						value="#{packageBean.selectedPackage.idPackage}" />
 				</p:button>
-				<h:form>
+				<h:outputLabel for="guests" value=" Guests: " />  
+           		<p:spinner id="guests"   
+                    value="#{packageBean.guests}" min="1" max="30" size="3"/><br />
 				<p:growl id="messages" showDetail="true" />
 				<p:commandButton id="buyButton" update="" actionListener="#{packageBean.buy()}" value="Buy"
 								icon="ui-icon-cart" title="Buy this Package">
@@ -51,10 +53,6 @@
         						<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
     						    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
     						    </p:confirmDialog>
-    						    <h:outputLabel for="guests" value="Guests: " />  
-           		<p:spinner id="guests"   
-                    value="#{packageBean.guests}" min="1" max="30" size="5"/>
-                    </h:form>
 			</p:outputPanel>
 		</p:panel>
 	</div>
