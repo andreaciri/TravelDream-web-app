@@ -1,166 +1,165 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>Customize Package</title>
+        <title>Customize Package</title>
 </h:head>
 
 <h:body>
 
-	<div id="page">
-		<div id="header">
-			<ui:insert name="header">
-				<ui:include src="/resources/templates/headerUser.xhtml" />
-			</ui:insert>
-		</div>
-	<f:metadata>
-		<f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
-		<f:viewAction action="#{customizeBean.initFromView()}" />
-	</f:metadata>
-		<h:form id="customizePackage">
-			<p:panel id="panel" header="Create a new custom package:"
-				style="width:703px; min-height:500px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
+        <div id="page">
+                <div id="header">
+                        <ui:insert name="header">
+                                <ui:include src="/resources/templates/headerUser.xhtml" />
+                        </ui:insert>
+                </div>
+        <f:metadata>
+                <f:viewParam name="idPackage" value="#{customizeBean.idPackage}" />
+                <f:viewAction action="#{customizeBean.initFromView()}" />
+        </f:metadata>
+                <h:form id="customizePackage">
+                        <p:panel id="panel" header="Create a new custom package:"
+                                style="width:703px; min-height:500px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
 
-					<p:panel id="basicInfo" header="New Package">
+                                        <p:panel id="basicInfo" header="New Package">
 
-						<h:panelGrid columns="3">
-							<h:outputLabel for="title" value="Title: *" />
-							<p:inputText id="title"
-								value="#{customizeBean.currentPack.title} (Custom)" label="Title"
-								size="44">
-							</p:inputText>
-							<p:message for="title" display="icon" />
+                                                <h:panelGrid columns="3">
+                                                        <h:outputLabel for="title" value="Title: *" />
+                                                        <p:inputText id="title"
+                                                                value="#{customizeBean.currentPack.title}" label="Title"
+                                                                size="44">
+                                                        </p:inputText>
+                                                        <p:message for="title" display="icon" />
 
-							<h:outputLabel for="description" value="Description:" />
-							<p:inputTextarea id="description"
-								value="#{customizeBean.currentPack.description}"
-								label="Description" rows="6" cols="33">
-							</p:inputTextarea>
-							<p:commandButton value="Save"
-								actionListener="#{customizeBean.handleSavePack()}" immediate="true">
-							</p:commandButton>
-						</h:panelGrid>
-					</p:panel>
-					<p:outputPanel>
-						<p>Here you can add and remove any components you want; for
-							choose multiple components of the same type, or remove a selected
-							component, press ctrl (cmd). For save a package it must content
-							at least one component.</p>
-					</p:outputPanel>
+                                                        <h:outputLabel for="description" value="Description:" />
+                                                        <p:inputTextarea id="description"
+                                                                value="#{customizeBean.currentPack.description}"
+                                                                label="Description" rows="6" cols="33">
+                                                        </p:inputTextarea>
+                                                        <p:commandButton value="Save"
+                                                                actionListener="#{customizeBean.handleSavePack()}">
+                                                        </p:commandButton>
+                                                </h:panelGrid>
+                                        </p:panel>
+                                        <p:outputPanel>
+                                                <p>Here you can add and remove any components you want; for
+                                                        choose multiple components of the same type, or remove a selected
+                                                        component, press ctrl (cmd). For save a package it must content
+                                                        at least one component.</p>
+                                        </p:outputPanel>
 
-					<p:dataTable id="flights" var="flight"
-						value="#{customizeBean.flights}"
-						selection="#{customizeBean.selectedFlights}"
-						rowKey="#{flight.idComponent}" selectionMode="multiple"
-						scrollable="true" scrollHeight="170">
-						<f:facet name="header">  
+                                        <p:dataTable id="flights" var="flight"
+                                                value="#{customizeBean.flights}"
+                                                selection="#{customizeBean.selectedFlights}"
+                                                rowKey="#{flight.idComponent}" selectionMode="multiple"
+                                                scrollable="true" scrollHeight="170">
+                                                <f:facet name="header">  
             Avaible Flights  
         </f:facet>
 
-						<p:column headerText="Departure place">  
+                                                <p:column headerText="Departure place">  
             #{flight.departurePlace}  
         </p:column>
-						<p:column headerText="Arrival place">  
+                                                <p:column headerText="Arrival place">  
             #{flight.arrivalPlace}  
         </p:column>
-						<p:column headerText="Departure date">  
+                                                <p:column headerText="Departure date">  
             #{flight.departureDate}  
         </p:column>
-						<p:column headerText="Return date">  
+                                                <p:column headerText="Return date">  
             #{flight.returnDate}  
         </p:column>
-						<p:column headerText="Price">  
+                                                <p:column headerText="Price">  
             #{flight.price} € 
         </p:column>
-						<p:column headerText="id">  
+                                                <p:column headerText="id">  
             #{flight.idComponent}  
         </p:column>
-					</p:dataTable>
-					<br />
-					<p:dataTable id="hotels" var="hotel"
-						value="#{customizeBean.hotels}"
-						selection="#{customizeBean.selectedHotels}"
-						rowKey="#{hotel.idComponent}" selectionMode="multiple"
-						scrollable="true" scrollHeight="170">
-						<f:facet name="header">  
+                                        </p:dataTable>
+                                        <br />
+                                        <p:dataTable id="hotels" var="hotel"
+                                                value="#{customizeBean.hotels}"
+                                                selection="#{customizeBean.selectedHotels}"
+                                                rowKey="#{hotel.idComponent}" selectionMode="multiple"
+                                                scrollable="true" scrollHeight="170">
+                                                <f:facet name="header">  
             Avaible Hotels  
         </f:facet>
-						<p:column headerText="Name">
-			#{hotel.title}
-		</p:column>
-						<p:column headerText="Place">
-			#{hotel.place}
-		</p:column>
-						<p:column headerText="check-in">
-			#{hotel.checkin}
-		</p:column>
-						<p:column headerText="check-out">
-			#{hotel.checkout}
-		</p:column>
-						<p:column headerText="Price">
-			#{hotel.price} €
-		</p:column>
-						<p:column headerText="id">  
+                                                <p:column headerText="Name">
+                        #{hotel.title}
+                </p:column>
+                                                <p:column headerText="Place">
+                        #{hotel.place}
+                </p:column>
+                                                <p:column headerText="check-in">
+                        #{hotel.checkin}
+                </p:column>
+                                                <p:column headerText="check-out">
+                        #{hotel.checkout}
+                </p:column>
+                                                <p:column headerText="Price">
+                        #{hotel.price} €
+                </p:column>
+                                                <p:column headerText="id">  
             #{hotel.idComponent}  
         </p:column>
-					</p:dataTable>
-					<br />
-					<p:dataTable id="excursions" var="excursion"
-						value="#{customizeBean.excursions}"
-						selection="#{customizeBean.selectedExcs}"
-						rowKey="#{excursion.idComponent}" selectionMode="multiple"
-						scrollable="true" scrollHeight="170">
-						<f:facet name="header">  
+                                        </p:dataTable>
+                                        <br />
+                                        <p:dataTable id="excursions" var="excursion"
+                                                value="#{customizeBean.excursions}" 
+                                                selection="#{customizeBean.selectedExcs}"
+                                                rowKey="#{excursion.idComponent}" selectionMode="multiple"
+                                                scrollable="true" scrollHeight="170">
+                                                <f:facet name="header">  
             Avaible Excursions  
         </f:facet>
-						<p:column headerText="Name">
-			#{excursion.title}
-		</p:column>
-						<p:column headerText="Place">
-			#{excursion.place}
-		</p:column>
-						<p:column headerText="Description">
-			#{excursion.description}
-		</p:column>
-						<p:column headerText="Start">
-			#{excursion.start}
-		</p:column>
-						<p:column headerText="Finish">
-			#{excursion.finish}
-		</p:column>
-						<p:column headerText="Price">
-			#{excursion.price} €
-		</p:column>
-						<p:column headerText="id">  
+                                                <p:column headerText="Name">
+                        #{excursion.title}
+                </p:column>
+                                                <p:column headerText="Place">
+                        #{excursion.place}
+                </p:column>
+                                                <p:column headerText="Description">
+                        #{excursion.description}
+                </p:column>
+                                                <p:column headerText="Start">
+                        #{excursion.start}
+                </p:column>
+                                                <p:column headerText="Finish">
+                        #{excursion.finish}
+                </p:column>
+                                                <p:column headerText="Price">
+                        #{excursion.price} €
+                </p:column>
+                                                <p:column headerText="id">  
             #{excursion.idComponent}  
         </p:column>
-					</p:dataTable>
-					<br />
-					<p:dialog id="notValidDialog" header="Attention:"
-						widgetVar="notValidDialog">
-						<h:outputText value="The package does not contain any component." />
-					</p:dialog>
-					<p:dialog id="notValidTitle" header="Attention:"
-						widgetVar="notValidTitle">
-						<h:outputText value="Insert a title for the new package." />
-					</p:dialog>
-					<p:dialog id="newPackDialog" header="Custom Package saved"
-						widgetVar="newPackDialog">
-						<h:outputText
-							value='The package has been successfully created.&lt;br /&gt;You can find it in the section "Saved Packages".'
-							escape="false" />
-					</p:dialog>
-			</p:panel>
-		</h:form>
-	</div>
+                                        </p:dataTable>
+                                        <br />
+                                        <p:dialog id="notValidDialog" header="Attention:"
+                                                widgetVar="notValidDialog">
+                                                <h:outputText value="The package does not contain any component." />
+                                        </p:dialog>
+                                        <p:dialog id="notValidTitle" header="Attention:"
+                                                widgetVar="notValidTitle">
+                                                <h:outputText value="Insert a title for the new package." />
+                                        </p:dialog>
+                                        <p:dialog id="newPackDialog" header="Custom Package saved"
+                                                widgetVar="newPackDialog">
+                                                <h:outputText
+                                                        value='The package has been successfully created.&lt;br /&gt;You can find it in the section "Saved Packages".'
+                                                        escape="false" />
+                                        </p:dialog>
+                        </p:panel>
+                </h:form>
+        </div>
 <ui:insert name="footer" >
       <ui:include src="/resources/templates/footer.xhtml" />
    </ui:insert>
 
 </h:body>
 </html>
-
