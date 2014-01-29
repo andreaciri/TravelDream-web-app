@@ -33,7 +33,7 @@
 									<f:param name="idPackage" value="#{package.idPackage}" />
 								</p:button>
 								<p:commandButton title="delete" value="delete" id="deleteButton" actionListener="#{packageBean.delete(package.idPackage)}"
-									icon="ui-icon-trash" inline="true" immediate="true">
+									icon="ui-icon-trash" inline="true">
 									<p:confirm header="Confirmation" message=" Are you sure?" icon="ui-icon-alert"/>
 								</p:commandButton>
 								<p:confirmDialog global="true">  
