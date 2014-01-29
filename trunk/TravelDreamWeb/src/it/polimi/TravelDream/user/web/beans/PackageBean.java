@@ -8,12 +8,11 @@ import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import org.primefaces.context.RequestContext;
 
@@ -55,6 +54,7 @@ public class PackageBean implements Serializable {
 	public void delete(int idPack){
 		System.out.println("DELETE ID"+idPack);
 		packageMgr.delete(idPack);
+		refreshPage();
 	}
 	
 	public void buy(){
@@ -62,6 +62,15 @@ public class PackageBean implements Serializable {
 		RequestContext context = RequestContext.getCurrentInstance();
 		context.execute("buyDialog.show();");
 	}
+	
+	protected void refreshPage() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		String refreshpage = fc.getViewRoot().getViewId();
+		ViewHandler ViewH =fc.getApplication().getViewHandler();
+		UIViewRoot UIV = ViewH.createView(fc,refreshpage);
+		UIV.setViewId(refreshpage);
+		fc.setViewRoot(UIV);
+		}
 	
 	public int getIdPackage() {
 		return idPackage;
