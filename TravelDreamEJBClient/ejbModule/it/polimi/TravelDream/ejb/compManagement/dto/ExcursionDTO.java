@@ -18,7 +18,7 @@ public class ExcursionDTO extends ComponentDTO {
 	
 	@Override
 	public String infoToString () {
-		return place+" - from "+start.toString()+" to "+finish.toString();
+		return place+" - from "+dateToString(start)+" to "+dateToString(finish);
 	}
 	
 	public String getPlace() {

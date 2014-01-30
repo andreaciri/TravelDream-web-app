@@ -3,7 +3,7 @@ package it.polimi.TravelDream.ejb.entities;
 import it.polimi.TravelDream.ejb.entities.Component;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -28,10 +28,10 @@ public class Flight extends Component implements Serializable {
 	private String arrivalPlace;
 	
 	@Column(nullable=false)
-	private Date departureDate;
+	private Timestamp departureDate;
 	
 	@Column(nullable=false)
-	private Date returnDate;
+	private Timestamp returnDate;
 
 	public Flight() {
 		super();
@@ -57,19 +57,19 @@ public class Flight extends Component implements Serializable {
 		this.departurePlace = departurePlace;
 	}
 
-	public Date getDepartureDate() {
+	public Timestamp getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(Timestamp departureDate) {
 		this.departureDate = departureDate;
 	}
 
-	public Date getReturnDate() {
+	public Timestamp getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date arrivalDate) {
+	public void setReturnDate(Timestamp arrivalDate) {
 		this.returnDate = arrivalDate;
 	}
    

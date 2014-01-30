@@ -4,7 +4,7 @@ import it.polimi.TravelDream.ejb.entities.Component;
 
 import java.io.Serializable;
 import java.lang.String;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -26,10 +26,10 @@ public class Excursion extends Component implements Serializable {
 	private String place;
 	
 	@Column(nullable=false)
-	private Date start;
+	private Timestamp start;
 	
 	@Column(nullable=false)
-	private Date finish;
+	private Timestamp finish;
 	private static final long serialVersionUID = 1L;
 
 	public Excursion() {
@@ -55,18 +55,18 @@ public class Excursion extends Component implements Serializable {
 	public void setPlace(String place) {
 		this.place = place;
 	}   
-	public Date getStart() {
+	public Timestamp getStart() {
 		return this.start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(Timestamp start) {
 		this.start = start;
 	}   
-	public Date getFinish() {
+	public Timestamp getFinish() {
 		return this.finish;
 	}
 
-	public void setFinish(Date finish) {
+	public void setFinish(Timestamp finish) {
 		this.finish = finish;
 	}
    

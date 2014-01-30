@@ -1,6 +1,5 @@
 package it.polimi.TravelDream.ejb.compManagement;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,7 +200,9 @@ public class CompManagerBean implements CompMgrInterface {
 		return newEntity;
 	}
 	
-	public java.sql.Date convertDate (java.util.Date d) {
-		return new java.sql.Date(d.getTime());
+	/* converte da util.date a sql.timestamp */
+	public java.sql.Timestamp convertDate (java.util.Date d) {
+		return new java.sql.Timestamp(d.getTime());
 	}
+	
 }
