@@ -66,6 +66,7 @@ public class PackageBean implements Serializable {
 	protected void refreshPage() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		String refreshpage = fc.getViewRoot().getViewId();
+//		System.out.println(refreshpage);
 		ViewHandler ViewH =fc.getApplication().getViewHandler();
 		UIViewRoot UIV = ViewH.createView(fc,refreshpage);
 		UIV.setViewId(refreshpage);

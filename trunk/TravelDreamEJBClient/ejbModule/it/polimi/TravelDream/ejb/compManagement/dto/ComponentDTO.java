@@ -2,6 +2,8 @@ package it.polimi.TravelDream.ejb.compManagement.dto;
 
 import it.polimi.TravelDream.ejb.packageManagement.dto.PackageDTO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,6 +27,11 @@ public class ComponentDTO {
 	public String typeToString() {
 		String type = this.getClass().getSimpleName();
 		return type.substring(0, (type.length()-3));
+	}
+	
+	protected String dateToString(java.util.Date date){
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return df.format(date);
 	}
 	
 	public String getTitle() {

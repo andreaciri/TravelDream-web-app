@@ -3,7 +3,7 @@ package it.polimi.TravelDream.ejb.entities;
 import it.polimi.TravelDream.ejb.entities.Component;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.*;
 
@@ -24,10 +24,10 @@ public class Hotel extends Component implements Serializable {
 	private String place;
 	
 	@Column(nullable=false)
-	private Date checkin;
+	private Timestamp checkin;
 	
 	@Column(nullable=false)
-	private Date checkout;
+	private Timestamp checkout;
 	
 	public Hotel() {
 		super();
@@ -45,19 +45,19 @@ public class Hotel extends Component implements Serializable {
 		this.place = place;
 	}
 
-	public Date getCheckin() {
+	public Timestamp getCheckin() {
 		return checkin;
 	}
 
-	public void setCheckin(Date checkin) {
+	public void setCheckin(Timestamp checkin) {
 		this.checkin = checkin;
 	}
 
-	public Date getCheckout() {
+	public Timestamp getCheckout() {
 		return checkout;
 	}
 
-	public void setCheckout(Date checkout) {
+	public void setCheckout(Timestamp checkout) {
 		this.checkout = checkout;
 	}
 
