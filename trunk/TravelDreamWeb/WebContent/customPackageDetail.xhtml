@@ -25,17 +25,27 @@
 				<h:graphicImage library="images" name="okt.png" />
 				<h:outputText value="#{searchPackageBean.selectedPackage.description}"
 					styleClass="ui-li-count" />
-			</h:panelGrid>
-		</p:fieldset>
-		<br />
-		<br />
-		<p:commandButton value="Customize" disabled="true" />
-		<p:commandButton value="Buy" disabled="true" />
-		<br />
-		<br />
-		<h:outputText value="Per acquistare/salvare/customizzare pacchetti viaggio registrati e diventa anche tu cliente Traveldream!" styleClass="ui-li-count"/>
+				</h:panelGrid>
+			<h:outputText value="Il pacchetto comprende:"
+						styleClass="ui-li-count" />
+
+					<p:dataList value="#{packageBean.selectedPackage.components}"
+						var="comp" itemType="comp">
+						<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br />
+						<br />
+					</p:dataList>
+				</p:fieldset><br />
+				<p:button value="Customize" disabled="true"/>
+				<h:outputLabel for="guests" value=" Guests: " />  
+           		<p:spinner id="guests"   
+                    value="" disabled="true" min="1" max="30" size="3"/><br />
+				
+				<p:commandButton id="buyButton" disabled="true" value="Buy"
+								icon="ui-icon-cart" title="Buy this Package"/><br /><br />
+				
+			<h:outputText value="Per acquistare/salvare/customizzare pacchetti viaggio registrati e diventa anche tu cliente Traveldream!" styleClass="ui-li-count"/>
 		<h:button value="Sign up" outcome="register" />
-	</p:outputPanel>
+			</p:outputPanel>
 	</p:panel>
 		</h:form>
 </div>

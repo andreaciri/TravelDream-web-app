@@ -27,13 +27,20 @@
 				<h:outputText value="#{searchPackageBean.selectedPackage.description}"
 					styleClass="ui-li-count" />
 			</h:panelGrid>
-		</p:fieldset>
-		<br />
-		<br />
-		<p:button value="Customize" outcome="customize">
-			<f:param name="idPackage" value="#{packageBean.selectedPackage.idPackage}" />
-		</p:button>
-		<h:outputLabel for="guests" value=" Guests: " />  
+		<h:outputText value="Il pacchetto comprende:"
+						styleClass="ui-li-count" />
+
+					<p:dataList value="#{packageBean.selectedPackage.components}"
+						var="comp" itemType="comp">
+						<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br />
+						<br />
+					</p:dataList>
+				</p:fieldset><br />
+				<p:button value="Customize" outcome="customize">
+					<f:param name="idPackage"
+						value="#{packageBean.selectedPackage.idPackage}" />
+				</p:button>
+				<h:outputLabel for="guests" value=" Guests: " />  
            		<p:spinner id="guests"   
                     value="#{packageBean.guests}" min="1" max="30" size="3"/><br />
 				<p:growl id="messages" showDetail="true" />
@@ -48,7 +55,7 @@
     						    <p:dialog id="buyDialog" header="Package purchased" widgetVar="buyDialog">  
    									 <h:outputText value="This package has been successfully purchased!" />  
 								</p:dialog>
-	</p:outputPanel>
+			</p:outputPanel>
 	</p:panel>
 	</h:form>
 	</div>
