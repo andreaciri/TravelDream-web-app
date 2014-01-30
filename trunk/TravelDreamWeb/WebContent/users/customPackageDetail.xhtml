@@ -30,7 +30,7 @@
 		<h:outputText value="Il pacchetto comprende:"
 						styleClass="ui-li-count" />
 
-					<p:dataList value="#{packageBean.selectedPackage.components}"
+					<p:dataList value="#{searchPackageBean.selectedPackage.components}"
 						var="comp" itemType="comp">
 						<b>#{comp.typeToString()}:</b> #{comp.title}<br /> #{comp.description}<br /> Price: #{comp.price}€<br /> #{comp.infoToString()} <br />
 						<br />
