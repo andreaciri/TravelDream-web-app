@@ -43,7 +43,7 @@ CREATE TABLE `COMPONENT` (
 
 LOCK TABLES `COMPONENT` WRITE;
 /*!40000 ALTER TABLE `COMPONENT` DISABLE KEYS */;
-INSERT INTO `COMPONENT` VALUES (3,'FLG','Ryanair flight','Offerta Speciale A/R',98),(4,'HTL','Hostal Josefina','Hostal Josefina si trova nel cuore di Madrid, nelle vicinanze dei seguenti luoghi di interesse, facilmente raggiungibili a piedi: Plaza de Callao e Puerta del Sol. Nelle vicinanze potrai visitare anche: Plaza Mayor e Plaza de España.',250),(5,'XCR','Visita alla cattedrale dell\'Almudena ','La Cattedrale dell\' Almuneda è la chiesa madre dell’arcidiocesi di Madrid e si trova vicino al Palazzo Reale. L’interno del tempio è in stile gotico, mentre l’esterno classicista.',15),(6,'FLG','Easy Jet Flight','Offerta Speciale A/R',110),(7,'HTL','La Maison Champs Elysees','Situata tra l’Avenue Montaigne e il Grand Palais, la Maison Champs Elysées apre le porte a un nuovo mondo fatto di lusso e poesia, un’atmosfera rilassata, dove il minimalismo è arricchito da un’incredibile cura per i dettagli. Questo è un luogo che racconta una storia, gli interni di questo pregevole hotel sono attentamente orchestrati come una giocosa e provocatoria produzione teatrale.',288),(8,'FLG','Direct Flight to New York','Volo in business class',503),(9,'FLG','Alitalia Flight to Amsterdam','Volo Prima Classe A/R',278),(10,'FLG','Air France ','Volo Prima Classe A/R',356),(11,'HTL','Golden Tulip Amsterdam West','Situato a solo 1 km dalla stazione ferroviaria di Amsterdam Sloterdijk, a 15 minuti di auto dall\'Aeroporto di Schiphol, il Golden Tulip Amsterdam West offre la connessione Wi-Fi gratuita e camere climatizzate con un design raffinato.',180),(12,'FLG','VOLO A/R con 8 giorni e 7 notti RODI','Offerta Limitata ',389),(13,'HTL','Thalasso Spa Resort ','La splendida architettura greca, gli alloggi lussuosi e la rigenerante Thalasso Spa cattureranno la vostra mente per sempre.',200),(14,'XCR','Ananeosis Thalasso Spa','L\'unico centro termale di talassoterapia sull\'isola di Rodi che collabora in esclusiva con Thalgo & Terrake, una delle aziende leader nel mondo della Thalasso Spa.',80),(15,'FLG','Praha Flight','VOLO A/R con 3 giorni / 2 notti',129),(16,'HTL','Hotel Barceló Praha','Alloggia in questo hotel 4 stelle nel centro di Praga. Barcelo Praha Five si trova a meno di 15 minuti da note attrazioni locali, come Birrificio Staropramen e Parco di Mrazovka.',175),(17,'FLG','Ryanair Special Deal Praha','8 days A/R',85),(18,'XCR','Visita guidata al Castello di Praga','Costruito nel IX secolo. Con 570 metri di lunghezza e 130 di larghezza, è considerato la più grande fortezza medievale del mondo. Contiene la Cattedrale di San Vito, Vicolo d\'Oro e alchimia, dove hanno lavorato alcuni alchimisti per trovare la formula per creare l\'oro.',11),(19,'HTL','The Lex Boutique Hotel NYC','Sistemazione in Camera Cozy Queen\r\nCaffè gratuito\r\nTrattamento di Prima Colazione\r\nTasse locali incluse (14.75% VAT e USD 3.50 tassa di soggiorno)',450);
+INSERT INTO `COMPONENT` VALUES (3,'FLG','Ryanair flight','Offerta Speciale A/R',98),(4,'HTL','Hostal Josefina','Hostal Josefina si trova nel cuore di Madrid, nelle vicinanze dei seguenti luoghi di interesse, facilmente raggiungibili a piedi: Plaza de Callao e Puerta del Sol. Nelle vicinanze potrai visitare anche: Plaza Mayor e Plaza de España.',250),(5,'XCR','Visita alla cattedrale dell\'Almudena ','La Cattedrale dell\' Almuneda è la chiesa madre dell’arcidiocesi di Madrid e si trova vicino al Palazzo Reale. L’interno del tempio è in stile gotico, mentre l’esterno classicista.',15),(6,'FLG','Easy Jet Flight','Offerta Speciale A/R',110),(7,'HTL','La Maison Champs Elysees','Situata tra l’Avenue Montaigne e il Grand Palais, la Maison Champs Elysées apre le porte a un nuovo mondo fatto di lusso e poesia, un’atmosfera rilassata, dove il minimalismo è arricchito da un’incredibile cura per i dettagli. Questo è un luogo che racconta una storia, gli interni di questo pregevole hotel sono attentamente orchestrati come una giocosa e provocatoria produzione teatrale.',288),(8,'FLG','Direct Flight to New York','Volo in business class',503),(9,'FLG','Alitalia Flight to Amsterdam','Volo Prima Classe A/R',278),(11,'HTL','Golden Tulip Amsterdam West','Situato a solo 1 km dalla stazione ferroviaria di Amsterdam Sloterdijk, a 15 minuti di auto dall\'Aeroporto di Schiphol, il Golden Tulip Amsterdam West offre la connessione Wi-Fi gratuita e camere climatizzate con un design raffinato.',180),(12,'FLG','VOLO A/R con 8 giorni e 7 notti RODI','Offerta Limitata ',389),(13,'HTL','Thalasso Spa Resort ','La splendida architettura greca, gli alloggi lussuosi e la rigenerante Thalasso Spa cattureranno la vostra mente per sempre.',200),(14,'XCR','Ananeosis Thalasso Spa','L\'unico centro termale di talassoterapia sull\'isola di Rodi che collabora in esclusiva con Thalgo & Terrake, una delle aziende leader nel mondo della Thalasso Spa.',80),(15,'FLG','Praha Flight','VOLO A/R con 3 giorni / 2 notti',129),(16,'HTL','Hotel Barceló Praha','Alloggia in questo hotel 4 stelle nel centro di Praga. Barcelo Praha Five si trova a meno di 15 minuti da note attrazioni locali, come Birrificio Staropramen e Parco di Mrazovka.',175),(17,'FLG','Ryanair Special Deal Praha','8 days A/R',85),(18,'XCR','Visita guidata al Castello di Praga','Costruito nel IX secolo. Con 570 metri di lunghezza e 130 di larghezza, è considerato la più grande fortezza medievale del mondo. Contiene la Cattedrale di San Vito, Vicolo d\'Oro e alchimia, dove hanno lavorato alcuni alchimisti per trovare la formula per creare l\'oro.',11),(19,'HTL','The Lex Boutique Hotel NYC','Sistemazione in Camera Cozy Queen\r\nCaffè gratuito\r\nTrattamento di Prima Colazione\r\nTasse locali incluse (14.75% VAT e USD 3.50 tassa di soggiorno)',450);
 /*!40000 ALTER TABLE `COMPONENT` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `FLIGHT` (
 
 LOCK TABLES `FLIGHT` WRITE;
 /*!40000 ALTER TABLE `FLIGHT` DISABLE KEYS */;
-INSERT INTO `FLIGHT` VALUES (3,'2014-02-17 00:00:00','2014-02-24 00:00:00','Milan','Madrid'),(6,'2014-03-13 00:00:00','2014-02-16 00:00:00','Milan','Paris'),(8,'2014-02-19 00:00:00','2014-02-26 00:00:00','Rome','New York'),(9,'2014-02-28 00:00:00','2014-03-11 00:00:00','Bologna','Amsterdam'),(10,'2014-03-19 00:00:00','2014-03-26 00:00:00','Pescara','Lille'),(12,'2014-02-04 00:00:00','2014-02-11 00:00:00','Milan','Rodi'),(15,'2014-02-18 00:00:00','2014-02-25 00:00:00','Rome','Praha'),(17,'2014-02-18 00:00:00','2014-02-26 00:00:00','Milan','Praha');
+INSERT INTO `FLIGHT` VALUES (3,'2014-02-17 00:00:00','2014-02-24 00:00:00','Milan','Madrid'),(6,'2014-03-13 00:00:00','2014-02-16 00:00:00','Milan','Paris'),(8,'2014-02-19 00:00:00','2014-02-26 00:00:00','Rome','New York'),(9,'2014-02-28 00:00:00','2014-03-11 00:00:00','Bologna','Amsterdam'),(12,'2014-02-04 00:00:00','2014-02-11 00:00:00','Milan','Rodi'),(15,'2014-02-18 00:00:00','2014-02-25 00:00:00','Rome','Praha'),(17,'2014-02-18 00:00:00','2014-02-26 00:00:00','Milan','Praha');
 /*!40000 ALTER TABLE `FLIGHT` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +163,7 @@ CREATE TABLE `PACKAGE` (
   `description` varchar(500) DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`idPackage`)
-) ENGINE=InnoDB AUTO_INCREMENT=66697 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66699 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `PACKAGE` (
 
 LOCK TABLES `PACKAGE` WRITE;
 /*!40000 ALTER TABLE `PACKAGE` DISABLE KEYS */;
-INSERT INTO `PACKAGE` VALUES (66673,'RODI: Prestigioso 5 stelle fronte mare','Tra le acque del Mar Egeo affiora un gioiello dalla bellezza gloriosa e imponente: Rodi. ','standard'),(66685,'Magica Praga','Praga è una bellissima città. Anzi, una delle più belle in tutta l\'Europa. Apprezzerete la sua magia che incontrerete ad ogni angolo, la posizione privilegiata dell’hotel e la sistemazione in camera executive.','standard'),(66691,'Magica Praga CUSTOM','Praga è una bellissima città. Anzi, una delle più belle in tutta l\'Europa. Apprezzerete la sua magia che incontrerete ad ogni angolo, la posizione privilegiata dell’hotel e la sistemazione in camera executive.','custom'),(66692,'New York: Shopping nel cuore di Manhattan','Tutti conosciamo New York... E\' la città che simboleggia tutto il mondo, grazie alla sua commistione di culture, al suo melting pot unico, grazie a una cinematografia che ce l\'ha fatta vivere in tutte le sue fasi. Luoghi familiari come Wall Street, Central Park e la mitica Statua della Libertà ora non dovrete più vederli solo sul piccolo o grande schermo: volate con Voyage Privé in questa magica destinazione per un\'esperienza incredibile!','standard'),(66693,'Magica Praga CUSTOM','Praga è una bellissima città. Anzi, una delle più belle in tutta l\'Europa. Apprezzerete la sua magia che incontrerete ad ogni angolo, la posizione privilegiata dell’hotel e la sistemazione in camera executive.','custom'),(66694,'RODI: Prestigioso 5 stelle fronte mare CUSTOM','Tra le acque del Mar Egeo affiora un gioiello dalla bellezza gloriosa e imponente: Rodi. ','custom'),(66695,'Settimana ad Amsterdam','La capitale olandese è conosciuta in tutto il mondo per la sua rete di canali, risalente al XVII secolo, gli antichi palazzi, gli eccellenti musei e i coffee shop, tutte mete imperdibili di qualunque viaggio a Amsterdam.','standard'),(66696,'Settimana ad Amsterdam CUSTOM','La capitale olandese è conosciuta in tutto il mondo per la sua rete di canali, risalente al XVII secolo, gli antichi palazzi, gli eccellenti musei e i coffee shop, tutte mete imperdibili di qualunque viaggio a Amsterdam.','custom');
+INSERT INTO `PACKAGE` VALUES (66673,'RODI: Prestigioso 5 stelle fronte mare','Tra le acque del Mar Egeo affiora un gioiello dalla bellezza gloriosa e imponente: Rodi. ','standard'),(66685,'Magica Praga','Praga è una bellissima città. Anzi, una delle più belle in tutta l\'Europa. Apprezzerete la sua magia che incontrerete ad ogni angolo, la posizione privilegiata dell’hotel e la sistemazione in camera executive.','standard'),(66691,'Magica Praga CUSTOM','Praga è una bellissima città. Anzi, una delle più belle in tutta l\'Europa. Apprezzerete la sua magia che incontrerete ad ogni angolo, la posizione privilegiata dell’hotel e la sistemazione in camera executive.','custom'),(66692,'New York: Shopping nel cuore di Manhattan','Tutti conosciamo New York... E\' la città che simboleggia tutto il mondo, grazie alla sua commistione di culture, al suo melting pot unico, grazie a una cinematografia che ce l\'ha fatta vivere in tutte le sue fasi. Luoghi familiari come Wall Street, Central Park e la mitica Statua della Libertà ora non dovrete più vederli solo sul piccolo o grande schermo: volate con Voyage Privé in questa magica destinazione per un\'esperienza incredibile!','standard'),(66695,'Settimana ad Amsterdam','La capitale olandese è conosciuta in tutto il mondo per la sua rete di canali, risalente al XVII secolo, gli antichi palazzi, gli eccellenti musei e i coffee shop, tutte mete imperdibili di qualunque viaggio a Amsterdam.','standard'),(66696,'Settimana ad Amsterdam CUSTOM','La capitale olandese è conosciuta in tutto il mondo per la sua rete di canali, risalente al XVII secolo, gli antichi palazzi, gli eccellenti musei e i coffee shop, tutte mete imperdibili di qualunque viaggio a Amsterdam.','custom'),(66698,'RODI: Prestigioso 5 stelle fronte mare CUSTOM','Tra le acque del Mar Egeo affiora un gioiello dalla bellezza gloriosa e imponente: Rodi. ','custom');
 /*!40000 ALTER TABLE `PACKAGE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +198,7 @@ CREATE TABLE `PACK_CONTENT` (
 
 LOCK TABLES `PACK_CONTENT` WRITE;
 /*!40000 ALTER TABLE `PACK_CONTENT` DISABLE KEYS */;
-INSERT INTO `PACK_CONTENT` VALUES (66692,8),(66695,9),(66695,11),(66696,11),(66673,12),(66681,12),(66682,12),(66694,12),(66673,13),(66681,13),(66682,13),(66673,14),(66681,14),(66682,14),(66694,14),(66666,15),(66680,15),(66683,15),(66685,15),(66666,16),(66680,16),(66683,16),(66685,16),(66691,16),(66693,16),(66693,17),(66685,18),(66692,19);
+INSERT INTO `PACK_CONTENT` VALUES (66692,8),(66695,9),(66695,11),(66696,11),(66673,12),(66681,12),(66682,12),(66673,13),(66681,13),(66682,13),(66673,14),(66681,14),(66682,14),(66698,14),(66666,15),(66680,15),(66683,15),(66685,15),(66666,16),(66680,16),(66683,16),(66685,16),(66691,16),(66685,18),(66692,19);
 /*!40000 ALTER TABLE `PACK_CONTENT` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,10 +217,8 @@ CREATE TABLE `PURCHASED_PACK` (
   `totalPrice` int(11) DEFAULT NULL,
   PRIMARY KEY (`idBooking`),
   KEY `usernameForPurchased_idx` (`username`),
-  KEY `idPackageForPurchased_idx` (`idPackage`),
-  CONSTRAINT `idPackageForPurchased` FOREIGN KEY (`idPackage`) REFERENCES `PACKAGE` (`idPackage`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `usernameForPurchased` FOREIGN KEY (`username`) REFERENCES `USERS` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +254,7 @@ CREATE TABLE `SAVED_PACK` (
 
 LOCK TABLES `SAVED_PACK` WRITE;
 /*!40000 ALTER TABLE `SAVED_PACK` DISABLE KEYS */;
-INSERT INTO `SAVED_PACK` VALUES ('admin',66692),('user',66693),('user',66694),('admin',66695),('user',66696);
+INSERT INTO `SAVED_PACK` VALUES ('admin',66692),('admin',66695),('user',66696),('user',66698);
 /*!40000 ALTER TABLE `SAVED_PACK` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-30 11:20:46
+-- Dump completed on 2014-01-31 11:09:04
